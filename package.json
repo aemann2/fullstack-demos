@@ -1,0 +1,8 @@
+{
+	"name": "fullstack-demos",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "https://github.com/aemann2/fullstack-demos.git",
+	"author": "aemann2 <aemann2@gmail.com>",
+	"license": "MIT"
+}
