@@ -13,6 +13,12 @@ const Index = () => {
 			<Window image={'test'} alt={'test'}>
 				Testing
 			</Window>
+			<Window image={'test'} alt={'test'}>
+				Testing
+			</Window>
+			<Window image={'test'} alt={'test'}>
+				Testing
+			</Window>
 		</IndexPage>
 	);
 };
