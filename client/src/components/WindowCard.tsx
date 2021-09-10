@@ -7,15 +7,18 @@ interface IProps {
 }
 
 const Wrapper = styled.div`
-	@media (max-width: 400px) {
-		width: 100px;
-		height: 250px;
+	width: clamp(300px, 40vw, 600px);
+	height: 250px;
+	border-radius: 12px;
+	margin-bottom: 2rem;
+	@media (min-width: 400px) {
 	}
 `;
 
 const Image = styled.img`
 	max-width: 100%;
 	max-height: 100%;
+	border-radius: 12px 12px 0 0;
 `;
 
 const TextWrapper = styled.div`

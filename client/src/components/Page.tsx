@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	min-height: 100vh;
+	min-width: 320px;
 `;
 
 interface IProps {

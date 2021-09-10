@@ -16,22 +16,48 @@ const Subtitle = styled(Title)`
 	font-size: 1.2rem;
 `;
 
+const CardWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 3rem;
+	padding: 0 2rem;
+`;
+
+const CardHeader = styled.h3`
+	font-weight: bold;
+`;
+
+const CardBody = styled.p``;
+
 const Index = () => {
 	return (
 		<IndexPage>
 			<Title>Backend Demos</Title>
 			<Subtitle>Applications for the purpose of learning</Subtitle>
-			<div>
+			<CardWrapper>
 				<WindowCard image={test} alt={'test'}>
-					Testing
+					<CardHeader>Application name</CardHeader>
+					<CardBody>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna
+					</CardBody>
 				</WindowCard>
 				<WindowCard image={test} alt={'test'}>
-					Testing
+					<CardHeader>Application name</CardHeader>
+					<CardBody>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna
+					</CardBody>
 				</WindowCard>
 				<WindowCard image={test} alt={'test'}>
-					Testing
+					<CardHeader>Application name</CardHeader>
+					<CardBody>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna
+					</CardBody>
 				</WindowCard>
-			</div>
+			</CardWrapper>
 		</IndexPage>
 	);
 };
