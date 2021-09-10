@@ -8,6 +8,7 @@ const IndexPage = styled(Page)`
 	background-color: var(--color-background);
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 `;
 
 const Title = styled.h1`
@@ -18,6 +19,7 @@ const Title = styled.h1`
 	margin-bottom: 0.5rem;
 	@media (min-width: 1100px) {
 		order: 1;
+		margin-top: 3rem;
 		font-size: 4rem;
 	}
 `;
@@ -30,15 +32,7 @@ const Subtitle = styled.h2`
 	@media (min-width: 1100px) {
 		order: 3;
 		font-size: 3rem;
-	}
-`;
-
-const MainWrapper = styled.div`
-	@media (min-width: 1100px) {
-		display: flex;
-		flex-direction: column;
-		order: 2;
-		margin: auto 0 auto 0;
+		margin-bottom: 3rem;
 	}
 `;
 
@@ -50,7 +44,7 @@ const CardWrapper = styled.div`
 	padding: 0 2rem;
 	@media (min-width: 1100px) {
 		flex-direction: row;
-		margin-top: 0;
+		margin-top: 3rem;
 		justify-content: space-evenly;
 		order: 2;
 	}
@@ -71,32 +65,30 @@ const Index = () => {
 	return (
 		<IndexPage>
 			<Title>Backend Demos</Title>
-			<MainWrapper>
-				<Subtitle>Applications for the purpose of learning</Subtitle>
-				<CardWrapper>
-					<WindowCard image={test} alt={'test'}>
-						<CardHeader>Inventory Management</CardHeader>
-						<CardBody>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna
-						</CardBody>
-					</WindowCard>
-					<WindowCard image={test} alt={'test'}>
-						<CardHeader>Contact List</CardHeader>
-						<CardBody>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna
-						</CardBody>
-					</WindowCard>
-					<WindowCard image={test} alt={'test'}>
-						<CardHeader>URL Shortener</CardHeader>
-						<CardBody>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna
-						</CardBody>
-					</WindowCard>
-				</CardWrapper>
-			</MainWrapper>
+			<Subtitle>Applications for the purpose of learning</Subtitle>
+			<CardWrapper>
+				<WindowCard image={test} alt={'test'}>
+					<CardHeader>Inventory Management</CardHeader>
+					<CardBody>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna
+					</CardBody>
+				</WindowCard>
+				<WindowCard image={test} alt={'test'}>
+					<CardHeader>Contact List</CardHeader>
+					<CardBody>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna
+					</CardBody>
+				</WindowCard>
+				<WindowCard image={test} alt={'test'}>
+					<CardHeader>URL Shortener</CardHeader>
+					<CardBody>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna
+					</CardBody>
+				</WindowCard>
+			</CardWrapper>
 		</IndexPage>
 	);
 };
