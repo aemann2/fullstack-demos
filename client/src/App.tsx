@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import Index from './pages/Index';
 import './App.css';
+import MenuManager from './pages/MenuManager';
+import ContactList from './pages/ContactList';
+import UrlShortener from './pages/UrlShortener';
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -16,12 +19,18 @@ function App() {
 		<Router>
 			<GlobalStyles />
 			<Switch>
-				<Route path='/'>
+				<Route exact path='/'>
 					<Index />
 				</Route>
-				<Route path='/page1'>{/* page */}</Route>
-				<Route path='/page2'>{/* page */}</Route>
-				<Route path='/page3'>{/* page */}</Route>
+				<Route path='/menuManager'>
+					<MenuManager />
+				</Route>
+				<Route path='/contactList'>
+					<ContactList />
+				</Route>
+				<Route path='/urlShortener'>
+					<UrlShortener />
+				</Route>
 			</Switch>
 		</Router>
 	);

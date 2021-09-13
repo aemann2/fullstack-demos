@@ -59,6 +59,7 @@ const CardHeader = styled.h3`
 
 const CardBody = styled.p`
 	line-height: 1.2em;
+	min-height: 60px;
 `;
 
 const Index = () => {
@@ -67,25 +68,22 @@ const Index = () => {
 			<Title>Backend Demos</Title>
 			<Subtitle>Applications for the purpose of learning</Subtitle>
 			<CardWrapper>
-				<WindowCard image={test} alt={'test'}>
-					<CardHeader>Inventory Management</CardHeader>
+				<WindowCard image={test} alt={'test'} url={'/menuManager'}>
+					<CardHeader>Menu Manager</CardHeader>
 					<CardBody>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna
+						An interface to manage items on a restaurant menu.
 					</CardBody>
 				</WindowCard>
-				<WindowCard image={test} alt={'test'}>
+				<WindowCard image={test} alt={'test'} url={'contactList'}>
 					<CardHeader>Contact List</CardHeader>
 					<CardBody>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna
+						See a list of contacts and add them to a persistent contact list.
 					</CardBody>
 				</WindowCard>
-				<WindowCard image={test} alt={'test'}>
+				<WindowCard image={test} alt={'test'} url={'urlShortener'}>
 					<CardHeader>URL Shortener</CardHeader>
 					<CardBody>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna
+						Long URL? Make it short! With a list of all URLs you've shortened.
 					</CardBody>
 				</WindowCard>
 			</CardWrapper>

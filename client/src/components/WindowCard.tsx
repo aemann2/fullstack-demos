@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface IProps {
 	image: string;
 	alt: string;
+	url: string;
 }
 
 const Wrapper = styled.div`
@@ -34,13 +36,15 @@ const TextWrapper = styled.div`
 	padding: 1rem 2rem;
 `;
 
-const WindowCard: React.FC<IProps> = (props) => {
+const WindowCard: React.FC<IProps> = ({ image, alt, url, children }) => {
 	return (
 		<Wrapper>
-			<Image src={props.image} alt={props.alt} />
-			<TextWrapper>
-				<div>{props.children}</div>
-			</TextWrapper>
+			<Link to={url}>
+				<Image src={image} alt={alt} />
+				<TextWrapper>
+					<div>{children}</div>
+				</TextWrapper>
+			</Link>
 		</Wrapper>
 	);
 };
