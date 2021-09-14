@@ -4,8 +4,8 @@ const router = express.Router();
 // Item model
 const Contact = require('../models/Contact');
 
-// @route GET items/
-// @description get all items in the DB
+// @route GET contacts/
+// @description get all contacts in the DB
 // @access Public
 router.get('/', (req, res) => {
 	Contact.find()
@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
 		.catch((err) => res.status(404).json({ error: 'No Items found!' }));
 });
 
-// @route POST items/
-// @description add an item
+// @route POST contacts/
+// @description add a contact
 // @access Public
 router.post('/', (req, res) => {
 	Contact.create(req.body)

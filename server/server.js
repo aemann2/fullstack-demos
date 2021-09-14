@@ -10,6 +10,7 @@ const db = require('./config/db');
 // modules for routes
 const items = require('./routes/items');
 const contacts = require('./routes/contacts');
+const shorten = require('./routes/shorten');
 
 // If this is missing, your app won't be able to parse body content of requests. Very important!
 app.use(express.json());
@@ -26,6 +27,7 @@ db.once('open', () => console.log('connected!'));
 // for anything with /items route, use this...etc
 app.use('/items', items);
 app.use('/contacts', contacts);
+app.use('/shorten', shorten);
 
 app.listen(port, () => {
 	console.log(`App listening on port ${port}!`);
