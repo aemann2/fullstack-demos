@@ -9,7 +9,7 @@ const shortid = require('shortid');
 // @access Public
 router.get('/:url', async (req, res) => {
 	try {
-		// checking if url exists by looking for the urlId
+		// checking if url exists by looking for the urlId, which we're trying to match with the url param
 		const url = await URL.findOne({ urlId: req.params.url });
 		if (url) {
 			// if it does, add to number of visits
