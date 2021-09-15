@@ -2,12 +2,22 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const urlSchema = new Schema({
-	longURL: {
+	urlId: {
 		type: String,
 		required: true,
 	},
-	shortURL: {
+	longUrl: {
 		type: String,
+		required: true,
+	},
+	shortUrl: {
+		type: String,
+		required: true,
+	},
+	visits: {
+		type: Number,
+		required: true,
+		default: 0,
 	},
 });
 

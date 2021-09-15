@@ -1,18 +1,71 @@
 const express = require('express');
 const router = express.Router();
-
 const URL = require('../models/URL');
+const validateUrl = require('../utils/utils');
+const shortid = require('shortid');
 
-router.get('/', (req, res) => {
-	URL.find()
-		.then((urls) => res.json(urls))
-		.catch((err) => res.status(404).json({ error: 'No Items found!' }));
+// @route GET shorten/
+// @description redirects a short URL to a full URL
+// @access Public
+router.get('/:url', async (req, res) => {
+	try {
+		// checking if url exists by looking for the urlId
+		const url = await URL.findOne({ urlId: req.params.url });
+		if (url) {
+			// if it does, add to number of visits
+			url.visits++;
+			url.save();
+			// then redirect to the long url. this works because the URL itself is making a GET request to our server, and our server responds by redirecting to the long URL
+			return res.redirect(url.longUrl);
+		} else {
+			res.status(400).json('URL not found');
+		}
+	} catch (err) {
+		console.log(err);
+		res.status(500).json('Server error');
+	}
 });
 
-router.post('/', (req, res) => {
-	URL.create(req.body)
-		.then((item) => res.json({ msg: `${item} added!` }))
-		.catch((err) => res.status(400).json({ error: err }));
+// @route POST shorten/
+// @description submit a long URL to shorten
+// @access Public
+router.post('/', async (req, res) => {
+	// grabbing long URL from post body
+	const { longUrl } = req.body;
+	// the base URL our server is running on, which is what will listen for our GET request for the URL redirect
+	const base = process.env.BASEURL;
+	// getting a short id, which we'll use to shorten the long url
+	const urlId = shortid.generate();
+
+	// checking if URL is valid
+	if (validateUrl(longUrl)) {
+		try {
+			// seeing if the long url is already in the DB
+			let url = await URL.findOne({ longUrl });
+
+			if (url) {
+				res.json(url);
+			} else {
+				// if we don't find the shortened URL, we'll create one and add it to the DB
+				const shortUrl = `${base}/shorten/${urlId}`;
+
+				url = new URL({
+					longUrl,
+					shortUrl,
+					urlId,
+				});
+
+				await url.save();
+				res.json(url);
+			}
+		} catch (err) {
+			console.log(err);
+			res.status(500).json('Server error');
+		}
+	} else {
+		// if the submitted URL isn't valid, return this error
+		res.status(400).json('Invalid Original Url');
+	}
 });
 
 module.exports = router;
