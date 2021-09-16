@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import UrlList from '../URLList';
+import UrlList from '../UrlList';
 
-describe('tests for URL bar', () => {
-	test('URL bar accepts input', () => {});
-	test('Submitting clears URL bar', () => {});
+describe('tests for URL list', () => {
+	test('URL List displays correct input', () => {});
+	test('URL List displays URL from input bar', () => {});
 });
