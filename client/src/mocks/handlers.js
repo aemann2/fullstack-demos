@@ -44,7 +44,7 @@ export const handlers = [
 	}),
 
 	// Handles a GET /shorten request
-	rest.get('/shorten', (req, res, ctx) => {
+	rest.get('http://localhost:5000/shorten/urls/all', (req, res, ctx) => {
 		return res(ctx.json(urls));
 	}),
 ];

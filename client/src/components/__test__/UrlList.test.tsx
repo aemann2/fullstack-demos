@@ -6,7 +6,7 @@ import UrlList from '../UrlList';
 describe('tests for URL list', () => {
 	test('URL List displays correctly from list', async () => {
 		render(<UrlList />);
-		const list = await screen.findAllByText('URL');
+		const list = await screen.findAllByText(/url/i);
 		expect(list).toHaveLength(3);
 	});
 	test('URL List displays new URL from input bar', async () => {
@@ -17,7 +17,7 @@ describe('tests for URL list', () => {
 		userEvent.type(urlBar, passingText);
 		userEvent.click(submitBtn);
 		render(<UrlList />);
-		const list = await screen.findAllByText('URL');
+		const list = await screen.findAllByText(/url/i);
 		expect(list).toHaveLength(4);
 	});
 });

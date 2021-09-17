@@ -13,7 +13,7 @@ const UrlList = () => {
 	return (
 		<div>
 			{urls.map((url: any) => (
-				<h1>{url.visits}</h1>
+				<h1>URL: {url.visits}</h1>
 			))}
 		</div>
 	);
