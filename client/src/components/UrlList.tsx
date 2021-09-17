@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const UrlList = ({ response }: any) => {
-	return <div></div>;
+const UrlList = () => {
+	const [urls, setUrls] = useState<any>([]);
+
+	useEffect(() => {
+		axios
+			.get('http://localhost:5000/shorten/urls/all')
+			.then((res) => setUrls(res.data));
+	}, []);
+
+	return (
+		<div>
+			{urls.map((url: any) => (
+				<h1>{url.visits}</h1>
+			))}
+		</div>
+	);
 };
 
 export default UrlList;
