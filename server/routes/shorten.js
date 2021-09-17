@@ -33,6 +33,7 @@ router.get('/urls/all', async (req, res) => {
 	try {
 		const urls = await URL.find();
 		if (urls) {
+			res.header('Access-Control-Allow-Origin', '*');
 			res.json(urls);
 		}
 	} catch (err) {
