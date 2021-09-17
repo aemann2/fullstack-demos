@@ -4,7 +4,7 @@ const URL = require('../models/URL');
 const validateUrl = require('../utils/utils');
 const shortid = require('shortid');
 
-// @route GET shorten/
+// @route GET shorten/:url
 // @description redirects a short URL to a full URL
 // @access Public
 router.get('/:url', async (req, res) => {
@@ -19,6 +19,21 @@ router.get('/:url', async (req, res) => {
 			return res.redirect(url.longUrl);
 		} else {
 			res.status(400).json('URL not found');
+		}
+	} catch (err) {
+		console.log(err);
+		res.status(500).json('Server error');
+	}
+});
+
+// @route GET shorten/all
+// @description gets all shortened URLs
+// @access Public
+router.get('/urls/all', async (req, res) => {
+	try {
+		const urls = await URL.find();
+		if (urls) {
+			res.json(urls);
 		}
 	} catch (err) {
 		console.log(err);

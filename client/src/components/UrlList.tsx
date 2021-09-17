@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UrlList = () => {
+const UrlList = ({ response }: any) => {
 	return <div></div>;
 };
 
