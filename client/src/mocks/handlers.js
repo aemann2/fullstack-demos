@@ -24,7 +24,7 @@ let urls = [
 
 export const handlers = [
 	// Handles a POST /shorten request
-	rest.post('/shorten', (req, res, ctx) => {
+	rest.post('http://localhost:5000/shorten', (req, res, ctx) => {
 		const { longUrl } = req.body;
 		const base = 'http://www.baseUrl.com';
 		const shortUrl = `${base}/shorten/${123}`;
