@@ -9,6 +9,9 @@ describe('tests for URL list', () => {
 		const list = await screen.findAllByText(/url/i);
 		expect(list).toHaveLength(3);
 	});
+});
+
+describe('integration tests for URL list and URL bar', () => {
 	test('URL list does not display bad url', async () => {
 		const passingText = 'test';
 		render(<UrlBar />);
@@ -20,6 +23,7 @@ describe('tests for URL list', () => {
 		const list = await screen.findAllByText(/url/i);
 		expect(list).toHaveLength(3);
 	});
+
 	test('URL list displays valid URL from input bar', async () => {
 		const passingText = 'http://www.google.com';
 		render(<UrlBar />);

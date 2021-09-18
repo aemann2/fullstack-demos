@@ -33,7 +33,6 @@ router.get('/urls/all', async (req, res) => {
 	try {
 		const urls = await URL.find();
 		if (urls) {
-			res.header('Access-Control-Allow-Origin', '*');
 			res.json(urls);
 		}
 	} catch (err) {
@@ -52,7 +51,6 @@ router.post('/', async (req, res) => {
 	const base = process.env.BASEURL;
 	// getting a short id, which we'll use to shorten the long url
 	const urlId = shortid.generate();
-
 	// checking if URL is valid
 	if (validateUrl(longUrl)) {
 		try {
