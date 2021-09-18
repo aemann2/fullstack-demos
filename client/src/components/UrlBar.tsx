@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import validateUrl from '../utils/utils';
 
 const UrlBar = () => {
@@ -15,6 +16,9 @@ const UrlBar = () => {
 			setError(true);
 		} else {
 			setError(false);
+			axios.post('http://localhost:5000/shorten', {
+				longUrl: input,
+			});
 			setInput('');
 		}
 	};
