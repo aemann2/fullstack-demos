@@ -24,7 +24,7 @@ let urls = [
 
 export const handlers = [
 	// Handles a POST /shorten request
-	rest.post('http://localhost:5000/shorten', (req, res, ctx) => {
+	rest.post('http://fullstack-demos.herokuapp.com/shorten', (req, res, ctx) => {
 		const { longUrl } = req.body;
 		const base = 'http://www.baseUrl.com';
 		const shortUrl = `${base}/shorten/${123}`;
@@ -44,7 +44,10 @@ export const handlers = [
 	}),
 
 	// Handles a GET /shorten request
-	rest.get('http://localhost:5000/shorten/urls/all', (req, res, ctx) => {
-		return res(ctx.json(urls));
-	}),
+	rest.get(
+		'http://fullstack-demos.herokuapp.com/shorten/urls/all',
+		(req, res, ctx) => {
+			return res(ctx.json(urls));
+		}
+	),
 ];

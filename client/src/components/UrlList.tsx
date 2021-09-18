@@ -6,7 +6,7 @@ const UrlList = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:5000/shorten/urls/all')
+			.get('http://fullstack-demos.herokuapp.com/shorten/urls/all')
 			.then((res) => setUrls(res.data));
 	}, []);
 

@@ -16,7 +16,7 @@ const UrlBar = () => {
 			setError(true);
 		} else {
 			setError(false);
-			axios.post('http://localhost:5000/shorten', {
+			axios.post('http://fullstack-demos.herokuapp.com/shorten', {
 				longUrl: input,
 			});
 			setInput('');
