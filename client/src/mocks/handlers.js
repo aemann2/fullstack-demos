@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import validateUrl from '../utils/utils';
+import { validateUrl } from '../utils/utils';
 
 let urls = [
 	{

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import validateUrl from '../utils/utils';
+import { validateUrl } from '../utils/utils';
 
 const UrlBar = () => {
 	const [input, setInput] = useState('');

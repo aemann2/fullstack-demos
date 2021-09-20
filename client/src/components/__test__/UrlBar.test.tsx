@@ -4,7 +4,7 @@ import UrlBar from '../UrlBar';
 
 describe('tests for URL bar', () => {
 	const passingText = 'http://www.google.com';
-	const failingText = 'test';
+	const failingText = 'www.google.com';
 
 	test('URL bar shows input', () => {
 		render(<UrlBar />);
