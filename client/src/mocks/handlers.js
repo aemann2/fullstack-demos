@@ -24,28 +24,31 @@ let urls = [
 
 export const handlers = [
 	// Handles a POST /shorten request
-	rest.post('http://fullstack-demos.herokuapp.com/shorten', (req, res, ctx) => {
-		const { longUrl } = req.body;
-		const base = 'http://www.baseUrl.com';
-		const shortUrl = `${base}/shorten/${123}`;
+	rest.post(
+		'https://fullstack-demos.herokuapp.com/shorten',
+		(req, res, ctx) => {
+			const { longUrl } = req.body;
+			const base = 'http://www.baseUrl.com';
+			const shortUrl = `${base}/shorten/${123}`;
 
-		if (validateUrl) {
-			let url = {
-				urlId: 666,
-				longUrl,
-				shortUrl,
-				visits: 9,
-			};
-			urls = [...urls, url];
-			return res(ctx.json(urls));
-		} else {
-			res.status(400).json('Invalid URL');
+			if (validateUrl) {
+				let url = {
+					urlId: 666,
+					longUrl,
+					shortUrl,
+					visits: 9,
+				};
+				urls = [...urls, url];
+				return res(ctx.json(urls));
+			} else {
+				res.status(400).json('Invalid URL');
+			}
 		}
-	}),
+	),
 
 	// Handles a GET /shorten request
 	rest.get(
-		'http://fullstack-demos.herokuapp.com/shorten/urls/all',
+		'https://fullstack-demos.herokuapp.com/shorten/urls/all',
 		(req, res, ctx) => {
 			return res(ctx.json(urls));
 		}
