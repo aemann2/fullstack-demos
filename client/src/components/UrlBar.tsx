@@ -1,6 +1,27 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import Button from './UI/Button';
 import { validateUrl } from '../utils/utils';
+
+const UrlInput = styled.input`
+	display: block;
+	margin-bottom: 1rem;
+	background: transparent;
+	border: none;
+	width: 200px;
+	padding: 0.5rem;
+	color: #fff;
+	opacity: 0.8;
+	font-size: 0.8rem;
+	border-bottom: 1px solid var(--color-text);
+`;
+
+const UrlButton = styled(Button)`
+	padding: 1rem;
+	font-size: 3rem;
+	border-radius: 20px;
+`;
 
 const UrlBar = () => {
 	const [input, setInput] = useState('');
@@ -26,7 +47,7 @@ const UrlBar = () => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<input
+				<UrlInput
 					type='text'
 					name='urlInput'
 					id='urlInput'
@@ -34,9 +55,9 @@ const UrlBar = () => {
 					onChange={handleChange}
 					value={input}
 				/>
-				<button name='button' type='submit'>
+				<UrlButton name='button' type='submit'>
 					Shorten!
-				</button>
+				</UrlButton>
 				{error && <label htmlFor='urlInput'>Invalid Input</label>}
 			</form>
 		</div>

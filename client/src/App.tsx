@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     --color-text: #EEEDDD;
     --color-background: #174168;
+		--color-button: #EEF08D;
   }
 `;
 
