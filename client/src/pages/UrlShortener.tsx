@@ -1,14 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Page from '../components/Page';
+import Page from '../components/UI/Page';
 import UrlBar from '../components/UrlBar';
 import UrlList from '../components/UrlList';
 
-const SectionPage = styled(Page)``;
+const SectionPage = styled(Page)`
+	background-color: var(--color-background);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+`;
 
 const PageTitle = styled.h1`
 	color: var(--color-text);
-	font-weight: 400;
+	font-size: var(--h1-mobile);
+	margin-top: 1rem;
+	text-align: center;
 `;
 
 const UrlShortener = () => {

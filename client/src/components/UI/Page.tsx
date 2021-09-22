@@ -5,7 +5,6 @@ const Wrapper = styled.div`
 	min-height: 100vh;
 	min-width: 320px;
 	padding: 2rem 2rem;
-	background-color: var(--color-background);
 `;
 
 interface IProps {

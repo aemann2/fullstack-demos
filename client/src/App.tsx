@@ -12,6 +12,11 @@ const GlobalStyles = createGlobalStyle`
     --color-text: #EEEDDD;
     --color-background: #174168;
 		--color-button: #EEF08D;
+		--color-placeholder: #AEBFCF;
+		--h1-mobile: 2rem;
+		--h1-desktop: 4rem;
+		--h2-mobile: 1.2rem;
+		--h2-desktop: 3rem;
   }
 `;
 

@@ -22,5 +22,17 @@ body {
 
 a {
 	text-decoration: none;
-	color: black;
+	color: #eeeddd;
+}
+
+h1 {
+	font-weight: 500;
+}
+
+h2 {
+	font-weight: 400;
+}
+
+button {
+	cursor: pointer;
 }

@@ -6,7 +6,7 @@ import { validateUrl } from '../utils/utils';
 
 const UrlInput = styled.input`
 	display: block;
-	margin-bottom: 1rem;
+	margin: 0 auto 1rem auto;
 	background: transparent;
 	border: none;
 	width: 200px;
@@ -14,13 +14,32 @@ const UrlInput = styled.input`
 	color: #fff;
 	opacity: 0.8;
 	font-size: 0.8rem;
-	border-bottom: 1px solid var(--color-text);
+	border-bottom: 2px solid var(--color-text);
+
+	::placeholder {
+		font-size: 1.1rem;
+		color: var(--color-placeholder);
+	}
+
+	@media (min-width: 500px) {
+		width: clamp(400px, 50vw, 600px);
+
+		::placeholder {
+			font-size: 1.5rem;
+		}
+	}
 `;
 
 const UrlButton = styled(Button)`
 	padding: 1rem;
-	font-size: 3rem;
-	border-radius: 20px;
+	font-size: 1.5rem;
+	border-radius: 12px;
+	display: block;
+	margin: 0 auto;
+
+	@media (min-width: 500px) {
+		font-size: 2rem;
+	}
 `;
 
 const UrlBar = () => {

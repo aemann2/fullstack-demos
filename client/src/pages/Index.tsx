@@ -1,6 +1,6 @@
 import React from 'react';
 import WindowCard from '../components/WindowCard';
-import Page from '../components/Page';
+import Page from '../components/UI/Page';
 import styled from 'styled-components';
 import test from '../components/assets/testImg.png';
 
@@ -13,25 +13,23 @@ const IndexPage = styled(Page)`
 
 const Title = styled.h1`
 	color: var(--color-text);
-	font-size: 2.5rem;
-	font-weight: 500;
+	font-size: var(--h1-mobile);
 	text-align: center;
 	margin-bottom: 0.5rem;
 	@media (min-width: 1100px) {
 		order: 1;
 		margin-top: 3rem;
-		font-size: 4rem;
+		font-size: var(--h1-desktop);
 	}
 `;
 
 const Subtitle = styled.h2`
 	color: var(--color-text);
 	text-align: center;
-	font-size: 1.2rem;
-	font-weight: 400;
+	font-size: var(--h2-mobile);
 	@media (min-width: 1100px) {
 		order: 3;
-		font-size: 3rem;
+		font-size: var(--h2-desktop);
 		margin-bottom: 3rem;
 	}
 `;
@@ -55,11 +53,13 @@ const CardHeader = styled.h3`
 	font-size: 1.3rem;
 	text-align: center;
 	margin-bottom: 0.6rem;
+	color: black;
 `;
 
 const CardBody = styled.p`
 	line-height: 1.2em;
 	min-height: 60px;
+	color: black;
 `;
 
 const Index = () => {

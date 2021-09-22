@@ -1,8 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const ComponentWrapper = styled.div`
+	margin: 0 auto;
+`;
+
+const Subtitle = styled.h2`
+	color: var(--color-text);
+	font-size: 1.5rem;
+	@media (min-width: 1100px) {
+		font-size: var(--h2-desktop);
+		margin-bottom: 3rem;
+	}
+`;
+
+const Triangle = styled.span`
+	font-size: 1.2rem;
+	margin-left: 0.2rem;
+`;
+
+const LinksContainer = styled.div`
+	margin-top: 1rem;
+	overflow-y: scroll;
+	height: 250px;
+`;
 
 const UrlList = () => {
 	const [urls, setUrls] = useState<any>([]);
+	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		axios
@@ -10,12 +36,30 @@ const UrlList = () => {
 			.then((res) => setUrls(res.data));
 	}, []);
 
+	const handleClick = () => {
+		setOpen((prevState) => !prevState);
+	};
+
 	return (
-		<div>
-			{urls.map((url: any) => (
-				<h1 key={url.urlId}>URL: {url.shortUrl}</h1>
-			))}
-		</div>
+		<ComponentWrapper>
+			<Subtitle onClick={handleClick}>
+				Link History <Triangle>{open ? '▼' : '▲'}</Triangle>
+			</Subtitle>
+			<LinksContainer>
+				<div>
+					{open &&
+						urls.map((url: any) => (
+							<ul>
+								<li key={url.urlId}>
+									<p>URL:</p>
+									<a href={url.shortUrl}>{url.shortUrl}</a>
+								</li>
+								<li key={url.urlId}>Visits: {url.visits}</li>
+							</ul>
+						))}
+				</div>
+			</LinksContainer>
+		</ComponentWrapper>
 	);
 };
 
