@@ -16,6 +16,9 @@ const PageTitle = styled.h1`
 	font-size: var(--h1-mobile);
 	margin-top: 1rem;
 	text-align: center;
+	@media (min-width: 500px) {
+		font-size: var(--h1-desktop);
+	}
 `;
 
 const UrlShortener = () => {
