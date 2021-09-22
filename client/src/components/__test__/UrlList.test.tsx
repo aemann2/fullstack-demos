@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import UrlBar from '../UrlBar';
-import UrlList from '../UrlList';
+import UrlBar from '../UrlBar/UrlBar';
+import UrlList from '../UrlList/UrlList';
 
 describe('tests for URL list', () => {
 	test('URL List displays correctly from list', async () => {
