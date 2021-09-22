@@ -9,7 +9,7 @@ const ComponentWrapper = styled.div`
 const Subtitle = styled.h2`
 	color: var(--color-text);
 	font-size: 1.5rem;
-	@media (min-width: 1100px) {
+	@media (min-width: 500px) {
 		font-size: var(--h2-desktop);
 		margin-bottom: 3rem;
 	}
@@ -24,11 +24,23 @@ const LinksContainer = styled.div`
 	color: var(--color-text);
 	margin-top: 1rem;
 	overflow-y: scroll;
-	height: 250px;
+	height: 150px;
+
+	@media (min-width: 500px) {
+		height: 250px;
+	}
 `;
 
 const LinkGroup = styled.div`
 	margin-bottom: 1rem;
+	p {
+		font-size: 1.2rem;
+	}
+	@media (min-width: 500px) {
+		p {
+			font-size: 1.5rem;
+		}
+	}
 `;
 
 const UrlList = () => {

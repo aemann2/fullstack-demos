@@ -6,7 +6,7 @@ import { validateUrl } from '../utils/utils';
 
 const UrlInput = styled.input`
 	display: block;
-	margin: 0 auto 1rem auto;
+	margin: 0 auto 2rem auto;
 	background: transparent;
 	border: none;
 	width: 200px;
@@ -30,14 +30,16 @@ const UrlInput = styled.input`
 	}
 `;
 
-const NameInput = styled(UrlInput)``;
+const NameInput = styled(UrlInput)`
+	margin-bottom: 2rem;
+`;
 
 const UrlButton = styled(Button)`
 	padding: 1rem;
 	font-size: 1.5rem;
 	border-radius: 12px;
 	display: block;
-	margin: 0 auto;
+	margin: 0 auto 2rem auto;
 
 	@media (min-width: 500px) {
 		font-size: 2rem;

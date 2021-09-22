@@ -11,10 +11,12 @@ const SectionPage = styled(Page)`
 	justify-content: space-between;
 `;
 
+const BackButton = styled.a``;
+
 const PageTitle = styled.h1`
 	color: var(--color-text);
 	font-size: var(--h1-mobile);
-	margin-top: 1rem;
+	margin: 1rem 0;
 	text-align: center;
 	@media (min-width: 500px) {
 		font-size: var(--h1-desktop);
@@ -24,6 +26,7 @@ const PageTitle = styled.h1`
 const UrlShortener = () => {
 	return (
 		<SectionPage>
+			<BackButton href='/'>Go Back</BackButton>
 			<PageTitle>URL Shortener</PageTitle>
 			<UrlBar />
 			<UrlList />
