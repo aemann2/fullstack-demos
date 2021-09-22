@@ -2,20 +2,70 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import UrlBar from '../UrlBar';
 
-describe('tests for URL bar', () => {
+describe('tests for URL input', () => {
 	const passingText = 'http://www.google.com';
 	const failingText = 'www.google.com';
 
-	test('URL bar shows input', () => {
+	test('URL input shows input', () => {
 		render(<UrlBar />);
-		const urlBar = screen.getByPlaceholderText('Enter long URL here...');
-		userEvent.type(urlBar, passingText);
-		expect(urlBar).toHaveValue(passingText);
+		const urlInput = screen.getByPlaceholderText('Enter URL here...');
+		userEvent.type(urlInput, passingText);
+		expect(urlInput).toHaveValue(passingText);
 	});
 
-	test('URL bar accepts valid input', () => {
+	test('URL input accepts valid input', () => {
 		render(<UrlBar />);
-		const urlBar = screen.getByPlaceholderText('Enter long URL here...');
+		const urlInput = screen.getByPlaceholderText('Enter URL here...');
+		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
+		const errorMsg = screen.queryByText('Invalid Input');
+		userEvent.type(urlInput, passingText);
+		userEvent.click(submitBtn);
+		expect(errorMsg).not.toBeInTheDocument();
+	});
+
+	test('URL input rejects invalid input', () => {
+		render(<UrlBar />);
+		const urlInput = screen.getByPlaceholderText('Enter URL here...');
+		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
+		userEvent.type(urlInput, failingText);
+		userEvent.click(submitBtn);
+		const errorMsg = screen.getByLabelText('Invalid Input');
+		expect(errorMsg).toBeInTheDocument();
+	});
+
+	test('Submitting clears URL input if valid input', () => {
+		render(<UrlBar />);
+		const urlInput = screen.getByPlaceholderText('Enter URL here...');
+		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
+		userEvent.type(urlInput, passingText);
+		userEvent.click(submitBtn);
+		expect(urlInput).toHaveValue('');
+	});
+
+	test('Submitting does not clear URL input if invalid input', () => {
+		render(<UrlBar />);
+		const urlInput = screen.getByPlaceholderText('Name your URL...');
+		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
+		userEvent.type(urlInput, failingText);
+		userEvent.click(submitBtn);
+		expect(urlInput).toHaveValue(failingText);
+	});
+});
+
+describe('tests for Name input', () => {
+	const testURL = 'http://www.google.com';
+	const testName = 'test name';
+
+	test('Name input shows input', () => {
+		render(<UrlBar />);
+		const nameInput = screen.getByPlaceholderText('Name your URL...');
+		userEvent.type(nameInput, testName);
+		expect(nameInput).toHaveValue(testName);
+	});
+
+	test('URL input accepts valid input', () => {
+		render(<UrlBar />);
+		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
 		const errorMsg = screen.queryByText('Invalid Input');
 		userEvent.type(urlBar, passingText);
@@ -23,9 +73,9 @@ describe('tests for URL bar', () => {
 		expect(errorMsg).not.toBeInTheDocument();
 	});
 
-	test('URL bar rejects invalid input', () => {
+	test('URL input rejects invalid input', () => {
 		render(<UrlBar />);
-		const urlBar = screen.getByPlaceholderText('Enter long URL here...');
+		const urlBar = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
 		userEvent.type(urlBar, failingText);
 		userEvent.click(submitBtn);
@@ -33,18 +83,18 @@ describe('tests for URL bar', () => {
 		expect(errorMsg).toBeInTheDocument();
 	});
 
-	test('Submitting clears URL bar if valid input', () => {
+	test('Submitting clears URL input if valid input', () => {
 		render(<UrlBar />);
-		const urlBar = screen.getByPlaceholderText('Enter long URL here...');
+		const urlBar = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
 		userEvent.type(urlBar, passingText);
 		userEvent.click(submitBtn);
 		expect(urlBar).toHaveValue('');
 	});
 
-	test('Submitting does not clear URL bar if invalid input', () => {
+	test('Submitting does not clear URL input if invalid input', () => {
 		render(<UrlBar />);
-		const urlBar = screen.getByPlaceholderText('Enter long URL here...');
+		const urlBar = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
 		userEvent.type(urlBar, failingText);
 		userEvent.click(submitBtn);

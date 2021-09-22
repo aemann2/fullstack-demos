@@ -30,6 +30,8 @@ const UrlInput = styled.input`
 	}
 `;
 
+const NameInput = styled(UrlInput)``;
+
 const UrlButton = styled(Button)`
 	padding: 1rem;
 	font-size: 1.5rem;
@@ -43,41 +45,59 @@ const UrlButton = styled(Button)`
 `;
 
 const UrlBar = () => {
-	const [input, setInput] = useState('');
-	const [error, setError] = useState(false);
+	const [urlInput, setUrlInput] = useState('');
+	const [nameInput, setNameInput] = useState('');
+	const [error, setError] = useState<boolean | string>(false);
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setInput(e.target.value);
+	const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setUrlInput(e.target.value);
+	};
+
+	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setNameInput(e.target.value);
 	};
 
 	const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
-		if (!validateUrl(input)) {
-			setError(true);
+		if (!nameInput) {
+			setError('Please name your URL');
+		} else if (!validateUrl(urlInput)) {
+			setError('Invalid Input');
 		} else {
 			setError(false);
 			axios.post('https://fullstack-demos.herokuapp.com/shorten', {
-				longUrl: input,
+				longUrl: urlInput,
+				urlName: nameInput,
 			});
-			setInput('');
+			setUrlInput('');
+			setNameInput('');
 		}
 	};
 
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
+				<NameInput
+					type='text'
+					name='nameInput'
+					id='nameInput'
+					placeholder='Name your URL...'
+					maxLength={20}
+					onChange={handleNameChange}
+					value={nameInput}
+				/>
 				<UrlInput
 					type='text'
 					name='urlInput'
 					id='urlInput'
-					placeholder='Enter long URL here...'
-					onChange={handleChange}
-					value={input}
+					placeholder='Enter URL here...'
+					onChange={handleUrlChange}
+					value={urlInput}
 				/>
 				<UrlButton name='button' type='submit'>
 					Shorten!
 				</UrlButton>
-				{error && <label htmlFor='urlInput'>Invalid Input</label>}
+				{error && <label htmlFor='urlInput'>{error}</label>}
 			</form>
 		</div>
 	);
