@@ -8,7 +8,10 @@ export const SectionPage = styled(Page)`
 	justify-content: space-between;
 `;
 
-export const BackButton = styled.a``;
+export const BackButton = styled.a`
+	display: flex;
+	justify-content: flex-start;
+`;
 
 export const PageTitle = styled.h1`
 	color: var(--color-text);
