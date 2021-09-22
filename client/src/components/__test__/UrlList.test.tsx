@@ -8,37 +8,43 @@ describe('tests for URL list', () => {
 		render(<UrlList />);
 		const listButton = screen.getByText('Link History');
 		userEvent.click(listButton);
-		const list = await screen.findAllByText(/url/i);
-		expect(list).toHaveLength(6);
+		const list = await screen.findAllByText(/visits/i);
+		expect(list).toHaveLength(3);
 	});
 });
 
 describe('integration tests for URL list and URL bar', () => {
 	test('URL list does not display bad url', async () => {
-		const passingText = 'test';
+		const failingText = 'test';
+		const testText = 'test';
 		render(<UrlBar />);
-		const urlBar = screen.getByPlaceholderText('Enter long URL here...');
+		const urlInput = screen.getByPlaceholderText('Enter URL here...');
+		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
-		userEvent.type(urlBar, passingText);
+		userEvent.type(urlInput, failingText);
+		userEvent.type(nameInput, testText);
 		userEvent.click(submitBtn);
 		render(<UrlList />);
 		const listButton = screen.getByText('Link History');
 		userEvent.click(listButton);
-		const list = await screen.findAllByText(/url/i);
-		expect(list).toHaveLength(6);
+		const list = await screen.findAllByText(/visits/i);
+		expect(list).toHaveLength(3);
 	});
 
 	test('URL list displays valid URL from input bar', async () => {
 		const passingText = 'http://www.google.com';
+		const testText = 'test';
 		render(<UrlBar />);
-		const urlBar = screen.getByPlaceholderText('Enter long URL here...');
+		const urlInput = screen.getByPlaceholderText('Enter URL here...');
+		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
-		userEvent.type(urlBar, passingText);
+		userEvent.type(urlInput, passingText);
+		userEvent.type(nameInput, testText);
 		userEvent.click(submitBtn);
 		render(<UrlList />);
 		const listButton = screen.getByText('Link History');
 		userEvent.click(listButton);
-		const list = await screen.findAllByText(/url/i);
-		expect(list).toHaveLength(8);
+		const list = await screen.findAllByText(/visits/i);
+		expect(list).toHaveLength(4);
 	});
 });

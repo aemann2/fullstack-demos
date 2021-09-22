@@ -21,9 +21,14 @@ const Triangle = styled.span`
 `;
 
 const LinksContainer = styled.div`
+	color: var(--color-text);
 	margin-top: 1rem;
 	overflow-y: scroll;
 	height: 250px;
+`;
+
+const LinkGroup = styled.div`
+	margin-bottom: 1rem;
 `;
 
 const UrlList = () => {
@@ -49,13 +54,12 @@ const UrlList = () => {
 				<div>
 					{open &&
 						urls.map((url: any) => (
-							<ul>
-								<li key={url.urlId}>
-									<p>URL:</p>
-									<a href={url.shortUrl}>{url.shortUrl}</a>
-								</li>
-								<li key={url.urlId}>Visits: {url.visits}</li>
-							</ul>
+							<LinkGroup key={url.urlId}>
+								<p>
+									<a href={url.shortUrl}>{url.urlName}</a>
+								</p>
+								<p>Visits: {url.visits}</p>
+							</LinkGroup>
 						))}
 				</div>
 			</LinksContainer>
