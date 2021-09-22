@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
-import Index from './pages/Index';
+import Index from './pages/Index/Index';
 import './App.css';
 import MenuManager from './pages/MenuManager';
 import ContactList from './pages/ContactList';
-import UrlShortener from './pages/UrlShortener';
+import UrlShortener from './pages/UrlShortener/UrlShortener';
 
 const GlobalStyles = createGlobalStyle`
   html {

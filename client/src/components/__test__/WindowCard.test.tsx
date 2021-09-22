@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react';
-import WindowCard from '../WindowCard';
-import testImage from './testImg.png';
+import WindowCard from '../WindowCard/WindowCard';
+import testImage from './assets/testImg.png';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('tests for window component', () => {

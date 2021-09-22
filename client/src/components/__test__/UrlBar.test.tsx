@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import UrlBar from '../UrlBar';
+import UrlBar from '../UrlBar/UrlBar';
 
 describe('Tests for URL input', () => {
 	const passingText = 'http://www.google.com';
