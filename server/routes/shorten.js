@@ -46,7 +46,7 @@ router.get('/urls/all', async (req, res) => {
 // @access Public
 router.post('/', async (req, res) => {
 	// grabbing long URL from post body
-	const { longUrl } = req.body;
+	const { longUrl, urlName } = req.body;
 	// the base URL our server is running on, which is what will listen for our GET request for the URL redirect
 	const base = process.env.BASEURL;
 	// getting a short id, which we'll use to shorten the long url
@@ -64,9 +64,10 @@ router.post('/', async (req, res) => {
 				const shortUrl = `${base}/shorten/${urlId}`;
 
 				url = new URL({
+					urlId,
 					longUrl,
 					shortUrl,
-					urlId,
+					urlName,
 				});
 
 				await url.save();

@@ -14,6 +14,10 @@ const urlSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	urlName: {
+		type: String,
+		required: true,
+	},
 	visits: {
 		type: Number,
 		required: true,
