@@ -65,7 +65,7 @@ const CardBody = styled.p`
 const Index = () => {
 	return (
 		<IndexPage>
-			<Title>Backend Demos</Title>
+			<Title>Full Stack Demos</Title>
 			<Subtitle>Applications for the purpose of learning</Subtitle>
 			<CardWrapper>
 				<WindowCard image={test} alt={'test'} url={'/menuManager'}>

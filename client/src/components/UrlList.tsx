@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { Url } from '../types/types';
 
 const ComponentWrapper = styled.div`
 	margin: 0 auto;
@@ -44,7 +45,7 @@ const LinkGroup = styled.div`
 `;
 
 const UrlList = () => {
-	const [urls, setUrls] = useState<any>([]);
+	const [urls, setUrls] = useState<Url[] | []>([]);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
@@ -53,6 +54,7 @@ const UrlList = () => {
 			.then((res) => setUrls(res.data));
 	}, []);
 
+	console.log(urls);
 	const handleClick = () => {
 		setOpen((prevState) => !prevState);
 	};
@@ -65,12 +67,12 @@ const UrlList = () => {
 			<LinksContainer>
 				<div>
 					{open &&
-						urls.map((url: any) => (
-							<LinkGroup key={url.urlId}>
+						urls.map(({ urlId, shortUrl, urlName, visits }: Url) => (
+							<LinkGroup key={urlId}>
 								<p>
-									<a href={url.shortUrl}>{url.urlName}</a>
+									<a href={shortUrl}>{urlName}</a>
 								</p>
-								<p>Visits: {url.visits}</p>
+								<p>Visits: {visits}</p>
 							</LinkGroup>
 						))}
 				</div>
