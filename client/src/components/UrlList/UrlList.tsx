@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import {
 	ComponentWrapper,
 	Subtitle,
@@ -9,15 +8,12 @@ import {
 } from './style';
 import { Url } from '../../types/types';
 
-const UrlList = () => {
-	const [urls, setUrls] = useState<Url[] | []>([]);
-	const [open, setOpen] = useState(false);
+interface IProps {
+	urls?: Url[] | [];
+}
 
-	useEffect(() => {
-		axios
-			.get('https://fullstack-demos.herokuapp.com/shorten/urls/all')
-			.then((res) => setUrls(res.data));
-	}, []);
+const UrlList: React.FC<IProps> = ({ urls }) => {
+	const [open, setOpen] = useState(false);
 
 	const handleClick = () => {
 		setOpen((prevState) => !prevState);
@@ -31,7 +27,7 @@ const UrlList = () => {
 			<LinksContainer>
 				<div>
 					{open &&
-						urls.map(({ urlId, shortUrl, urlName, visits }: Url) => (
+						urls!.map(({ urlId, shortUrl, urlName, visits }: Url) => (
 							<LinkGroup key={urlId}>
 								<p>
 									<a href={shortUrl}>{urlName}</a>

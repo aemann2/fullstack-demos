@@ -3,7 +3,11 @@ import axios from 'axios';
 import { UrlInput, NameInput, UrlButton } from './style';
 import { validateUrl } from '../../utils/utils';
 
-const UrlBar = () => {
+interface IProps {
+	getUrls: () => void;
+}
+
+const UrlBar: React.FC<IProps> = ({ getUrls }) => {
 	const [urlInput, setUrlInput] = useState('');
 	const [nameInput, setNameInput] = useState('');
 	const [error, setError] = useState<boolean | string>(false);
@@ -16,7 +20,7 @@ const UrlBar = () => {
 		setNameInput(e.target.value);
 	};
 
-	const handleSubmit = (e: React.SyntheticEvent) => {
+	const handleSubmit = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		if (!nameInput) {
 			setError('Please name your URL');
@@ -24,12 +28,13 @@ const UrlBar = () => {
 			setError('Invalid Input');
 		} else {
 			setError(false);
-			axios.post('https://fullstack-demos.herokuapp.com/shorten', {
+			await axios.post('https://fullstack-demos.herokuapp.com/shorten', {
 				longUrl: urlInput,
 				urlName: nameInput,
 			});
 			setUrlInput('');
 			setNameInput('');
+			getUrls();
 		}
 	};
 

@@ -1,6 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import UrlBar from '../UrlBar/UrlBar';
+
+const mockFn = () => {
+	return;
+};
 
 describe('Tests for URL input', () => {
 	const passingText = 'http://www.google.com';
@@ -8,14 +12,14 @@ describe('Tests for URL input', () => {
 	const testName = 'test name';
 
 	test('URL input shows input', () => {
-		render(<UrlBar />);
+		render(<UrlBar getUrls={mockFn} />);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		userEvent.type(urlInput, passingText);
 		expect(urlInput).toHaveValue(passingText);
 	});
 
 	test('URL input accepts valid input', () => {
-		render(<UrlBar />);
+		render(<UrlBar getUrls={mockFn} />);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
@@ -27,7 +31,7 @@ describe('Tests for URL input', () => {
 	});
 
 	test('URL input rejects invalid input', () => {
-		render(<UrlBar />);
+		render(<UrlBar getUrls={mockFn} />);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
@@ -38,19 +42,19 @@ describe('Tests for URL input', () => {
 		expect(errorMsg).toBeInTheDocument();
 	});
 
-	test('Submitting clears URL input if valid input', () => {
-		render(<UrlBar />);
+	test('Submitting clears URL input if valid input', async () => {
+		render(<UrlBar getUrls={mockFn} />);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
 		userEvent.type(urlInput, passingText);
 		userEvent.type(nameInput, testName);
 		userEvent.click(submitBtn);
-		expect(urlInput).toHaveValue('');
+		await waitFor(() => expect(urlInput).toHaveValue(''));
 	});
 
 	test('Submitting does not clear URL input if invalid input', () => {
-		render(<UrlBar />);
+		render(<UrlBar getUrls={mockFn} />);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
@@ -66,20 +70,20 @@ describe('Tests for name input', () => {
 	const testName = 'test name';
 
 	test('Name input shows input', () => {
-		render(<UrlBar />);
+		render(<UrlBar getUrls={mockFn} />);
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		userEvent.type(nameInput, testName);
 		expect(nameInput).toHaveValue(testName);
 	});
 
-	test('Submitting clears name input if valid input', () => {
-		render(<UrlBar />);
+	test('Submitting clears name input if valid input', async () => {
+		render(<UrlBar getUrls={mockFn} />);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
 		userEvent.type(urlInput, testURL);
 		userEvent.type(nameInput, testName);
 		userEvent.click(submitBtn);
-		expect(nameInput).toHaveValue('');
+		await waitFor(() => expect(urlInput).toHaveValue(''));
 	});
 });
