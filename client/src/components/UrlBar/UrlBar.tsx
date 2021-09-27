@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { UrlInput, NameInput, UrlButton } from './style';
 import { validateUrl } from '../../utils/utils';
@@ -11,6 +11,13 @@ const UrlBar: React.FC<IProps> = ({ getUrls }) => {
 	const [urlInput, setUrlInput] = useState('');
 	const [nameInput, setNameInput] = useState('');
 	const [error, setError] = useState<boolean | string>(false);
+
+	useEffect(() => {
+		// Cleanup fixes React testing error: "Can't perform a React state update on an unmounted component"
+		return () => {
+			setUrlInput('');
+		};
+	}, []);
 
 	const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setUrlInput(e.target.value);

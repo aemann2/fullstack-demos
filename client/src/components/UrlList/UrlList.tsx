@@ -9,7 +9,7 @@ import {
 import { Url } from '../../types/types';
 
 interface IProps {
-	urls?: Url[] | [];
+	urls: Url[] | [];
 }
 
 const UrlList: React.FC<IProps> = ({ urls }) => {
@@ -27,7 +27,7 @@ const UrlList: React.FC<IProps> = ({ urls }) => {
 			<LinksContainer>
 				<div>
 					{open &&
-						urls!.map(({ urlId, shortUrl, urlName, visits }: Url) => (
+						urls.map(({ urlId, shortUrl, urlName, visits }: Url) => (
 							<LinkGroup key={urlId}>
 								<p>
 									<a href={shortUrl}>{urlName}</a>
