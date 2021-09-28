@@ -6,8 +6,8 @@ const contactSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	age: {
-		type: Number,
+	phone: {
+		type: String,
 		required: true,
 	},
 	email: {
@@ -15,8 +15,18 @@ const contactSchema = new Schema({
 		required: true,
 	},
 	img: {
-		type: String,
-		required: true,
+		large: {
+			type: String,
+			required: true,
+		},
+		medium: {
+			type: String,
+			required: true,
+		},
+		thumbnail: {
+			type: String,
+			required: true,
+		},
 	},
 });
 
