@@ -36,9 +36,10 @@ router.delete('/', (req, res) => {
 // @route PATCH contacts/
 // @description modify a contact
 // @access Public
-router.patch('/', (req, res) => {
+router.patch('/', async (req, res) => {
 	const id = mongoose.Types.ObjectId(req.body.id);
-	Contact.updateOne({ _id: id }, { name: 'test' })
+	const updateObject = req.body;
+	Contact.findOneAndUpdate({ _id: id }, { $set: updateObject })
 		.then((id) => res.json({ msg: `${req.body.id} updated!` }))
 		.catch((err) => res.status(400).json({ error: err }));
 });
