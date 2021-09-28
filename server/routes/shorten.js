@@ -11,17 +11,17 @@ router.get('/:url', async (req, res) => {
 	try {
 		// checking if url exists by looking for the urlId, which we're trying to match with the url param
 		const url = await URL.findOne({ urlId: req.params.url });
+
 		if (url) {
 			// if it does, add to number of visits
 			url.visits++;
 			url.save();
 			// then redirect to the long url. this works because the URL itself is making a GET request to our server, and our server responds by redirecting to the long URL
 			return res.redirect(url.longUrl);
-		} else {
-			res.status(400).json('URL not found');
 		}
+
+		res.status(400).json('URL not found');
 	} catch (err) {
-		console.log(err);
 		res.status(500).json('Server error');
 	}
 });
@@ -32,11 +32,13 @@ router.get('/:url', async (req, res) => {
 router.get('/urls/all', async (req, res) => {
 	try {
 		const urls = await URL.find();
+
 		if (urls) {
-			res.json(urls);
+			return res.json(urls);
 		}
+
+		res.status(400).json('URLs not found');
 	} catch (err) {
-		console.log(err);
 		res.status(500).json('Server error');
 	}
 });
