@@ -6,7 +6,7 @@ import {
 	LinksContainer,
 	LinkGroup,
 } from './style';
-import { Url } from '../../types/types';
+import { Url } from '../../../types/types';
 
 interface IProps {
 	urls: Url[] | [];

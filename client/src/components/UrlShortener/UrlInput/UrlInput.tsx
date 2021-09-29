@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { UrlInput, NameInput, UrlButton } from './style';
-import { validateUrl } from '../../utils/utils';
+import { InputWrapper, NameInput, UrlButton } from './style';
+import { validateUrl } from '../../../utils/utils';
 
 interface IProps {
 	getUrls: () => void;
 }
 
-const UrlBar: React.FC<IProps> = ({ getUrls }) => {
+const UrlInput: React.FC<IProps> = ({ getUrls }) => {
 	const [urlInput, setUrlInput] = useState('');
 	const [nameInput, setNameInput] = useState('');
 	const [error, setError] = useState<boolean | string>(false);
@@ -57,7 +57,7 @@ const UrlBar: React.FC<IProps> = ({ getUrls }) => {
 					onChange={handleNameChange}
 					value={nameInput}
 				/>
-				<UrlInput
+				<InputWrapper
 					type='text'
 					name='urlInput'
 					id='urlInput'
@@ -74,4 +74,4 @@ const UrlBar: React.FC<IProps> = ({ getUrls }) => {
 	);
 };
 
-export default UrlBar;
+export default UrlInput;

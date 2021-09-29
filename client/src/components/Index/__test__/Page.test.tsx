@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Page from '../UI/Page';
+import Page from '../../UI/Page';
 
 describe('UI component tests', () => {
 	test('Page displays correct child', () => {
