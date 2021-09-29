@@ -7,7 +7,7 @@ import {
 	CardHeader,
 	CardBody,
 } from './style';
-import WindowCard from '../../components/WindowCard/WindowCard';
+import WindowCard from '../../components/Index/WindowCard/WindowCard';
 import test from './assets/testImg.png';
 
 const Index = () => {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { SectionPage, BackButton, PageTitle } from './style';
 import axios from 'axios';
-import UrlBar from '../../components/UrlBar/UrlBar';
-import UrlList from '../../components/UrlList/UrlList';
+import UrlInput from '../../components/UrlShortener/UrlInput/UrlInput';
+import UrlList from '../../components/UrlShortener/UrlList/UrlList';
 import { Url } from '../../types/types';
 
 const UrlShortener = () => {
@@ -22,7 +22,7 @@ const UrlShortener = () => {
 		<SectionPage>
 			<BackButton href='/'>Go Back</BackButton>
 			<PageTitle>URL Shortener</PageTitle>
-			<UrlBar getUrls={getUrls} />
+			<UrlInput getUrls={getUrls} />
 			<UrlList urls={urls} />
 		</SectionPage>
 	);

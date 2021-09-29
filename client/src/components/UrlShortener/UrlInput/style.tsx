@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Button from '../UI/Button';
+import Button from '../../UI/Button';
 
-export const UrlInput = styled.input`
+export const InputWrapper = styled.input`
 	display: block;
 	margin: 0 auto 2rem auto;
 	background: transparent;
@@ -27,7 +27,7 @@ export const UrlInput = styled.input`
 	}
 `;
 
-export const NameInput = styled(UrlInput)`
+export const NameInput = styled(InputWrapper)`
 	margin-bottom: 2rem;
 `;
 

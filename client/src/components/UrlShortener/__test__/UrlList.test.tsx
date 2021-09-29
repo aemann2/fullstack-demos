@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 // using UrlShortener since the state has been lifted up for UrlList
-import UrlShortener from '../../pages/UrlShortener/UrlShortener';
+import UrlShortener from '../../../pages/UrlShortener/UrlShortener';
 
 describe('tests for URL list', () => {
 	test('URL List displays correctly from list', async () => {
