@@ -1,7 +1,23 @@
 import React from 'react';
+import Button from '../../UI/Button';
+import { Person } from '../../../types/types';
 
-const NewContact = () => {
-	return <div></div>;
+interface IProps {
+	person: Person;
+}
+
+const NewContact: React.FC<IProps> = ({ person }) => {
+	const { image, name, email, phone } = person;
+
+	return (
+		<div>
+			<img src={image} alt='test' />
+			<h2>{name}</h2>
+			<p>{email}</p>
+			<p>{phone}</p>
+			<Button>Add Contact</Button>
+		</div>
+	);
 };
 
 export default NewContact;
