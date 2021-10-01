@@ -7,12 +7,14 @@ interface IProps {
 }
 
 const NewContact: React.FC<IProps> = ({ person }) => {
-	const { image, name, email, phone } = person;
+	const { picture, name, email, phone } = person;
 
 	return (
 		<div>
-			<img src={image} alt='test' />
-			<h2>{name}</h2>
+			<img src={picture.medium} alt='test' />
+			<h2>
+				{name.first} {name.last}
+			</h2>
 			<p>{email}</p>
 			<p>{phone}</p>
 			<Button>Add Contact</Button>

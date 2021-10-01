@@ -6,9 +6,20 @@ export interface Url {
 }
 
 export interface Person {
-	id: string;
+	id: {
+		name: string;
+		value: string;
+	};
 	image: string;
-	name: string;
+	name: {
+		first: string;
+		last: string;
+	};
+	picture: {
+		large: string;
+		medium: string;
+		thumbnail: string;
+	};
 	email: string;
 	phone: string;
 }
