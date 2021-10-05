@@ -3,9 +3,11 @@ import userEvent from '@testing-library/user-event';
 import ContactList from '../../../pages/ContactList';
 
 describe('New Contact List component tests', () => {
-	test('Correct number of contacts are present in list', () => {
+	test('Correct number of contacts are present in list', async () => {
 		render(<ContactList />);
-		const cardsList = screen.getAllByRole('button', { name: /add contact/i });
+		const cardsList = await screen.findAllByRole('button', {
+			name: /add contact/i,
+		});
 		expect(cardsList).toHaveLength(3);
 	});
 
@@ -13,8 +15,10 @@ describe('New Contact List component tests', () => {
 		const contactName = 'Jane Doe';
 
 		render(<ContactList />);
+		const buttons = await screen.findAllByRole('button', {
+			name: /add contact/i,
+		});
 		const contact = screen.getByText(contactName);
-		const buttons = screen.getAllByRole('button', { name: /add contact/i });
 		// clicking the Add Contact button for the second user
 		userEvent.click(buttons[1]);
 		// contact should not be present in the list

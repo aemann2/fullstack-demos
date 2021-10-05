@@ -1,29 +1,8 @@
 import { rest } from 'msw';
-import { urlData, peopleData } from './data/data';
+import { urlData, data } from './data/data';
 import { validateUrl } from '../utils/utils';
 
 let urls = [...urlData];
-
-let people = [
-	{
-		id: {
-			name: 'abc',
-			value: '1234354',
-		},
-		image: 'http://www.test.com',
-		name: {
-			first: 'John',
-			last: 'Doe',
-		},
-		picture: {
-			large: '123',
-			medium: '123',
-			thumbnail: '123',
-		},
-		email: 'john@test.com',
-		phone: '555-555-5555',
-	},
-];
 
 export const handlers = [
 	// Handles a POST /shorten request
@@ -59,7 +38,7 @@ export const handlers = [
 	),
 
 	// Handles a GET request to external API
-	rest.get('https://randomuser.me/api/?results=3', (req, res, ctx) => {
-		return res(ctx.json(people));
+	rest.get('https://randomuser.me/api/', (req, res, ctx) => {
+		return res(ctx.json(data));
 	}),
 ];

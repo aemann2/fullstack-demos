@@ -5,6 +5,7 @@ interface IProps {
 	className?: string;
 	name?: string;
 	type?: string;
+	onClick?: any;
 }
 
 const MainButton = styled.button`
@@ -13,10 +14,12 @@ const MainButton = styled.button`
 	border: none;
 `;
 
-const Button: React.FC<IProps> = ({ children, className }) => {
+const Button: React.FC<IProps> = ({ children, className, onClick }) => {
 	return (
 		<>
-			<MainButton className={className}>{children}</MainButton>
+			<MainButton onClick={onClick} className={className}>
+				{children}
+			</MainButton>
 		</>
 	);
 };
