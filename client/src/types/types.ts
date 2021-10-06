@@ -6,9 +6,8 @@ export interface Url {
 }
 
 export interface Person {
-	id: {
-		name: string;
-		value: string;
+	login: {
+		uuid: string;
 	};
 	image: string;
 	name: {

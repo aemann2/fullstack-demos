@@ -25,9 +25,8 @@ export const urlData = [
 export const data = {
 	results: [
 		{
-			id: {
-				name: 'abc',
-				value: '1234354',
+			login: {
+				uuid: '1234354',
 			},
 			image: 'http://www.test.com',
 			name: {
@@ -43,9 +42,8 @@ export const data = {
 			phone: '555-555-5555',
 		},
 		{
-			id: {
-				name: 'def',
-				value: '1234355',
+			login: {
+				uuid: '1234355',
 			},
 			image: 'http://www.test2.com',
 			name: {
@@ -61,9 +59,8 @@ export const data = {
 			phone: '555-555-1111',
 		},
 		{
-			id: {
-				name: 'ghi',
-				value: '1234356',
+			login: {
+				uuid: '1234356',
 			},
 			image: 'http://www.test3.com',
 			name: {

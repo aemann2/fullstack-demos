@@ -27,7 +27,7 @@ const NewContactList = () => {
 
 		setPeople((prevState) => {
 			return [
-				...prevState.filter((person) => id !== person.id.value),
+				...prevState.filter((person) => id !== person.login.uuid),
 				res.data.results[0],
 			];
 		});
@@ -37,7 +37,7 @@ const NewContactList = () => {
 		<div>
 			{people.map((person: Person) => (
 				<NewContact
-					key={person.id.value}
+					key={person.login.uuid}
 					person={person}
 					addContact={addContact}
 				/>

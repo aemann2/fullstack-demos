@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const NewContact: React.FC<IProps> = ({ person, addContact }) => {
-	const { picture, name, email, phone, id } = person;
+	const { picture, name, email, phone, login } = person;
 
 	return (
 		<div>
@@ -18,7 +18,7 @@ const NewContact: React.FC<IProps> = ({ person, addContact }) => {
 			</h2>
 			<p>{email}</p>
 			<p>{phone}</p>
-			<Button onClick={() => addContact(id.value)}>Add Contact</Button>
+			<Button onClick={() => addContact(login.uuid)}>Add Contact</Button>
 		</div>
 	);
 };
