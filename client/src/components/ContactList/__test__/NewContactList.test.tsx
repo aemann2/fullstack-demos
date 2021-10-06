@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ContactList from '../../../pages/ContactList';
 
@@ -20,9 +20,9 @@ describe('New Contact List component tests', () => {
 		});
 		const contact = screen.getByText(contactName);
 		// clicking the Add Contact button for the second user
-		userEvent.click(buttons[1]);
+		await userEvent.click(buttons[1]);
 		// contact should not be present in the list
-		expect(contact).not.toBeInTheDocument();
+		await waitFor(() => expect(contact).not.toBeInTheDocument());
 		const newCardsList = await screen.findAllByRole('button', {
 			name: /add contact/i,
 		});

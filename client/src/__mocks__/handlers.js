@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { urlData, data } from './data/data';
+import { urlData, data1, data2 } from './data/data';
 import { validateUrl } from '../utils/utils';
 
 let urls = [...urlData];
@@ -39,6 +39,9 @@ export const handlers = [
 
 	// Handles a GET request to external API
 	rest.get('https://randomuser.me/api/', (req, res, ctx) => {
-		return res(ctx.json(data));
+		const query = req.url.searchParams;
+		const results = query.get('results');
+		if (results === '3') return res(ctx.json(data1));
+		return res(ctx.json(data2));
 	}),
 ];
