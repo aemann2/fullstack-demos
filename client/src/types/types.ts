@@ -11,12 +11,10 @@ export interface Person {
 		uuid: string;
 	};
 	image: string;
-	name:
-		| {
-				first: string;
-				last: string;
-		  }
-		| string;
+	name: {
+		first: string;
+		last: string;
+	};
 	picture: {
 		large: string;
 		medium: string;

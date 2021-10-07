@@ -3,10 +3,22 @@ import userEvent from '@testing-library/user-event';
 import ContactList from '../../../pages/ContactList';
 
 describe('Tests for Your Contact List component', () => {
-	test('Your Contacts displays correct number of contacts', () => {
+	test('Your Contacts displays correct number of contacts', async () => {
 		render(<ContactList />);
-		const cardsList = screen.getAllByRole('button', { name: /modify/i });
+		const cardsList = await screen.findAllByRole('button', { name: /modify/i });
 		expect(cardsList).toHaveLength(3);
+	});
+
+	test('Deleting a user works correctly', async () => {
+		render(<ContactList />);
+		const users = await screen.findAllByRole('button', { name: /delete/i });
+		// finding first user to delete
+		const userToDelete = users[1];
+		const deleteButtons = screen.getAllByRole('button', { name: /delete/i });
+		// clicking this user's delete button
+		await userEvent.click(deleteButtons[1]);
+		expect(userToDelete).not.toBeInTheDocument();
+		expect(users).toHaveLength(2);
 	});
 
 	test('Modifying info for a user works correctly', async () => {
@@ -22,18 +34,6 @@ describe('Tests for Your Contact List component', () => {
 		await userEvent.click(submitButton);
 		const newUser = screen.getByText(newName);
 		expect(newUser).toBeInTheDocument();
-	});
-
-	test('Deleting a user works correctly', async () => {
-		render(<ContactList />);
-		const users = screen.getAllByRole('button', { name: /modify/i });
-		// finding first user to delete
-		const userToDelete = users[1];
-		const deleteButtons = screen.getAllByRole('button', { name: /delete/i });
-		// clicking this user's delete button
-		await userEvent.click(deleteButtons[1]);
-		expect(userToDelete).not.toBeInTheDocument();
-		expect(users).toHaveLength(2);
 	});
 });
 

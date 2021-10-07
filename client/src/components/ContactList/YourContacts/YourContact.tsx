@@ -11,7 +11,7 @@ const YourContact: React.FC<IProps> = ({ contact }) => {
 
 	return (
 		<div>
-			<img src={image} alt={name} />
+			<img src={image} alt={name as any} />
 			<Button>Modify</Button>
 			<Button>Delete</Button>
 			<h2>{name}</h2>
