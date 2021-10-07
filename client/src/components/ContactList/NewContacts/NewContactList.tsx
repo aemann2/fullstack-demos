@@ -3,13 +3,13 @@ import NewContact from './NewContact';
 import { Person } from '../../../types/types';
 interface IProps {
 	addContact: (id: string) => void;
-	people: Person[] | [];
+	newContacts: Person[] | [];
 }
 
-const NewContactList: React.FC<IProps> = ({ people, addContact }) => {
+const NewContactList: React.FC<IProps> = ({ newContacts, addContact }) => {
 	return (
 		<div>
-			{people.map((person: Person) => (
+			{newContacts.map((person: Person) => (
 				<NewContact
 					key={person.login.uuid}
 					person={person}

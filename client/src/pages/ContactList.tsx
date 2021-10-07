@@ -5,23 +5,30 @@ import NewContactList from '../components/ContactList/NewContacts/NewContactList
 import YourContactsList from '../components/ContactList/YourContacts/YourContactsList';
 
 const ContactList = () => {
-	const [people, setPeople] = useState<[] | Person[]>([]);
+	const [newContacts, setNewContacts] = useState<[] | Person[]>([]);
+	const [yourContacts, setYourContacts] = useState<[] | Person[]>([]);
 
-	const getPeople = () => {
+	const getNewContacts = () => {
 		axios
 			.get('https://randomuser.me/api/?results=3')
-			.then((res) => setPeople(res.data.results));
+			.then((res) => setNewContacts(res.data.results));
 	};
 
-	const getPerson = async () => {
+	const getYourContacts = () => {
+		axios
+			.get('https://fullstack-demos.herokuapp.com/contacts')
+			.then((res) => setYourContacts(res.data.data));
+	};
+
+	const getContact = async () => {
 		const response = await axios.get('https://randomuser.me/api/?results=1');
 		return response;
 	};
 
 	const addContact = async (id: string) => {
-		const res = await getPerson();
+		const res = await getContact();
 
-		setPeople((prevState) => {
+		setNewContacts((prevState) => {
 			return [
 				...prevState.filter((person) => id !== person.login.uuid),
 				res.data.results[0],
@@ -30,14 +37,16 @@ const ContactList = () => {
 	};
 
 	useEffect(() => {
-		getPeople();
+		getNewContacts();
+		getYourContacts();
 	}, []);
 
+	console.log(yourContacts);
 	return (
 		<div>
 			<h1>Contact List</h1>
-			<NewContactList people={people} addContact={addContact} />
-			<YourContactsList />
+			<NewContactList newContacts={newContacts} addContact={addContact} />
+			<YourContactsList yourContacts={yourContacts} />
 		</div>
 	);
 };

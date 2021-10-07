@@ -22,7 +22,7 @@ export const urlData = [
 	},
 ];
 
-export const data1 = {
+export const newContacts1 = {
 	results: [
 		{
 			login: {
@@ -78,7 +78,7 @@ export const data1 = {
 	],
 };
 
-export const data2 = {
+export const newContacts2 = {
 	results: [
 		{
 			login: {
@@ -130,6 +130,47 @@ export const data2 = {
 			},
 			email: 'jim@test.com',
 			phone: '555-555-2222',
+		},
+	],
+};
+
+export const yourContacts1 = {
+	data: [
+		{
+			_id: '1234543',
+			image: 'http://www.test4.com',
+			name: 'Bob',
+			picture: {
+				large: '123',
+				medium: '123',
+				thumbnail: '123',
+			},
+			email: 'bob@test.com',
+			phone: '555-555-1245',
+		},
+		{
+			_id: '1234544',
+			image: 'http://www.test5.com',
+			name: 'Rob',
+			picture: {
+				large: '123',
+				medium: '123',
+				thumbnail: '123',
+			},
+			email: 'rob@test.com',
+			phone: '555-555-7777',
+		},
+		{
+			_id: '1234356',
+			image: 'http://www.test6.com',
+			name: 'Slob',
+			picture: {
+				large: '123',
+				medium: '123',
+				thumbnail: '123',
+			},
+			email: 'slob@test.com',
+			phone: '555-555-9999',
 		},
 	],
 };

@@ -6,14 +6,17 @@ export interface Url {
 }
 
 export interface Person {
+	_id: string;
 	login: {
 		uuid: string;
 	};
 	image: string;
-	name: {
-		first: string;
-		last: string;
-	};
+	name:
+		| {
+				first: string;
+				last: string;
+		  }
+		| string;
 	picture: {
 		large: string;
 		medium: string;

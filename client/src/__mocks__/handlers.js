@@ -1,5 +1,10 @@
 import { rest } from 'msw';
-import { urlData, data1, data2 } from './data/data';
+import {
+	urlData,
+	newContacts1,
+	newContacts2,
+	yourContacts1,
+} from './data/data';
 import { validateUrl } from '../utils/utils';
 
 let urls = [...urlData];
@@ -41,7 +46,15 @@ export const handlers = [
 	rest.get('https://randomuser.me/api/', (req, res, ctx) => {
 		const query = req.url.searchParams;
 		const results = query.get('results');
-		if (results === '3') return res(ctx.json(data1));
-		return res(ctx.json(data2));
+		if (results === '3') return res(ctx.json(newContacts1));
+		return res(ctx.json(newContacts2));
 	}),
+
+	// // Handles a GET /contacts request
+	rest.get(
+		'https://fullstack-demos.herokuapp.com/contacts',
+		(req, res, ctx) => {
+			return res(ctx.json(yourContacts1));
+		}
+	),
 ];
