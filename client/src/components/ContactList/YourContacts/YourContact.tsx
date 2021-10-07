@@ -11,10 +11,10 @@ const YourContact: React.FC<IProps> = ({ contact }) => {
 
 	return (
 		<div>
-			<img src={image} alt={name as any} />
+			<img src={image} alt={name.first} />
 			<Button>Modify</Button>
 			<Button>Delete</Button>
-			<h2>{name}</h2>
+			<h2>{`${name.first} ${name.last}`}</h2>
 			<p>{email}</p>
 			<p>{phone}</p>
 		</div>

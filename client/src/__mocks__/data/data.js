@@ -139,7 +139,10 @@ export const yourContacts1 = {
 		{
 			_id: '1234543',
 			image: 'http://www.test4.com',
-			name: 'Bob',
+			name: {
+				first: 'Bob',
+				last: 'Rob',
+			},
 			picture: {
 				large: '123',
 				medium: '123',
@@ -151,7 +154,10 @@ export const yourContacts1 = {
 		{
 			_id: '1234544',
 			image: 'http://www.test5.com',
-			name: 'Rob',
+			name: {
+				first: 'Rob',
+				last: 'Bob',
+			},
 			picture: {
 				large: '123',
 				medium: '123',
@@ -163,7 +169,10 @@ export const yourContacts1 = {
 		{
 			_id: '1234356',
 			image: 'http://www.test6.com',
-			name: 'Slob',
+			name: {
+				first: 'Slob',
+				last: 'Rob',
+			},
 			picture: {
 				large: '123',
 				medium: '123',
