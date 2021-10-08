@@ -5,21 +5,29 @@ import YourContact from './YourContact';
 
 interface IProps {
 	yourContacts: Person[] | [];
+	removeContact: (id: string) => void;
 }
 
-const YourContactsList: React.FC<IProps> = ({ yourContacts }) => {
+const YourContactsList: React.FC<IProps> = ({
+	removeContact,
+	yourContacts,
+}) => {
 	const deleteContact = async (id: string) => {
-		const res = await axios.delete(
-			'https://fullstack-demos.herokuapp.com/contacts',
-			{ data: { id } }
-		);
-		console.log(res);
+		await axios.delete('https://fullstack-demos.herokuapp.com/contacts', {
+			data: { id },
+		});
+		console.log(id);
+		removeContact(id);
 	};
 
 	return (
 		<div>
 			{yourContacts.map((contact) => (
-				<YourContact key={contact._id} contact={contact} />
+				<YourContact
+					key={contact._id}
+					contact={contact}
+					deleteContact={deleteContact}
+				/>
 			))}
 		</div>
 	);

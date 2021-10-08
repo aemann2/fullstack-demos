@@ -4,16 +4,17 @@ import { Person } from '../../../types/types';
 
 interface IProps {
 	contact: Person;
+	deleteContact: (id: string) => Promise<void>;
 }
 
-const YourContact: React.FC<IProps> = ({ contact }) => {
-	const { image, name, email, phone } = contact;
+const YourContact: React.FC<IProps> = ({ contact, deleteContact }) => {
+	const { _id, image, name, email, phone } = contact;
 
 	return (
 		<div>
 			<img src={image} alt={name.first} />
 			<Button>Modify</Button>
-			<Button>Delete</Button>
+			<Button onClick={() => deleteContact(_id)}>Delete</Button>
 			<h2>{`${name.first} ${name.last}`}</h2>
 			<p>{email}</p>
 			<p>{phone}</p>

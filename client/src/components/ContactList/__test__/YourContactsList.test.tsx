@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ContactList from '../../../pages/ContactList';
 
@@ -11,14 +11,17 @@ describe('Tests for Your Contact List component', () => {
 
 	test('Deleting a user works correctly', async () => {
 		render(<ContactList />);
-		const users = await screen.findAllByRole('button', { name: /delete/i });
+		const buttons = await screen.findAllByRole('button', { name: /delete/i });
 		// finding first user to delete
-		const userToDelete = users[1];
-		const deleteButtons = screen.getAllByRole('button', { name: /delete/i });
+		const userToDelete = buttons[0];
 		// clicking this user's delete button
-		await userEvent.click(deleteButtons[1]);
-		expect(userToDelete).not.toBeInTheDocument();
-		expect(users).toHaveLength(2);
+		await waitFor(() => userEvent.click(userToDelete));
+		const user = await screen.findByText('Bob Rob');
+		expect(user).not.toBeInTheDocument();
+		const newButtons = screen.getAllByRole('button', {
+			name: /delete/i,
+		});
+		expect(newButtons).toHaveLength(2);
 	});
 
 	test('Modifying info for a user works correctly', async () => {

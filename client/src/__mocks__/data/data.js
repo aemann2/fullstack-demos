@@ -82,7 +82,7 @@ export const newContacts2 = {
 	results: [
 		{
 			login: {
-				uuid: '1234354',
+				uuid: '8888',
 			},
 			image: 'http://www.test.com',
 			name: {
@@ -99,7 +99,7 @@ export const newContacts2 = {
 		},
 		{
 			login: {
-				uuid: '1234358',
+				uuid: '66666',
 			},
 			image: 'http://www.test2.com',
 			name: {
@@ -116,7 +116,7 @@ export const newContacts2 = {
 		},
 		{
 			login: {
-				uuid: '1234356',
+				uuid: '777777',
 			},
 			image: 'http://www.test3.com',
 			name: {
@@ -137,7 +137,7 @@ export const newContacts2 = {
 export const yourContacts1 = {
 	data: [
 		{
-			_id: '1234543',
+			_id: '44444',
 			image: 'http://www.test4.com',
 			name: {
 				first: 'Bob',
@@ -152,7 +152,7 @@ export const yourContacts1 = {
 			phone: '555-555-1245',
 		},
 		{
-			_id: '1234544',
+			_id: '9567543',
 			image: 'http://www.test5.com',
 			name: {
 				first: 'Rob',
@@ -167,7 +167,42 @@ export const yourContacts1 = {
 			phone: '555-555-7777',
 		},
 		{
-			_id: '1234356',
+			_id: '456345645',
+			image: 'http://www.test6.com',
+			name: {
+				first: 'Slob',
+				last: 'Rob',
+			},
+			picture: {
+				large: '123',
+				medium: '123',
+				thumbnail: '123',
+			},
+			email: 'slob@test.com',
+			phone: '555-555-9999',
+		},
+	],
+};
+
+export const yourContacts2 = {
+	data: [
+		{
+			_id: '9567543',
+			image: 'http://www.test5.com',
+			name: {
+				first: 'Rob',
+				last: 'Bob',
+			},
+			picture: {
+				large: '123',
+				medium: '123',
+				thumbnail: '123',
+			},
+			email: 'rob@test.com',
+			phone: '555-555-7777',
+		},
+		{
+			_id: '456345645',
 			image: 'http://www.test6.com',
 			name: {
 				first: 'Slob',

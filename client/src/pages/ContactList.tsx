@@ -13,6 +13,10 @@ const ContactList = () => {
 			.get('https://randomuser.me/api/?results=3')
 			.then((res) => setNewContacts(res.data.results));
 	};
+	const getNewContact = async () => {
+		const response = await axios.get('https://randomuser.me/api/?results=1');
+		return response;
+	};
 
 	const getYourContacts = () => {
 		axios
@@ -20,13 +24,14 @@ const ContactList = () => {
 			.then((res) => setYourContacts(res.data.data));
 	};
 
-	const getContact = async () => {
-		const response = await axios.get('https://randomuser.me/api/?results=1');
-		return response;
+	const removeContact = (id: string) => {
+		setYourContacts((prevState) => {
+			return prevState.filter((contact) => contact._id !== id);
+		});
 	};
 
 	const addContact = async (id: string) => {
-		const res = await getContact();
+		const res = await getNewContact();
 
 		setNewContacts((prevState) => {
 			return [
@@ -41,12 +46,14 @@ const ContactList = () => {
 		getYourContacts();
 	}, []);
 
-	console.log(yourContacts);
 	return (
 		<div>
 			<h1>Contact List</h1>
 			<NewContactList newContacts={newContacts} addContact={addContact} />
-			<YourContactsList yourContacts={yourContacts} />
+			<YourContactsList
+				yourContacts={yourContacts}
+				removeContact={removeContact}
+			/>
 		</div>
 	);
 };

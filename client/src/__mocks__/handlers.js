@@ -4,6 +4,7 @@ import {
 	newContacts1,
 	newContacts2,
 	yourContacts1,
+	yourContacts2,
 } from './data/data';
 import { validateUrl } from '../utils/utils';
 
@@ -50,11 +51,18 @@ export const handlers = [
 		return res(ctx.json(newContacts2));
 	}),
 
-	// // Handles a GET /contacts request
+	// Handles a GET /contacts request
 	rest.get(
 		'https://fullstack-demos.herokuapp.com/contacts',
 		(req, res, ctx) => {
 			return res(ctx.json(yourContacts1));
+		}
+	),
+	// Handles a DELETE /contacts request
+	rest.delete(
+		'https://fullstack-demos.herokuapp.com/contacts',
+		(req, res, ctx) => {
+			return res(ctx.json(yourContacts2));
 		}
 	),
 ];
