@@ -2,7 +2,7 @@ import React from 'react';
 import NewContact from './NewContact';
 import { Person } from '../../../types/types';
 interface IProps {
-	addContact: (id: string) => void;
+	addContact: (id: Person) => Promise<void>;
 	newContacts: Person[] | [];
 }
 

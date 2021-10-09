@@ -4,7 +4,6 @@ import {
 	newContacts1,
 	newContacts2,
 	yourContacts1,
-	yourContacts2,
 } from './data/data';
 import { validateUrl } from '../utils/utils';
 
@@ -62,7 +61,7 @@ export const handlers = [
 	rest.delete(
 		'https://fullstack-demos.herokuapp.com/contacts',
 		(req, res, ctx) => {
-			return res(ctx.json(yourContacts2));
+			return res(ctx.json('Successfully deleted'));
 		}
 	),
 ];

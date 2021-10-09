@@ -4,12 +4,13 @@ import { Person } from '../../../types/types';
 
 interface IProps {
 	person: Person;
-	addContact: (id: string) => void;
+	addContact: (id: Person) => void;
 }
 
 const NewContact: React.FC<IProps> = ({ person, addContact }) => {
-	const { picture, name, email, phone, login } = person;
+	const { picture, name, email, phone } = person;
 
+	console.log(person);
 	return (
 		<div>
 			<img src={picture.medium} alt={`${name.first} ${name.last}`} />
@@ -18,7 +19,7 @@ const NewContact: React.FC<IProps> = ({ person, addContact }) => {
 			</h2>
 			<p>{email}</p>
 			<p>{phone}</p>
-			<Button onClick={() => addContact(login.uuid)}>Add Contact</Button>
+			<Button onClick={() => addContact(person)}>Add Contact</Button>
 		</div>
 	);
 };

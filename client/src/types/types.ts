@@ -10,7 +10,6 @@ export interface Person {
 	login: {
 		uuid: string;
 	};
-	image: string;
 	name: {
 		first: string;
 		last: string;

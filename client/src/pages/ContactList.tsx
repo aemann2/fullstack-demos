@@ -30,15 +30,39 @@ const ContactList = () => {
 		});
 	};
 
-	const addContact = async (id: string) => {
+	const addContact = async (person: Person) => {
+		const { name, phone, email, picture } = person;
+		// sending contact to DB
+		try {
+			await axios.post('https://fullstack-demos.herokuapp.com/contacts', {
+				name: {
+					first: name.first,
+					last: name.last,
+				},
+				phone: phone,
+				email: email,
+				picture: {
+					large: picture.large,
+					medium: picture.medium,
+					thumbnail: picture.thumbnail,
+				},
+			});
+		} catch (err) {
+			console.log(err);
+		}
+		// getting a new contact to put in the contact list
 		const res = await getNewContact();
 
+		// filtering out the contact we just added to Your Contacts
 		setNewContacts((prevState) => {
 			return [
-				...prevState.filter((person) => id !== person.login.uuid),
+				...prevState.filter((p) => p.login.uuid !== person.login.uuid),
 				res.data.results[0],
 			];
 		});
+
+		// refreshing the Your Contacts list
+		getYourContacts();
 	};
 
 	useEffect(() => {
