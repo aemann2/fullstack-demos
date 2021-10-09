@@ -22,6 +22,7 @@ const YourContactsList: React.FC<IProps> = ({
 
 	return (
 		<div>
+			<h1>Your Contacts</h1>
 			{yourContacts.map((contact) => (
 				<YourContact
 					key={contact._id}
