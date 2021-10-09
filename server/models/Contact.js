@@ -20,7 +20,7 @@ const contactSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	img: {
+	picture: {
 		large: {
 			type: String,
 			required: true,
