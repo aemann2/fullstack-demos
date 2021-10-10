@@ -32,13 +32,9 @@ const YourContact: React.FC<IProps> = ({
 		const names = fullName.split(' ');
 		const firstName = names[0];
 		const lastName = names[1];
-
-		console.log(firstName);
-		console.log(lastName);
-		console.log(contactEmail);
-		console.log(contactPhone);
 		try {
 			await axios.patch('https://fullstack-demos.herokuapp.com/contacts', {
+				id: _id,
 				name: {
 					first: firstName,
 					last: lastName,
@@ -51,8 +47,8 @@ const YourContact: React.FC<IProps> = ({
 					thumbnail: picture.thumbnail,
 				},
 			});
+			await getYourContacts();
 			setIsUpdating((prevState) => !prevState);
-			getYourContacts();
 		} catch (err) {
 			console.log(err);
 		}
