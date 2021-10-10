@@ -71,7 +71,7 @@ router.delete('/', async (req, res) => {
 	}
 });
 
-// @route PATCH contacts/
+// @route PUT contacts/
 // @description modify a contact
 // @access Public
 router.put('/', async (req, res) => {
