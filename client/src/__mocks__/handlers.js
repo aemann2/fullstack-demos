@@ -57,6 +57,12 @@ export const handlers = [
 			return res(ctx.json(yourContacts1));
 		}
 	),
+	rest.post(
+		'https://fullstack-demos.herokuapp.com/contacts',
+		(req, res, ctx) => {
+			return res(ctx.json(yourContacts1));
+		}
+	),
 	// Handles a DELETE /contacts request
 	rest.delete(
 		'https://fullstack-demos.herokuapp.com/contacts',

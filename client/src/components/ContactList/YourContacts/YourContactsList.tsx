@@ -13,11 +13,14 @@ const YourContactsList: React.FC<IProps> = ({
 	yourContacts,
 }) => {
 	const deleteContact = async (id: string) => {
-		await axios.delete('https://fullstack-demos.herokuapp.com/contacts', {
-			data: { id },
-		});
-		console.log(id);
-		removeContact(id);
+		try {
+			await axios.delete('https://fullstack-demos.herokuapp.com/contacts', {
+				data: { id },
+			});
+			removeContact(id);
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	return (

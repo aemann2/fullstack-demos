@@ -8,20 +8,33 @@ const ContactList = () => {
 	const [newContacts, setNewContacts] = useState<[] | Person[]>([]);
 	const [yourContacts, setYourContacts] = useState<[] | Person[]>([]);
 
-	const getNewContacts = () => {
-		axios
-			.get('https://randomuser.me/api/?results=3')
-			.then((res) => setNewContacts(res.data.results));
-	};
-	const getNewContact = async () => {
-		const response = await axios.get('https://randomuser.me/api/?results=1');
-		return response;
+	const getNewContacts = async () => {
+		try {
+			const res = await axios.get('https://randomuser.me/api/?results=3');
+			setNewContacts(res.data.results);
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
-	const getYourContacts = () => {
-		axios
-			.get('https://fullstack-demos.herokuapp.com/contacts')
-			.then((res) => setYourContacts(res.data.data));
+	const getNewContact = async () => {
+		try {
+			const response = await axios.get('https://randomuser.me/api/?results=1');
+			return response;
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const getYourContacts = async () => {
+		try {
+			const res = await axios.get(
+				'https://fullstack-demos.herokuapp.com/contacts'
+			);
+			setYourContacts(res.data.data);
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	const removeContact = (id: string) => {
@@ -57,7 +70,7 @@ const ContactList = () => {
 		setNewContacts((prevState) => {
 			return [
 				...prevState.filter((p) => p.login.uuid !== person.login.uuid),
-				res.data.results[0],
+				res!.data.results[0],
 			];
 		});
 
