@@ -33,7 +33,7 @@ const YourContact: React.FC<IProps> = ({
 		const firstName = names[0];
 		const lastName = names[1];
 		try {
-			await axios.patch('https://fullstack-demos.herokuapp.com/contacts', {
+			await axios.put('https://fullstack-demos.herokuapp.com/contacts', {
 				id: _id,
 				name: {
 					first: firstName,
