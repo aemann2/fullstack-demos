@@ -8,10 +8,15 @@ import { Url } from '../../types/types';
 const UrlShortener = () => {
 	const [urls, setUrls] = useState<Url[] | []>([]);
 
-	const getUrls = () => {
-		axios
-			.get('https://fullstack-demos.herokuapp.com/shorten/urls/all')
-			.then((res) => setUrls(res.data));
+	const getUrls = async () => {
+		try {
+			const res = await axios.get(
+				'https://fullstack-demos.herokuapp.com/shorten/urls/all'
+			);
+			setUrls(res.data);
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	useEffect(() => {

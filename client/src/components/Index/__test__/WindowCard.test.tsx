@@ -4,7 +4,7 @@ import testImage from './assets/testImg.png';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('tests for window component', () => {
-	test('window component displays correct input text', () => {
+	test('Window component displays correct input text', () => {
 		const testText = 'This is a test';
 		render(
 			<Router>
@@ -16,7 +16,7 @@ describe('tests for window component', () => {
 		const text = screen.getByText(testText);
 		expect(text).toBeInTheDocument();
 	});
-	test('window component displays correct image', () => {
+	test('Window component displays correct image', () => {
 		const altText = 'test image';
 		render(
 			<Router>
@@ -26,7 +26,7 @@ describe('tests for window component', () => {
 		const image = screen.getByAltText(altText);
 		expect(image).toBeInTheDocument();
 	});
-	test('window has correct url', () => {
+	test('Window has correct url', () => {
 		const testText = 'This is a test';
 		render(
 			<Router>

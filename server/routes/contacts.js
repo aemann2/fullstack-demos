@@ -71,10 +71,10 @@ router.delete('/', async (req, res) => {
 	}
 });
 
-// @route PATCH contacts/
+// @route PUT contacts/
 // @description modify a contact
 // @access Public
-router.patch('/', async (req, res) => {
+router.put('/', async (req, res) => {
 	try {
 		const id = mongoose.Types.ObjectId(req.body.id);
 		const updateObject = req.body;

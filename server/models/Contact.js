@@ -3,8 +3,14 @@ const { Schema } = mongoose;
 
 const contactSchema = new Schema({
 	name: {
-		type: String,
-		required: true,
+		first: {
+			type: String,
+			required: true,
+		},
+		last: {
+			type: String,
+			required: true,
+		},
 	},
 	phone: {
 		type: String,
@@ -14,7 +20,7 @@ const contactSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	img: {
+	picture: {
 		large: {
 			type: String,
 			required: true,

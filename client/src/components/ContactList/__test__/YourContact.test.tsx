@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import ContactList from '../../../pages/ContactList';
 
-describe('New Contact component tests', () => {
-	const name = 'John Doe';
-	const contact1 = 'john@test.com';
-	const contact2 = '555-555-5555';
+describe('Your Contact component tests', () => {
+	const name = 'Bob Rob';
+	const contact1 = 'bob@test.com';
+	const contact2 = '555-555-1245';
 	const src = '123';
 	test('Contact renders correct content', async () => {
 		render(<ContactList />);
-		const image = await screen.findByAltText(name);
+		const image = await screen.findByAltText('Bob');
 		const heading = screen.getByText(name);
 		const email = screen.getByText(contact1);
 		const phone = screen.getByText(contact2);
