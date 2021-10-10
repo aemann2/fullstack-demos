@@ -4,6 +4,7 @@ import {
 	newContacts1,
 	newContacts2,
 	yourContacts1,
+	yourContacts2,
 } from './data/data';
 import { validateUrl } from '../utils/utils';
 
@@ -60,7 +61,7 @@ export const handlers = [
 	rest.post(
 		'https://fullstack-demos.herokuapp.com/contacts',
 		(req, res, ctx) => {
-			return res(ctx.json(yourContacts1));
+			return res(ctx.json(yourContacts2));
 		}
 	),
 	// Handles a DELETE /contacts request

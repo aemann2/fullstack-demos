@@ -43,11 +43,15 @@ describe('Tests for Your Contact List component', () => {
 describe('Integration tests for New Contacts and Your Contacts List', () => {
 	test('Added contact from New Contacts appears in Your Contacts', async () => {
 		const contactName = 'John Doe';
-
 		render(<ContactList />);
-		const button = screen.getByRole('button', { name: /add contact/i });
-		// clicking the Add Contact button for the second user
-		await userEvent.click(button);
+		// getting add contact buttons
+		const buttons = await screen.findAllByRole('button', {
+			name: /add contact/i,
+		});
+		const contactToAdd = buttons[0];
+		// clicking the Add Contact button for the first contact in the contact list
+		await waitFor(() => userEvent.click(contactToAdd));
+		// looking for the added user in the returned users
 		const addedUser = screen.getByText(contactName);
 		expect(addedUser).toBeInTheDocument();
 	});
