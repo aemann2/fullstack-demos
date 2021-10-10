@@ -89,6 +89,7 @@ const ContactList = () => {
 			<NewContactList newContacts={newContacts} addContact={addContact} />
 			<YourContactsList
 				yourContacts={yourContacts}
+				getYourContacts={getYourContacts}
 				removeContact={removeContact}
 			/>
 		</div>

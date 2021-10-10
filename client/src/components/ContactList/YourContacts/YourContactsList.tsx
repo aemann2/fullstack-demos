@@ -6,11 +6,13 @@ import YourContact from './YourContact';
 interface IProps {
 	yourContacts: Person[] | [];
 	removeContact: (id: string) => void;
+	getYourContacts: () => void;
 }
 
 const YourContactsList: React.FC<IProps> = ({
 	removeContact,
 	yourContacts,
+	getYourContacts,
 }) => {
 	const deleteContact = async (id: string) => {
 		try {
@@ -31,6 +33,7 @@ const YourContactsList: React.FC<IProps> = ({
 					key={contact._id}
 					contact={contact}
 					deleteContact={deleteContact}
+					getYourContacts={getYourContacts}
 				/>
 			))}
 		</div>

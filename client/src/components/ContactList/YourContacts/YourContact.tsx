@@ -1,23 +1,100 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../UI/Button';
+import axios from 'axios';
 import { Person } from '../../../types/types';
 
 interface IProps {
 	contact: Person;
 	deleteContact: (id: string) => Promise<void>;
+	getYourContacts: () => void;
 }
 
-const YourContact: React.FC<IProps> = ({ contact, deleteContact }) => {
+const YourContact: React.FC<IProps> = ({
+	contact,
+	deleteContact,
+	getYourContacts,
+}) => {
 	const { _id, picture, name, email, phone } = contact;
+	const [isUpdating, setIsUpdating] = useState(false);
+	const [fullName, setFullName] = useState('');
+	const [contactEmail, setContactEmail] = useState(email);
+	const [contactPhone, setContactPhone] = useState(phone);
+
+	useEffect(() => {
+		setFullName(`${name.first} ${name.last}`);
+	}, [name.first, name.last]);
+
+	const handleModifyBegin = () => {
+		setIsUpdating((prevState) => !prevState);
+	};
+
+	const handleModifyEnd = async () => {
+		const names = fullName.split(' ');
+		const firstName = names[0];
+		const lastName = names[1];
+
+		console.log(firstName);
+		console.log(lastName);
+		console.log(contactEmail);
+		console.log(contactPhone);
+		try {
+			await axios.patch('https://fullstack-demos.herokuapp.com/contacts', {
+				name: {
+					first: firstName,
+					last: lastName,
+				},
+				phone: contactEmail,
+				email: contactPhone,
+				picture: {
+					large: picture.large,
+					medium: picture.medium,
+					thumbnail: picture.thumbnail,
+				},
+			});
+			setIsUpdating((prevState) => !prevState);
+			getYourContacts();
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const handleChange = (e: any, setter: any) => {
+		setter(e.target.value);
+	};
 
 	return (
 		<div>
 			<img src={picture.medium} alt={name.first} />
-			<Button>Modify</Button>
+			{isUpdating ? (
+				<Button onClick={handleModifyEnd}>Done</Button>
+			) : (
+				<Button onClick={handleModifyBegin}>Modify</Button>
+			)}
 			<Button onClick={() => deleteContact(_id)}>Delete</Button>
-			<h2>{`${name.first} ${name.last}`}</h2>
-			<p>{email}</p>
-			<p>{phone}</p>
+			{isUpdating ? (
+				<input
+					onChange={(e) => handleChange(e, setFullName)}
+					value={fullName}
+				></input>
+			) : (
+				<h2>{`${name.first} ${name.last}`}</h2>
+			)}
+			{isUpdating ? (
+				<input
+					onChange={(e) => handleChange(e, setContactEmail)}
+					value={contactEmail}
+				></input>
+			) : (
+				<p>{email}</p>
+			)}
+			{isUpdating ? (
+				<input
+					onChange={(e) => handleChange(e, setContactPhone)}
+					value={contactPhone}
+				></input>
+			) : (
+				<p>{phone}</p>
+			)}
 		</div>
 	);
 };
