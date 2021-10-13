@@ -22,7 +22,7 @@ export const urlData = [
 	},
 ];
 
-export const newContacts1 = {
+export const newContactsOriginal = {
 	results: [
 		{
 			login: {
@@ -78,7 +78,7 @@ export const newContacts1 = {
 	],
 };
 
-export const newContacts2 = {
+export const newContactsModified = {
 	results: [
 		{
 			login: {
@@ -134,7 +134,7 @@ export const newContacts2 = {
 	],
 };
 
-export const yourContacts1 = {
+export const yourContactsGET = {
 	data: [
 		{
 			_id: '44444',
@@ -184,7 +184,7 @@ export const yourContacts1 = {
 	],
 };
 
-export const yourContacts2 = {
+export const yourContactsPOST = {
 	data: [
 		{
 			_id: '44444',
@@ -238,6 +238,58 @@ export const yourContacts2 = {
 			image: 'http://www.test.com',
 			name: {
 				first: 'John',
+				last: 'Doe',
+			},
+			picture: {
+				large: '123',
+				medium: '123',
+				thumbnail: '123',
+			},
+			email: 'john@test.com',
+			phone: '555-555-5555',
+		},
+	],
+};
+
+export const yourContactsPUT = {
+	data: [
+		{
+			_id: '44444',
+			image: 'http://www.test4.com',
+			name: {
+				first: 'Eli',
+				last: 'Mcdonald',
+			},
+			picture: {
+				large: '123',
+				medium: '123',
+				thumbnail: '123',
+			},
+			email: 'bob@test.com',
+			phone: '555-555-1245',
+		},
+		{
+			_id: '456345645',
+			image: 'http://www.test6.com',
+			name: {
+				first: 'Slob',
+				last: 'Rob',
+			},
+			picture: {
+				large: '123',
+				medium: '123',
+				thumbnail: '123',
+			},
+			email: 'slob@test.com',
+			phone: '555-555-9999',
+		},
+		{
+			login: {
+				uuid: '1234354',
+			},
+			image: 'http://www.test.com',
+			name: {
+				first: 'Ron',
 				last: 'Doe',
 			},
 			picture: {

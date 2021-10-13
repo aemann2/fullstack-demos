@@ -54,7 +54,10 @@ const YourContact: React.FC<IProps> = ({
 		}
 	};
 
-	const handleChange = (e: any, setter: any) => {
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement>,
+		setter: React.Dispatch<React.SetStateAction<string>>
+	) => {
 		setter(e.target.value);
 	};
 

@@ -24,25 +24,35 @@ describe('Tests for Your Contact List component', () => {
 		expect(newButtons).toHaveLength(2);
 	});
 
+	test('Modifying user button changes when clicked', async () => {
+		render(<ContactList />);
+		const startingModifyButtons = await screen.findAllByRole('button', {
+			name: /modify/i,
+		});
+		userEvent.click(startingModifyButtons[0]);
+		const doneButton = screen.getAllByRole('button', { name: /done/i });
+		expect(doneButton).toHaveLength(1);
+		userEvent.click(doneButton[0]);
+	});
+
 	test('Modifying info for a user works correctly', async () => {
-		const oldName = 'Don Hudson';
 		const newName = 'Eli Mcdonald';
 		render(<ContactList />);
-		const user = screen.getByText(oldName);
-		const modifyButton = screen.getByRole('button', { name: /modify/i });
-		userEvent.click(modifyButton);
-		const nameInput = screen.getByRole('input');
-		userEvent.type(nameInput, newName);
-		const submitButton = screen.getByRole('button', { name: /submit/i });
+		const buttons = await screen.findAllByRole('button', { name: /modify/i });
+		userEvent.click(buttons[0]);
+		const inputs = screen.getAllByRole('textbox');
+		userEvent.clear(inputs[0]);
+		userEvent.type(inputs[0], newName);
+		const submitButton = screen.getByRole('button', { name: /done/i });
 		await userEvent.click(submitButton);
-		const newUser = screen.getByText(newName);
+		const newUser = await waitFor(() => screen.getByText(newName));
 		expect(newUser).toBeInTheDocument();
 	});
 });
 
 describe('Integration tests for New Contacts and Your Contacts List', () => {
 	test('Added contact from New Contacts appears in Your Contacts', async () => {
-		const contactName = 'John Doe';
+		const contactName = 'Ron Doe';
 		render(<ContactList />);
 		// getting add contact buttons
 		const buttons = await screen.findAllByRole('button', {
