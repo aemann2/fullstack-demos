@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Person } from '../types/types';
+import { Person } from '../../types/types';
+import { SectionPage } from './style';
+import PageTitle from '../../components/UI/PageTitle';
+import Back from '../../components/UI/Back';
 import axios from 'axios';
-import NewContactList from '../components/ContactList/NewContacts/NewContactList';
-import YourContactsList from '../components/ContactList/YourContacts/YourContactsList';
+import NewContactList from '../../components/ContactList/NewContacts/NewContactList';
+import YourContactsList from '../../components/ContactList/YourContacts/YourContactsList';
 
 const ContactList = () => {
 	const [newContacts, setNewContacts] = useState<[] | Person[]>([]);
@@ -84,15 +87,16 @@ const ContactList = () => {
 	}, []);
 
 	return (
-		<div>
-			<h1>Contact List</h1>
+		<SectionPage>
+			<Back href='/'>Go Back</Back>
+			<PageTitle>Contact List</PageTitle>
 			<NewContactList newContacts={newContacts} addContact={addContact} />
 			<YourContactsList
 				yourContacts={yourContacts}
 				getYourContacts={getYourContacts}
 				removeContact={removeContact}
 			/>
-		</div>
+		</SectionPage>
 	);
 };
 

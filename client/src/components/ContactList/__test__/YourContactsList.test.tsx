@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ContactList from '../../../pages/ContactList';
+import ContactList from '../../../pages/ContactList/ContactList';
 
 describe('Tests for Your Contact List component', () => {
 	test('Your Contacts displays correct number of contacts', async () => {

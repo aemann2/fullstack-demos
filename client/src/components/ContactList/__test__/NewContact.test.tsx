@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ContactList from '../../../pages/ContactList';
+import ContactList from '../../../pages/ContactList/ContactList';
 
 describe('New Contact component tests', () => {
 	const name = 'John Doe';

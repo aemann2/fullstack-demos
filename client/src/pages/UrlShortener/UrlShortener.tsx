@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { SectionPage, BackButton, PageTitle } from './style';
+import { SectionPage } from './style';
+import PageTitle from '../../components/UI/PageTitle';
+import Back from '../../components/UI/Back';
 import axios from 'axios';
 import UrlInput from '../../components/UrlShortener/UrlInput/UrlInput';
 import UrlList from '../../components/UrlShortener/UrlList/UrlList';
@@ -25,7 +27,7 @@ const UrlShortener = () => {
 
 	return (
 		<SectionPage>
-			<BackButton href='/'>Go Back</BackButton>
+			<Back href='/'>Go Back</Back>
 			<PageTitle>URL Shortener</PageTitle>
 			<UrlInput getUrls={getUrls} />
 			<UrlList urls={urls} />

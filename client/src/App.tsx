@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import Index from './pages/Index/Index';
 import './App.css';
 import MenuManager from './pages/MenuManager';
-import ContactList from './pages/ContactList';
+import ContactList from './pages/ContactList/ContactList';
 import UrlShortener from './pages/UrlShortener/UrlShortener';
 
 const GlobalStyles = createGlobalStyle`
