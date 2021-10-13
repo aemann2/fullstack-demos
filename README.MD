@@ -1,1 +1,1 @@
-Frontend URL: https://fullstack-demos.netlify.app/
+Live URL: https://fullstack-demos.netlify.app/
