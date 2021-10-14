@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Person } from '../../../types/types';
 import YourContact from './YourContact';
+import { SectionHeader, Cards } from '../style';
 
 interface IProps {
 	yourContacts: Person[] | [];
@@ -27,15 +28,17 @@ const YourContactsList: React.FC<IProps> = ({
 
 	return (
 		<div>
-			<h2>Your Contacts</h2>
-			{yourContacts.map((contact) => (
-				<YourContact
-					key={contact._id}
-					contact={contact}
-					deleteContact={deleteContact}
-					getYourContacts={getYourContacts}
-				/>
-			))}
+			<SectionHeader>Your Contacts</SectionHeader>
+			<Cards>
+				{yourContacts.map((contact) => (
+					<YourContact
+						key={contact._id}
+						contact={contact}
+						deleteContact={deleteContact}
+						getYourContacts={getYourContacts}
+					/>
+				))}
+			</Cards>
 		</div>
 	);
 };

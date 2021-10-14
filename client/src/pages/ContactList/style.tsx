@@ -7,3 +7,10 @@ export const SectionPage = styled(Page)`
 	flex-direction: column;
 	justify-content: space-between;
 `;
+
+export const PageContent = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;

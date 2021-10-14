@@ -1,6 +1,8 @@
 import React from 'react';
 import NewContact from './NewContact';
 import { Person } from '../../../types/types';
+import { SectionHeader } from '../style';
+
 interface IProps {
 	addContact: (id: Person) => Promise<void>;
 	newContacts: Person[] | [];
@@ -9,7 +11,7 @@ interface IProps {
 const NewContactList: React.FC<IProps> = ({ newContacts, addContact }) => {
 	return (
 		<div>
-			<h2>People you may know</h2>
+			<SectionHeader>People you may know</SectionHeader>
 			{newContacts.map((person: Person) => (
 				<NewContact
 					key={person.login.uuid}

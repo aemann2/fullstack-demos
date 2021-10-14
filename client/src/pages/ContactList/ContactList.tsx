@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Person } from '../../types/types';
-import { SectionPage } from './style';
+import { SectionPage, PageContent } from './style';
 import PageTitle from '../../components/UI/PageTitle';
 import Back from '../../components/UI/Back';
 import axios from 'axios';
@@ -90,12 +90,14 @@ const ContactList = () => {
 		<SectionPage>
 			<Back href='/'>Go Back</Back>
 			<PageTitle>Contact List</PageTitle>
-			<NewContactList newContacts={newContacts} addContact={addContact} />
-			<YourContactsList
-				yourContacts={yourContacts}
-				getYourContacts={getYourContacts}
-				removeContact={removeContact}
-			/>
+			<PageContent>
+				<NewContactList newContacts={newContacts} addContact={addContact} />
+				<YourContactsList
+					yourContacts={yourContacts}
+					getYourContacts={getYourContacts}
+					removeContact={removeContact}
+				/>
+			</PageContent>
 		</SectionPage>
 	);
 };
