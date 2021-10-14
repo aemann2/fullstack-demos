@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Person } from '../../../types/types';
 import YourContact from './YourContact';
-import { SectionHeader, Cards } from '../style';
+import { SectionHeader } from '../style';
+import { Cards } from './style';
 
 interface IProps {
 	yourContacts: Person[] | [];

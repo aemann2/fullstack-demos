@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../UI/Button';
 import axios from 'axios';
 import { Person } from '../../../types/types';
+import { Card } from './style';
 
 interface IProps {
 	contact: Person;
@@ -62,39 +63,45 @@ const YourContact: React.FC<IProps> = ({
 	};
 
 	return (
-		<div>
-			<img src={picture.medium} alt={name.first} />
-			{isUpdating ? (
-				<Button onClick={handleModifyEnd}>Done</Button>
-			) : (
-				<Button onClick={handleModifyBegin}>Modify</Button>
-			)}
-			<Button onClick={() => deleteContact(_id)}>Delete</Button>
-			{isUpdating ? (
-				<input
-					onChange={(e) => handleChange(e, setFullName)}
-					value={fullName}
-				></input>
-			) : (
-				<h2>{`${name.first} ${name.last}`}</h2>
-			)}
-			{isUpdating ? (
-				<input
-					onChange={(e) => handleChange(e, setContactEmail)}
-					value={contactEmail}
-				></input>
-			) : (
-				<p>{email}</p>
-			)}
-			{isUpdating ? (
-				<input
-					onChange={(e) => handleChange(e, setContactPhone)}
-					value={contactPhone}
-				></input>
-			) : (
-				<p>{phone}</p>
-			)}
-		</div>
+		<Card>
+			<img src={picture.large} alt={name.first} />
+			<div className='mainContent'>
+				{isUpdating ? (
+					<Button primary onClick={handleModifyEnd}>
+						Done
+					</Button>
+				) : (
+					<Button primary onClick={handleModifyBegin}>
+						Modify
+					</Button>
+				)}
+				<Button onClick={() => deleteContact(_id)}>Delete</Button>
+				{isUpdating ? (
+					<input
+						onChange={(e) => handleChange(e, setFullName)}
+						value={fullName}
+					></input>
+				) : (
+					<h2>{`${name.first} ${name.last}`}</h2>
+				)}
+				{isUpdating ? (
+					<input
+						onChange={(e) => handleChange(e, setContactEmail)}
+						value={contactEmail}
+					></input>
+				) : (
+					<p>{email}</p>
+				)}
+				{isUpdating ? (
+					<input
+						onChange={(e) => handleChange(e, setContactPhone)}
+						value={contactPhone}
+					></input>
+				) : (
+					<p>{phone}</p>
+				)}
+			</div>
+		</Card>
 	);
 };
 

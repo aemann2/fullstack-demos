@@ -18,7 +18,9 @@ const NewContact: React.FC<IProps> = ({ person, addContact }) => {
 			</h2>
 			<p>{email}</p>
 			<p>{phone}</p>
-			<Button onClick={() => addContact(person)}>Add Contact</Button>
+			<Button primary onClick={() => addContact(person)}>
+				Add Contact
+			</Button>
 		</div>
 	);
 };
