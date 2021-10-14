@@ -1,13 +1,22 @@
 import styled from 'styled-components';
+import Button from '../../UI/Button';
 
 export const SectionHeader = styled.h2`
 	color: var(--color-text);
 	font-size: 2rem;
 `;
 
+export const ActionButton = styled(Button)`
+	font-size: 0.8rem;
+	padding: 0.8rem 0.5rem;
+	background-color: ${({ primary }) => (primary ? '#174168' : '#F43A3A')};
+	color: ${({ primary }) => (primary ? 'white' : 'black')};
+`;
+
 export const Cards = styled.div`
 	height: 575px;
-	width: 700px;
+	width: clamp(275px, 80vw, 600px);
+	margin: 1rem auto;
 	overflow: scroll;
 	background-color: white;
 	border-radius: 10px;
@@ -22,16 +31,33 @@ export const Cards = styled.div`
 export const Card = styled.div`
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	margin: 1rem 0;
 
 	img {
-		height: 7rem;
+		height: 5rem;
 		border: 1px solid silver;
 		border-radius: 50%;
-		margin: 1rem 2rem auto 1rem;
+		margin: 1rem 1rem auto 1rem;
+	}
+
+	.buttons {
+		display: flex;
+		justify-content: center;
+	}
+
+	.mainContent {
+		flex: 1;
 	}
 
 	:not(:last-child) {
+		padding-bottom: 1rem;
 		border-bottom: 1px solid silver;
+	}
+
+	.--space {
+		margin: 0 0.5rem;
+		width: 50%;
 	}
 
 	/* &__mainText {

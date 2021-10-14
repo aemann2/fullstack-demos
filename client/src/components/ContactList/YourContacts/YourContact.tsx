@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../../UI/Button';
 import axios from 'axios';
 import { Person } from '../../../types/types';
-import { Card } from './style';
+import { Card, ActionButton } from './style';
 
 interface IProps {
 	contact: Person;
@@ -64,18 +63,26 @@ const YourContact: React.FC<IProps> = ({
 
 	return (
 		<Card>
-			<img src={picture.large} alt={name.first} />
+			<img src={picture.medium} alt={name.first} />
 			<div className='mainContent'>
-				{isUpdating ? (
-					<Button primary onClick={handleModifyEnd}>
-						Done
-					</Button>
-				) : (
-					<Button primary onClick={handleModifyBegin}>
-						Modify
-					</Button>
-				)}
-				<Button onClick={() => deleteContact(_id)}>Delete</Button>
+				<div className='buttons'>
+					{isUpdating ? (
+						<ActionButton className='--space' primary onClick={handleModifyEnd}>
+							Done
+						</ActionButton>
+					) : (
+						<ActionButton
+							className='--space'
+							primary
+							onClick={handleModifyBegin}
+						>
+							Modify
+						</ActionButton>
+					)}
+					<ActionButton className='--space' onClick={() => deleteContact(_id)}>
+						Delete
+					</ActionButton>
+				</div>
 				{isUpdating ? (
 					<input
 						onChange={(e) => handleChange(e, setFullName)}
