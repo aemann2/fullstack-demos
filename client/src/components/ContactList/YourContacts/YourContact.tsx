@@ -63,7 +63,9 @@ const YourContact: React.FC<IProps> = ({
 
 	return (
 		<Card>
-			<img src={picture.medium} alt={name.first} />
+			<div className='imageWrapper'>
+				<img src={picture.large} alt={name.first} />
+			</div>
 			<div className='mainContent'>
 				<div className='buttons'>
 					{isUpdating ? (

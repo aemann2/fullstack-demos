@@ -15,7 +15,7 @@ export const ActionButton = styled(Button)`
 
 export const Cards = styled.div`
 	height: 575px;
-	width: clamp(275px, 80vw, 600px);
+	width: clamp(275px, 80vw, 500px);
 	margin: 1rem auto;
 	overflow: scroll;
 	background-color: white;
@@ -34,11 +34,14 @@ export const Card = styled.div`
 	justify-content: center;
 	margin: 1rem 0;
 
-	img {
-		height: 5rem;
-		border: 1px solid silver;
-		border-radius: 50%;
-		margin: 1rem 1rem auto 1rem;
+	.imageWrapper {
+		flex: 1;
+		img {
+			width: 100%;
+			border-radius: 50%;
+			margin: 0rem 1rem;
+		}
+		margin-right: 1rem;
 	}
 
 	.buttons {
@@ -47,7 +50,15 @@ export const Card = styled.div`
 	}
 
 	.mainContent {
-		flex: 1;
+		flex: 2;
+	}
+
+	h2 {
+		font-size: 1rem;
+	}
+
+	p {
+		font-size: 0.7rem;
 	}
 
 	:not(:last-child) {
