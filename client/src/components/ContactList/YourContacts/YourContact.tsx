@@ -86,28 +86,26 @@ const YourContact: React.FC<IProps> = ({
 					</ActionButton>
 				</div>
 				{isUpdating ? (
-					<input
-						onChange={(e) => handleChange(e, setFullName)}
-						value={fullName}
-					></input>
+					<div>
+						<input
+							onChange={(e) => handleChange(e, setFullName)}
+							value={fullName}
+						></input>
+						<input
+							onChange={(e) => handleChange(e, setContactEmail)}
+							value={contactEmail}
+						></input>
+						<input
+							onChange={(e) => handleChange(e, setContactPhone)}
+							value={contactPhone}
+						></input>
+					</div>
 				) : (
-					<h2>{`${name.first} ${name.last}`}</h2>
-				)}
-				{isUpdating ? (
-					<input
-						onChange={(e) => handleChange(e, setContactEmail)}
-						value={contactEmail}
-					></input>
-				) : (
-					<p>{email}</p>
-				)}
-				{isUpdating ? (
-					<input
-						onChange={(e) => handleChange(e, setContactPhone)}
-						value={contactPhone}
-					></input>
-				) : (
-					<p>{phone}</p>
+					<div className='text-wrapper'>
+						<h2>{`${name.first} ${name.last}`}</h2>
+						<p>{email}</p>
+						<p>{phone}</p>
+					</div>
 				)}
 			</div>
 		</Card>

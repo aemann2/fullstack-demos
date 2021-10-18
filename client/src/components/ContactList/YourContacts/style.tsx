@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import Button from '../../UI/Button';
 
-export const SectionHeader = styled.h2`
-	color: var(--color-text);
-	font-size: 2rem;
-`;
-
 export const ActionButton = styled(Button)`
 	font-size: 0.8rem;
 	padding: 0.8rem 0.5rem;
@@ -53,6 +48,10 @@ export const Card = styled.div`
 		flex: 2;
 	}
 
+	.text-wrapper {
+		margin: 1rem 0.8rem;
+	}
+
 	h2 {
 		font-size: 1rem;
 	}
@@ -71,30 +70,12 @@ export const Card = styled.div`
 		width: 50%;
 	}
 
-	/* &__mainText {
-		margin: 0rem 0rem 1rem 1rem;
-	}
-
-	&__button {
-		margin: 1rem 1rem 0 auto;
-
-		&__mod {
-			padding: 0;
-			border: none;
-			background: none;
-			font-size: 3rem;
-			color: gray;
+	@media (min-width: 400px) {
+		h2 {
+			font-size: clamp(1rem, 4vw, 2.2rem);
+		}
+		p {
+			font-size: clamp(0.7rem, 2vw, 1.5rem);
 		}
 	}
-
-	&__grades {
-		margin-top: 1rem;
-	}
-
-	&__tags {
-		margin: 1rem 0;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-	} */
 `;
