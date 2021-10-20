@@ -17,7 +17,7 @@ const Index = () => {
 			<Subtitle>Applications for the purpose of learning</Subtitle>
 			<CardWrapper>
 				<WindowCard image={test} alt={'test'} url={'/menuManager'}>
-					<CardHeader>Menu Manager</CardHeader>
+					<CardHeader>Menu Manager (coming soon)</CardHeader>
 					<CardBody>
 						An interface to manage items on a restaurant menu.
 					</CardBody>
