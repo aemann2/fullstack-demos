@@ -5,9 +5,15 @@ import { validateUrl } from '../../../utils/utils';
 
 interface IProps {
 	getUrls: () => void;
+	toggleModal: () => void;
+	getURLForModal: (url: string) => void;
 }
 
-const UrlInput: React.FC<IProps> = ({ getUrls }) => {
+const UrlInput: React.FC<IProps> = ({
+	getUrls,
+	toggleModal,
+	getURLForModal,
+}) => {
 	const [urlInput, setUrlInput] = useState('');
 	const [nameInput, setNameInput] = useState('');
 	const [error, setError] = useState<boolean | string>(false);
@@ -35,10 +41,13 @@ const UrlInput: React.FC<IProps> = ({ getUrls }) => {
 			setError('Invalid Input');
 		} else {
 			setError(false);
-			await axios.post('https://fullstack-demos.herokuapp.com/shorten', {
-				longUrl: urlInput,
-				urlName: nameInput,
-			});
+			await axios
+				.post('https://fullstack-demos.herokuapp.com/shorten', {
+					longUrl: urlInput,
+					urlName: nameInput,
+				})
+				.then((res) => getURLForModal(res.data.shortUrl));
+			toggleModal();
 			setUrlInput('');
 			setNameInput('');
 			getUrls();
