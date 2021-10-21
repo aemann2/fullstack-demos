@@ -4,7 +4,17 @@ import Button from '../../UI/Button';
 export const ContactList = styled.div`
 	display: flex;
 	width: 300px;
+	height: 247px;
 	overflow-x: scroll;
+
+	.loading {
+		width: 100%;
+		margin: auto 0;
+		display: block;
+		color: white;
+		font-size: 2rem;
+		text-align: center;
+	}
 
 	@media (min-width: 400px) {
 		width: 350px;

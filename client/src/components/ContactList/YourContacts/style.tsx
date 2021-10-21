@@ -18,6 +18,16 @@ export const Cards = styled.div`
 	-webkit-box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 0.2);
 	box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 0.2);
 
+	.loading {
+		width: 100%;
+		height: 100%;
+		margin: auto 0;
+		display: block;
+		color: black;
+		font-size: 2rem;
+		text-align: center;
+	}
+
 	&::-webkit-scrollbar {
 		display: none;
 	}

@@ -8,8 +8,8 @@ import NewContactList from '../../components/ContactList/NewContacts/NewContactL
 import YourContactsList from '../../components/ContactList/YourContacts/YourContactsList';
 
 const ContactList = () => {
-	const [newContacts, setNewContacts] = useState<[] | Person[]>([]);
-	const [yourContacts, setYourContacts] = useState<[] | Person[]>([]);
+	const [newContacts, setNewContacts] = useState<null | Person[]>(null);
+	const [yourContacts, setYourContacts] = useState<null | Person[]>(null);
 
 	const getNewContacts = async () => {
 		try {
@@ -42,7 +42,7 @@ const ContactList = () => {
 
 	const removeContact = (id: string) => {
 		setYourContacts((prevState) => {
-			return prevState.filter((contact) => contact._id !== id);
+			return prevState!.filter((contact) => contact._id !== id);
 		});
 	};
 
@@ -72,7 +72,7 @@ const ContactList = () => {
 		// filtering out the contact we just added to Your Contacts
 		setNewContacts((prevState) => {
 			return [
-				...prevState.filter((p) => p.login.uuid !== person.login.uuid),
+				...prevState!.filter((p) => p.login.uuid !== person.login.uuid),
 				res!.data.results[0],
 			];
 		});

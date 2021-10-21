@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { SectionPage } from './style';
+import { URLModal } from './style';
 import PageTitle from '../../components/UI/PageTitle';
 import Back from '../../components/UI/Back';
-import Modal from '../../components/UI/Modal';
-import axios from 'axios';
 import UrlInput from '../../components/UrlShortener/UrlInput/UrlInput';
 import UrlList from '../../components/UrlShortener/UrlList/UrlList';
 import { Url } from '../../types/types';
 
 const UrlShortener = () => {
-	const [urls, setUrls] = useState<Url[] | []>([]);
+	const [urls, setUrls] = useState<Url[] | null>(null);
 	const [modalText, setModalText] = useState('');
 	const [openModal, setOpenModal] = useState(false);
 
@@ -39,12 +39,13 @@ const UrlShortener = () => {
 	return (
 		<SectionPage>
 			{openModal && (
-				<Modal>
-					<h1>
-						Your URL: <a href={modalText}>{modalText}</a>
-					</h1>
-					<button>Test</button>
-				</Modal>
+				<URLModal>
+					<h2>Your URL:</h2>
+					<p>
+						<a href={modalText}>{modalText}</a>
+					</p>
+					<button onClick={toggleModal}>Close</button>
+				</URLModal>
 			)}
 			<Back href='/'>Go Back</Back>
 			<PageTitle>URL Shortener</PageTitle>

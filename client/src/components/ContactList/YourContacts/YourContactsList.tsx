@@ -6,7 +6,7 @@ import { SectionHeader } from '../style';
 import { Cards } from './style';
 
 interface IProps {
-	yourContacts: Person[] | [];
+	yourContacts: Person[] | null;
 	removeContact: (id: string) => void;
 	getYourContacts: () => void;
 }
@@ -31,14 +31,18 @@ const YourContactsList: React.FC<IProps> = ({
 		<div>
 			<SectionHeader>Your Contacts</SectionHeader>
 			<Cards>
-				{yourContacts.map((contact) => (
-					<YourContact
-						key={contact._id}
-						contact={contact}
-						deleteContact={deleteContact}
-						getYourContacts={getYourContacts}
-					/>
-				))}
+				{yourContacts ? (
+					yourContacts.map((contact) => (
+						<YourContact
+							key={contact._id}
+							contact={contact}
+							deleteContact={deleteContact}
+							getYourContacts={getYourContacts}
+						/>
+					))
+				) : (
+					<p className='loading'>Loading</p>
+				)}
 			</Cards>
 		</div>
 	);

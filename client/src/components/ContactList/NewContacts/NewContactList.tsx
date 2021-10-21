@@ -6,7 +6,7 @@ import { ContactList } from './style';
 
 interface IProps {
 	addContact: (id: Person) => Promise<void>;
-	newContacts: Person[] | [];
+	newContacts: Person[] | null;
 }
 
 const NewContactList: React.FC<IProps> = ({ newContacts, addContact }) => {
@@ -14,13 +14,17 @@ const NewContactList: React.FC<IProps> = ({ newContacts, addContact }) => {
 		<div>
 			<SectionHeader>People you may know</SectionHeader>
 			<ContactList>
-				{newContacts.map((person: Person) => (
-					<NewContact
-						key={person.login.uuid}
-						person={person}
-						addContact={addContact}
-					/>
-				))}
+				{newContacts ? (
+					newContacts.map((person: Person) => (
+						<NewContact
+							key={person.login.uuid}
+							person={person}
+							addContact={addContact}
+						/>
+					))
+				) : (
+					<p className='loading'>Loading</p>
+				)}
 			</ContactList>
 		</div>
 	);

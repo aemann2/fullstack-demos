@@ -12,14 +12,18 @@ describe('Tests for URL input', () => {
 	const testName = 'test name';
 
 	test('URL input shows input', () => {
-		render(<UrlInput getUrls={mockFn} />);
+		render(
+			<UrlInput getUrls={mockFn} toggleModal={mockFn} getURLForModal={mockFn} />
+		);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		userEvent.type(urlInput, passingText);
 		expect(urlInput).toHaveValue(passingText);
 	});
 
 	test('URL input accepts valid input', () => {
-		render(<UrlInput getUrls={mockFn} />);
+		render(
+			<UrlInput getUrls={mockFn} toggleModal={mockFn} getURLForModal={mockFn} />
+		);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
@@ -31,7 +35,9 @@ describe('Tests for URL input', () => {
 	});
 
 	test('URL input rejects invalid input', () => {
-		render(<UrlInput getUrls={mockFn} />);
+		render(
+			<UrlInput getUrls={mockFn} toggleModal={mockFn} getURLForModal={mockFn} />
+		);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
@@ -43,7 +49,9 @@ describe('Tests for URL input', () => {
 	});
 
 	test('Submitting clears URL input if valid input', async () => {
-		render(<UrlInput getUrls={mockFn} />);
+		render(
+			<UrlInput getUrls={mockFn} toggleModal={mockFn} getURLForModal={mockFn} />
+		);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
@@ -54,7 +62,9 @@ describe('Tests for URL input', () => {
 	});
 
 	test('Submitting does not clear URL input if invalid input', () => {
-		render(<UrlInput getUrls={mockFn} />);
+		render(
+			<UrlInput getUrls={mockFn} toggleModal={mockFn} getURLForModal={mockFn} />
+		);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
@@ -70,14 +80,18 @@ describe('Tests for name input', () => {
 	const testName = 'test name';
 
 	test('Name input shows input', () => {
-		render(<UrlInput getUrls={mockFn} />);
+		render(
+			<UrlInput getUrls={mockFn} toggleModal={mockFn} getURLForModal={mockFn} />
+		);
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		userEvent.type(nameInput, testName);
 		expect(nameInput).toHaveValue(testName);
 	});
 
 	test('Submitting clears name input if valid input', async () => {
-		render(<UrlInput getUrls={mockFn} />);
+		render(
+			<UrlInput getUrls={mockFn} toggleModal={mockFn} getURLForModal={mockFn} />
+		);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });

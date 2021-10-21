@@ -37,6 +37,7 @@ export const UrlButton = styled(Button)`
 	border-radius: 12px;
 	display: block;
 	margin: 0 auto 2rem auto;
+	background-color: var(--color-button);
 
 	@media (min-width: 500px) {
 		font-size: 2rem;

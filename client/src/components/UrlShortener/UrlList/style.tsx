@@ -21,8 +21,12 @@ export const Triangle = styled.span`
 export const LinksContainer = styled.div`
 	color: var(--color-text);
 	margin-top: 1rem;
-	overflow-y: scroll;
+	overflow-y: auto;
 	height: 150px;
+
+	p {
+		font-size: 2rem;
+	}
 
 	@media (min-width: 500px) {
 		height: 250px;
