@@ -20,6 +20,7 @@ export const InputWrapper = styled.input`
 
 	@media (min-width: 500px) {
 		width: clamp(400px, 50vw, 600px);
+		font-size: 2rem;
 
 		::placeholder {
 			font-size: 1.5rem;

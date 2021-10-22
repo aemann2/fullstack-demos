@@ -27,7 +27,9 @@ describe('Tests for URL input', () => {
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
-		const errorMsg = screen.queryByText('Invalid Input');
+		const errorMsg = screen.queryByText(
+			'Invalid Input -- must include http://'
+		);
 		userEvent.type(urlInput, passingText);
 		userEvent.type(nameInput, testName);
 		userEvent.click(submitBtn);

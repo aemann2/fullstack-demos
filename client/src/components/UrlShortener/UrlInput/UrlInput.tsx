@@ -38,7 +38,7 @@ const UrlInput: React.FC<IProps> = ({
 		if (!nameInput) {
 			setError('Please name your URL');
 		} else if (!validateUrl(urlInput)) {
-			setError('Invalid Input');
+			setError('Invalid Input -- must include http://');
 		} else {
 			setError(false);
 			await axios
@@ -77,7 +77,14 @@ const UrlInput: React.FC<IProps> = ({
 				<UrlButton name='button' type='submit'>
 					Shorten!
 				</UrlButton>
-				{error && <label htmlFor='urlInput'>{error}</label>}
+				{error && (
+					<label
+						style={{ color: 'red', display: 'block', textAlign: 'center' }}
+						htmlFor='urlInput'
+					>
+						{error}
+					</label>
+				)}
 			</form>
 		</div>
 	);
