@@ -1,12 +1,12 @@
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Menu from '../Menu/Menu';
 import MenuManager from '../../../pages/MenuManager/MenuManager';
 
 describe('Tests for menu component', () => {
-	test('Should render menu', () => {
-		render(<Menu />);
-		expect(screen.getByRole('button')).toBeInTheDocument();
+	test('Should render menu', async () => {
+		render(<MenuManager />);
+		const button = await screen.findAllByRole('button');
+		expect(button).toHaveLength(4);
 	});
 	test('Correct items are rendered in menu', async () => {
 		render(<Menu />);
