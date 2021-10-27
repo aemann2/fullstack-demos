@@ -46,7 +46,9 @@ describe('Tests for URL input', () => {
 		userEvent.type(urlInput, failingText);
 		userEvent.type(nameInput, testName);
 		userEvent.click(submitBtn);
-		const errorMsg = screen.getByLabelText('Invalid Input');
+		const errorMsg = screen.getByLabelText(
+			'Invalid Input -- must include http://'
+		);
 		expect(errorMsg).toBeInTheDocument();
 	});
 

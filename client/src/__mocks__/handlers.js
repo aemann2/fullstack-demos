@@ -6,6 +6,9 @@ import {
 	yourContactsGET,
 	yourContactsPOST,
 	yourContactsPUT,
+	menuItemsGET,
+	menuItemsPUT,
+	menuItemsDELETE,
 } from './data/data';
 import { validateUrl } from '../utils/utils';
 
@@ -84,4 +87,20 @@ export const handlers = [
 			return res(ctx.json('Successfully deleted'));
 		}
 	),
+
+	// Handles a GET /items request
+	rest.get('https://fullstack-demos.herokuapp.com/items', (req, res, ctx) => {
+		return res(ctx.json(menuItemsGET));
+	}),
+	// Handles a DELETE /items request
+	rest.delete(
+		'https://fullstack-demos.herokuapp.com/items',
+		(req, res, ctx) => {
+			return res(ctx.json(menuItemsDELETE));
+		}
+	),
+	// Handles a PUT /items request
+	rest.put('https://fullstack-demos.herokuapp.com/items', (req, res, ctx) => {
+		return res(ctx.json(menuItemsPUT));
+	}),
 ];

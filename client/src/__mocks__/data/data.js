@@ -302,3 +302,48 @@ export const yourContactsPUT = {
 		},
 	],
 };
+
+export const menuItemsGET = {
+	data: [
+		{
+			_id: '1',
+			name: 'Steak',
+			price: '$39.99',
+			description: 'A tasty steak',
+		},
+		{
+			_id: '2',
+			name: 'Broccoli',
+			price: '15.00',
+			description: 'Green broccoli',
+		},
+	],
+};
+
+export const menuItemsDELETE = {
+	data: [
+		{
+			_id: '2',
+			name: 'Broccoli',
+			price: '15.00',
+			description: 'Green broccoli',
+		},
+	],
+};
+
+export const menuItemsPUT = {
+	data: [
+		{
+			_id: '1',
+			name: 'Steak',
+			price: '$59.99',
+			description: 'A tasty steak',
+		},
+		{
+			_id: '2',
+			name: 'Broccoli',
+			price: '15.00',
+			description: 'Green broccoli',
+		},
+	],
+};
