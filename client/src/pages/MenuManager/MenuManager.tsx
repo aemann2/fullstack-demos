@@ -32,7 +32,11 @@ const MenuManager = () => {
 		<div>
 			<h1>Menu manager...coming soon!</h1>
 			<MenuForm />
-			<Menu menu={menu} removeMenuItem={removeMenuItem} />
+			<Menu
+				menu={menu}
+				removeMenuItem={removeMenuItem}
+				getMenuItems={getMenuItems}
+			/>
 		</div>
 	);
 };

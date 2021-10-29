@@ -5,9 +5,10 @@ import { Item } from '../../../types/types';
 interface IProps {
 	menu: Item[];
 	removeMenuItem: (id: string) => void;
+	getMenuItems: () => void;
 }
 
-const Menu = ({ menu, removeMenuItem }: IProps) => {
+const Menu = ({ menu, removeMenuItem, getMenuItems }: IProps) => {
 	return (
 		<div>
 			{menu.map((item: Item) => {
@@ -16,6 +17,7 @@ const Menu = ({ menu, removeMenuItem }: IProps) => {
 						key={item._id}
 						item={item}
 						removeMenuItem={removeMenuItem}
+						getMenuItems={getMenuItems}
 					/>
 				);
 			})}
