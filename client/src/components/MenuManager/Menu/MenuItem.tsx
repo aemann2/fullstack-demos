@@ -5,9 +5,15 @@ interface IProps {
 	item: Item;
 	removeMenuItem: (id: string) => void;
 	getMenuItems: () => void;
+	deleteItem: (id: string) => void;
 }
 
-const MenuItem = ({ item, removeMenuItem, getMenuItems }: IProps) => {
+const MenuItem = ({
+	item,
+	removeMenuItem,
+	getMenuItems,
+	deleteItem,
+}: IProps) => {
 	const { _id: id, name, price, description } = item;
 	const [image, setImage] = useState('');
 	const [itemName, setItemName] = useState(name);
@@ -28,6 +34,7 @@ const MenuItem = ({ item, removeMenuItem, getMenuItems }: IProps) => {
 
 	const handleDelete = (id: string) => {
 		removeMenuItem(id);
+		deleteItem(id);
 	};
 
 	const handleChange = (
@@ -41,9 +48,9 @@ const MenuItem = ({ item, removeMenuItem, getMenuItems }: IProps) => {
 		try {
 			await axios.put('https://fullstack-demos.herokuapp.com/items', {
 				id: id,
-				name: name,
-				price: price,
-				description: description,
+				name: itemName,
+				price: itemPrice,
+				description: itemDescription,
 			});
 			await getMenuItems();
 			setIsUpdating((prevState) => !prevState);

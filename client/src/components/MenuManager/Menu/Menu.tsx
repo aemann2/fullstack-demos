@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuItem from './MenuItem';
+import axios from 'axios';
 import { Item } from '../../../types/types';
 
 interface IProps {
@@ -9,6 +10,16 @@ interface IProps {
 }
 
 const Menu = ({ menu, removeMenuItem, getMenuItems }: IProps) => {
+	const deleteItem = async (id: string) => {
+		try {
+			await axios.delete('https://fullstack-demos.herokuapp.com/items', {
+				data: { id },
+			});
+			removeMenuItem(id);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 	return (
 		<div>
 			{menu.map((item: Item) => {
@@ -18,6 +29,7 @@ const Menu = ({ menu, removeMenuItem, getMenuItems }: IProps) => {
 						item={item}
 						removeMenuItem={removeMenuItem}
 						getMenuItems={getMenuItems}
+						deleteItem={deleteItem}
 					/>
 				);
 			})}
