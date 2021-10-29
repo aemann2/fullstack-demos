@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Menu from '../../components/MenuManager/Menu/Menu';
 import MenuForm from '../../components/MenuManager/MenuForm/MenuForm';
+import { Item } from '../../types/types';
 
 const MenuManager = () => {
-	const [menu, setMenu] = useState<any | []>([]);
+	const [menu, setMenu] = useState<Item[] | []>([]);
 
 	const getMenuItems = async () => {
 		try {
@@ -17,6 +18,12 @@ const MenuManager = () => {
 		}
 	};
 
+	const removeMenuItem = (id: string) => {
+		setMenu((prevState) => {
+			return prevState!.filter((item: Item) => item._id !== id);
+		});
+	};
+
 	useEffect(() => {
 		getMenuItems();
 	}, []);
@@ -25,7 +32,7 @@ const MenuManager = () => {
 		<div>
 			<h1>Menu manager...coming soon!</h1>
 			<MenuForm />
-			<Menu menu={menu} />
+			<Menu menu={menu} removeMenuItem={removeMenuItem} />
 		</div>
 	);
 };

@@ -9,21 +9,21 @@ describe('Tests for menu component', () => {
 		expect(button).toHaveLength(4);
 	});
 	test('Correct items are rendered in menu', async () => {
-		render(<Menu />);
+		render(<MenuManager />);
 		const name = await screen.findByText('Steak');
-		const price = await screen.findByText('$10');
+		const price = await screen.findByText('$39.99');
 		const description = await screen.findByText('A tasty steak');
 		expect(name).toBeInTheDocument();
 		expect(price).toBeInTheDocument();
 		expect(description).toBeInTheDocument();
 	});
 	test('Menu renders images', async () => {
-		render(<Menu />);
+		render(<MenuManager />);
 		const image = await screen.findByAltText('Steak');
 		expect(image).toBeInTheDocument();
 	});
 	test('Clicking delete removes item from menu', async () => {
-		render(<Menu />);
+		render(<MenuManager />);
 		const deleteBtns = await screen.findAllByRole('button', { name: 'Delete' });
 		await userEvent.click(deleteBtns[0]);
 		const deleteBtnsNew = await screen.findAllByRole('button', {
@@ -32,7 +32,7 @@ describe('Tests for menu component', () => {
 		expect(deleteBtnsNew).toHaveLength(1);
 	});
 	test('Clicking modify allows item to be modified', async () => {
-		render(<Menu />);
+		render(<MenuManager />);
 		const modifyBtn = await screen.findByRole('button', { name: 'Modify' });
 		await userEvent.click(modifyBtn);
 		userEvent.type(screen.getByLabelText('Price'), '59.99');
