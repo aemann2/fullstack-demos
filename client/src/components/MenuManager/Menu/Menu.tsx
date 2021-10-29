@@ -1,10 +1,16 @@
 import React from 'react';
 import MenuItem from './MenuItem';
+import { Item } from '../../../types/types';
 
-const Menu = ({ menu, removeMenuItem }: any) => {
+interface IProps {
+	menu: Item[];
+	removeMenuItem: (id: string) => void;
+}
+
+const Menu = ({ menu, removeMenuItem }: IProps) => {
 	return (
 		<div>
-			{menu.map((item: any) => {
+			{menu.map((item: Item) => {
 				return (
 					<MenuItem
 						key={item._id}

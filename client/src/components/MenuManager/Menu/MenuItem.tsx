@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Item } from '../../../types/types';
+interface IProps {
+	item: Item;
+	removeMenuItem: (id: string) => void;
+}
 
-const MenuItem = ({ item, removeMenuItem }: any) => {
+const MenuItem = ({ item, removeMenuItem }: IProps) => {
 	const { _id: id, name, price, description } = item;
 	const [image, setImage] = useState('');
 
@@ -16,7 +21,7 @@ const MenuItem = ({ item, removeMenuItem }: any) => {
 		getImage();
 	}, [name]);
 
-	const handleDelete: any = (id: string) => {
+	const handleDelete = (id: string) => {
 		removeMenuItem(id);
 	};
 
