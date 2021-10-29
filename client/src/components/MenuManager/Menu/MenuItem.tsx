@@ -4,11 +4,16 @@ import { Item } from '../../../types/types';
 interface IProps {
 	item: Item;
 	removeMenuItem: (id: string) => void;
+	getMenuItems: () => void;
 }
 
-const MenuItem = ({ item, removeMenuItem }: IProps) => {
+const MenuItem = ({ item, removeMenuItem, getMenuItems }: IProps) => {
 	const { _id: id, name, price, description } = item;
 	const [image, setImage] = useState('');
+	const [itemName, setItemName] = useState(name);
+	const [itemPrice, setItemPrice] = useState(price);
+	const [itemDescription, setItemDescription] = useState(description);
+	const [isUpdating, setIsUpdating] = useState(false);
 
 	useEffect(() => {
 		const getImage = async () => {
@@ -25,12 +30,62 @@ const MenuItem = ({ item, removeMenuItem }: IProps) => {
 		removeMenuItem(id);
 	};
 
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement>,
+		setter: React.Dispatch<React.SetStateAction<string>>
+	) => {
+		setter(e.target.value);
+	};
+
+	const handleModifyEnd = async () => {
+		try {
+			await axios.put('https://fullstack-demos.herokuapp.com/items', {
+				id: id,
+				name: name,
+				price: price,
+				description: description,
+			});
+			await getMenuItems();
+			setIsUpdating((prevState) => !prevState);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const handleModifyBegin = () => {
+		setIsUpdating((prevState) => !prevState);
+	};
+
 	return (
 		<>
-			<h2>{name}</h2>
-			<h2>{price}</h2>
-			<h2>{description}</h2>
-			<button>Modify</button>
+			{isUpdating ? (
+				<div>
+					<input
+						onChange={(e) => handleChange(e, setItemName)}
+						value={itemName}
+					></input>
+					<input
+						onChange={(e) => handleChange(e, setItemPrice)}
+						value={itemPrice}
+					></input>
+					<input
+						onChange={(e) => handleChange(e, setItemDescription)}
+						value={itemDescription}
+					></input>
+				</div>
+			) : (
+				<div>
+					<h2>{name}</h2>
+					<h2>{price}</h2>
+					<h2>{description}</h2>
+				</div>
+			)}
+
+			{isUpdating ? (
+				<button onClick={handleModifyEnd}>Done</button>
+			) : (
+				<button onClick={handleModifyBegin}>Modify</button>
+			)}
 			<button onClick={() => handleDelete(id)}>Delete</button>
 			<img src={image} alt={name} />
 		</>
