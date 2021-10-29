@@ -1,11 +1,17 @@
 import React from 'react';
 import MenuItem from './MenuItem';
 
-const Menu = ({ menu }: any) => {
+const Menu = ({ menu, removeMenuItem }: any) => {
 	return (
 		<div>
-			{menu.map((item: any, index: number) => {
-				return <MenuItem key={index} item={item} />;
+			{menu.map((item: any) => {
+				return (
+					<MenuItem
+						key={item._id}
+						item={item}
+						removeMenuItem={removeMenuItem}
+					/>
+				);
 			})}
 		</div>
 	);

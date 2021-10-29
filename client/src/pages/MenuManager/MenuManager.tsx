@@ -17,6 +17,12 @@ const MenuManager = () => {
 		}
 	};
 
+	const removeMenuItem = (id: string) => {
+		setMenu((prevState: any) => {
+			return prevState!.filter((item: any) => item._id !== id);
+		});
+	};
+
 	useEffect(() => {
 		getMenuItems();
 	}, []);
@@ -25,7 +31,7 @@ const MenuManager = () => {
 		<div>
 			<h1>Menu manager...coming soon!</h1>
 			<MenuForm />
-			<Menu menu={menu} />
+			<Menu menu={menu} removeMenuItem={removeMenuItem} />
 		</div>
 	);
 };
