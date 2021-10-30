@@ -90,6 +90,9 @@ export const handlers = [
 
 	// Handles a GET /items request
 	rest.get('https://fullstack-demos.herokuapp.com/items', (req, res, ctx) => {
+		if (put) {
+			return res(ctx.json(menuItemsPUT));
+		}
 		return res(ctx.json(menuItemsGET));
 	}),
 	// Handles a DELETE /items request
@@ -101,6 +104,11 @@ export const handlers = [
 	),
 	// Handles a PUT /items request
 	rest.put('https://fullstack-demos.herokuapp.com/items', (req, res, ctx) => {
+		put = true;
 		return res(ctx.json(menuItemsPUT));
 	}),
+
+	// rest.get('https://www.googleapis.com/customsearch/v1', (req, res, ctx) => {
+	// 	return res(ctx.json(menuItemsPUT));
+	// }),
 ];
