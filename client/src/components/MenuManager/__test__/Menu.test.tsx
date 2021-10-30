@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react';
+import { screen, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import MenuManager from '../../../pages/MenuManager/MenuManager';
 
@@ -31,14 +31,30 @@ describe('Tests for menu component', () => {
 		});
 		expect(deleteBtnsNew).toHaveLength(1);
 	});
-	test('Clicking modify allows item to be modified', async () => {
+
+	test('Modifying item button changes when clicked', async () => {
 		render(<MenuManager />);
-		const modifyBtn = await screen.findByRole('button', { name: 'Modify' });
-		await userEvent.click(modifyBtn);
-		userEvent.type(screen.getByLabelText('Price'), '59.99');
-		await userEvent.click(modifyBtn);
-		const price = await screen.findByText('$59.99');
-		expect(price).toBeInTheDocument();
+		const startingModifyButtons = await screen.findAllByRole('button', {
+			name: /modify/i,
+		});
+		userEvent.click(startingModifyButtons[0]);
+		const doneButton = screen.getAllByRole('button', { name: /done/i });
+		expect(doneButton).toHaveLength(1);
+		userEvent.click(doneButton[0]);
+	});
+
+	test('Modifying info for an item works correctly', async () => {
+		const newPrice = '$59.99';
+		render(<MenuManager />);
+		const buttons = await screen.findAllByRole('button', { name: /modify/i });
+		userEvent.click(buttons[0]);
+		const inputs = screen.getAllByRole('textbox');
+		userEvent.clear(inputs[1]);
+		userEvent.type(inputs[1], newPrice);
+		const submitButton = screen.getByRole('button', { name: /done/i });
+		await userEvent.click(submitButton);
+		const updatedPrice = await waitFor(() => screen.getByText(newPrice));
+		expect(updatedPrice).toBeInTheDocument();
 	});
 });
 

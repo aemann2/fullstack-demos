@@ -52,8 +52,8 @@ const MenuItem = ({
 				price: itemPrice,
 				description: itemDescription,
 			});
-			await getMenuItems();
 			setIsUpdating((prevState) => !prevState);
+			await getMenuItems();
 		} catch (err) {
 			console.log(err);
 		}
@@ -82,9 +82,9 @@ const MenuItem = ({
 				</div>
 			) : (
 				<div>
-					<h2>{name}</h2>
-					<h2>{price}</h2>
-					<h2>{description}</h2>
+					<h2>{itemName}</h2>
+					<h2>{itemPrice}</h2>
+					<h2>{itemDescription}</h2>
 				</div>
 			)}
 
@@ -94,7 +94,7 @@ const MenuItem = ({
 				<button onClick={handleModifyBegin}>Modify</button>
 			)}
 			<button onClick={() => handleDelete(id)}>Delete</button>
-			<img src={image} alt={name} />
+			<img src={image} alt={itemName} />
 		</>
 	);
 };
