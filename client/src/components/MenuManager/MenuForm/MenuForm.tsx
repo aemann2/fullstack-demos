@@ -26,6 +26,11 @@ const MenuForm = ({ addItem }: IProps) => {
 			price,
 			description,
 		});
+		setItem({
+			name: '',
+			price: '',
+			description: '',
+		});
 	};
 
 	return (
