@@ -24,7 +24,7 @@ export interface Person {
 }
 
 export interface Item {
-	_id: string;
+	_id?: string;
 	name: string;
 	price: string;
 	description: string;

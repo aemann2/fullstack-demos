@@ -93,7 +93,7 @@ const MenuItem = ({
 			) : (
 				<button onClick={handleModifyBegin}>Modify</button>
 			)}
-			<button onClick={() => handleDelete(id)}>Delete</button>
+			<button onClick={() => handleDelete(id!)}>Delete</button>
 			<img src={image} alt={itemName} />
 		</>
 	);

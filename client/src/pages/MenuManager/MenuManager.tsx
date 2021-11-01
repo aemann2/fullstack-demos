@@ -24,6 +24,20 @@ const MenuManager = () => {
 		});
 	};
 
+	const addItem = async (item: Item) => {
+		const { name, price, description } = item;
+		try {
+			await axios.post('https://fullstack-demos.herokuapp.com/items', {
+				name: name,
+				price: price,
+				description: description,
+			});
+		} catch (err) {
+			console.log(err);
+		}
+		getMenuItems();
+	};
+
 	useEffect(() => {
 		getMenuItems();
 	}, []);
@@ -31,7 +45,7 @@ const MenuManager = () => {
 	return (
 		<div>
 			<h1>Menu manager...coming soon!</h1>
-			<MenuForm />
+			<MenuForm addItem={addItem} />
 			<Menu
 				menu={menu}
 				removeMenuItem={removeMenuItem}
