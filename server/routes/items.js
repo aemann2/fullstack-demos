@@ -1,4 +1,7 @@
 const express = require('express');
+const axios = require('axios');
+const dotenv = require('dotenv');
+dotenv.config({ path: './.env.local' });
 const router = express.Router();
 const mongoose = require('mongoose');
 
@@ -30,13 +33,24 @@ router.get('/', async (req, res) => {
 // @access Public
 router.post('/', async (req, res) => {
 	try {
-		const item = await Item.create(req.body);
+		const { name, price, description } = req.body;
+		const images = await axios.get(
+			`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.SEARCH_ENGINE_ID}&q=${name}&searchType=image`
+		);
+		const imageUrl = images.data.items[0].image.thumbnailLink;
+
+		const item = await Item.create({
+			name,
+			price,
+			description,
+			imageUrl,
+		});
 
 		return res.status(200).json({
 			success: true,
 			data: item,
 		});
-	} catch (error) {
+	} catch (err) {
 		return res.status(500).json({
 			success: false,
 			error: err,
@@ -77,10 +91,21 @@ router.delete('/', async (req, res) => {
 router.put('/', async (req, res) => {
 	try {
 		const id = mongoose.Types.ObjectId(req.body.id);
-		const updateObject = req.body;
+		const { name, price, description } = req.body;
+		const images = await axios.get(
+			`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.SEARCH_ENGINE_ID}&q=${name}&searchType=image`
+		);
+		const imageUrl = images.data.items[0].image.thumbnailLink;
 		const updated = await Item.findOneAndUpdate(
 			{ _id: id },
-			{ $set: updateObject }
+			{
+				$set: {
+					name,
+					price,
+					description,
+					imageUrl,
+				},
+			}
 		);
 
 		if (!updated) {
@@ -95,6 +120,7 @@ router.put('/', async (req, res) => {
 			data: updated,
 		});
 	} catch (err) {
+		console.log(err);
 		res.status(500).json({
 			success: false,
 			error: err,
