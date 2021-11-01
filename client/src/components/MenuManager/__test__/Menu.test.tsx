@@ -5,8 +5,8 @@ import MenuManager from '../../../pages/MenuManager/MenuManager';
 describe('Tests for menu component', () => {
 	test('Should render menu', async () => {
 		render(<MenuManager />);
-		const button = await screen.findAllByRole('button');
-		expect(button).toHaveLength(4);
+		const button = await screen.findAllByRole('button', { name: 'Delete' });
+		expect(button).toHaveLength(2);
 	});
 	test('Correct items are rendered in menu', async () => {
 		render(<MenuManager />);
