@@ -28,4 +28,5 @@ export interface Item {
 	name: string;
 	price: string;
 	description: string;
+	imageUrl?: string;
 }
