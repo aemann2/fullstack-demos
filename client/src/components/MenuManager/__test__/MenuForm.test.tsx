@@ -1,26 +1,47 @@
 import { screen, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import MenuForm from '../MenuForm/MenuForm';
+import MenuManager from '../../../pages/MenuManager/MenuManager';
 
 describe('Tests for item name input', () => {
 	const passingText = 'Steak';
+	const passingPrice = '$10';
+	const passingDescription = 'Tasty';
 	const failingText = '';
 
 	test('Name input shows input', () => {
-		render(<MenuForm />);
+		render(<MenuManager />);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		userEvent.type(nameInput, passingText);
 		expect(nameInput).toHaveValue(passingText);
 	});
 
 	test('Name input accepts valid input', async () => {
-		render(<MenuForm />);
+		render(<MenuManager />);
 		const nameInput = screen.getByPlaceholderText('Item name');
+		const priceInput = screen.getByPlaceholderText('Item price');
+		const descInput = screen.getByLabelText('Item description:');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
-		const errorMsg = screen.queryByText('You must enter a name');
 		userEvent.type(nameInput, passingText);
+		userEvent.type(priceInput, passingPrice);
+		userEvent.type(descInput, passingDescription);
 		await userEvent.click(submitBtn);
+		const errorMsg = screen.queryByText('Please enter a name');
 		expect(errorMsg).not.toBeInTheDocument();
+	});
+
+	test('Name input rejects invalid input', async () => {
+		render(<MenuManager />);
+		const nameInput = screen.getByPlaceholderText('Item name');
+		const priceInput = screen.getByPlaceholderText('Item price');
+		const descInput = screen.getByLabelText('Item description:');
+		const submitBtn = screen.getByRole('button', { name: 'Submit' });
+		userEvent.type(nameInput, failingText);
+		userEvent.type(priceInput, passingPrice);
+		userEvent.type(descInput, passingDescription);
+		await userEvent.click(submitBtn);
+		const errorMsg = screen.queryByText('Please enter a name');
+		expect(errorMsg).toBeInTheDocument();
 	});
 });
 

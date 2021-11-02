@@ -10,6 +10,7 @@ const MenuForm = ({ addItem }: IProps) => {
 		price: '',
 		description: '',
 	});
+	const [error, setError] = useState('');
 	const { name, price, description } = item;
 
 	const handleChange = (e: any) => {
@@ -21,6 +22,18 @@ const MenuForm = ({ addItem }: IProps) => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (!name) {
+			setError('Please enter a name');
+			return;
+		}
+		if (!price) {
+			setError('Please enter a price');
+			return;
+		}
+		if (!description) {
+			setError('Please enter a description');
+			return;
+		}
 		addItem({
 			name,
 			price,
@@ -44,7 +57,6 @@ const MenuForm = ({ addItem }: IProps) => {
 					placeholder='Item name'
 					value={name}
 				/>
-				<label>Price:</label>
 				<input
 					onChange={handleChange}
 					type='text'
@@ -52,13 +64,22 @@ const MenuForm = ({ addItem }: IProps) => {
 					placeholder='Item price'
 					value={price}
 				/>
-				<label>Item description:</label>
+				<label htmlFor='description'>Item description:</label>
 				<textarea
 					onChange={handleChange}
+					id='description'
 					name='description'
 					value={description}
 				/>
 				<button type='submit'>Submit</button>
+				{error && (
+					<label
+						style={{ color: 'red', display: 'block', textAlign: 'center' }}
+						htmlFor='name'
+					>
+						{error}
+					</label>
+				)}
 			</form>
 		</div>
 	);
