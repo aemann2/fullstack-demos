@@ -57,9 +57,3 @@ describe('Tests for menu component', () => {
 		expect(updatedPrice).toBeInTheDocument();
 	});
 });
-
-describe('Integration test for Menu and Menuform', () => {
-	test('Submitting a new form item adds the item to the menu', () => {
-		render(<MenuManager />);
-	});
-});

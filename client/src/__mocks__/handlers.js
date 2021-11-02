@@ -107,8 +107,4 @@ export const handlers = [
 		put = true;
 		return res(ctx.json(menuItemsPUT));
 	}),
-
-	// rest.get('https://www.googleapis.com/customsearch/v1', (req, res, ctx) => {
-	// 	return res(ctx.json(menuItemsPUT));
-	// }),
 ];
