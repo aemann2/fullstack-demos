@@ -46,74 +46,94 @@ describe('Tests for item name input', () => {
 });
 
 describe('Tests for item price input', () => {
-	const passingPrice = '10.00';
+	const passingText = 'Steak';
+	const passingPrice = '$10';
+	const passingDescription = 'Tasty';
 	const failingPrice = '';
 
 	test('Price input shows input', () => {
-		render(<MenuForm />);
+		render(<MenuManager />);
 		const priceInput = screen.getByPlaceholderText('Item price');
 		userEvent.type(priceInput, passingPrice);
 		expect(priceInput).toHaveValue(passingPrice);
 	});
 
 	test('Price input accepts valid input', async () => {
-		render(<MenuForm />);
+		render(<MenuManager />);
+		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
+		const descInput = screen.getByLabelText('Item description:');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
-		const errorMsg = screen.queryByText('You must enter a price');
+		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, passingPrice);
+		userEvent.type(descInput, passingDescription);
 		await userEvent.click(submitBtn);
+		const errorMsg = screen.queryByText('Please enter a price');
 		expect(errorMsg).not.toBeInTheDocument();
 	});
 
 	test('Price input rejects invalid input', async () => {
-		render(<MenuForm />);
+		render(<MenuManager />);
+		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
+		const descInput = screen.getByLabelText('Item description:');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
-		const errorMsg = screen.queryByText('You must enter a price');
+		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, failingPrice);
+		userEvent.type(descInput, passingDescription);
 		await userEvent.click(submitBtn);
+		const errorMsg = screen.queryByText('Please enter a price');
 		expect(errorMsg).toBeInTheDocument();
 	});
 });
 
 describe('Tests for item description input', () => {
-	const passingDesc = 'Tasty';
-	const failingDesc = '';
+	const passingText = 'Steak';
+	const passingPrice = '$10';
+	const passingDescription = 'Tasty';
+	const failingDescription = '';
 
 	test('Description input shows input', () => {
-		render(<MenuForm />);
-		const descInput = screen.getByLabelText('Item description');
-		userEvent.type(descInput, passingDesc);
-		expect(descInput).toHaveValue(passingDesc);
+		render(<MenuManager />);
+		const descInput = screen.getByLabelText('Item description:');
+		userEvent.type(descInput, passingDescription);
+		expect(descInput).toHaveValue(passingDescription);
 	});
 
 	test('Description input accepts valid input', async () => {
-		render(<MenuForm />);
-		const descInput = screen.getByLabelText('Item description');
+		render(<MenuManager />);
+		const nameInput = screen.getByPlaceholderText('Item name');
+		const priceInput = screen.getByPlaceholderText('Item price');
+		const descInput = screen.getByLabelText('Item description:');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
-		const errorMsg = screen.queryByText('You must enter a description');
-		userEvent.type(descInput, passingDesc);
+		userEvent.type(nameInput, passingText);
+		userEvent.type(priceInput, passingPrice);
+		userEvent.type(descInput, passingDescription);
 		await userEvent.click(submitBtn);
+		const errorMsg = screen.queryByText('Please enter a price');
 		expect(errorMsg).not.toBeInTheDocument();
 	});
 
 	test('Description input rejects invalid input', async () => {
-		render(<MenuForm />);
-		const descInput = screen.getByLabelText('Item description');
+		render(<MenuManager />);
+		const nameInput = screen.getByPlaceholderText('Item name');
+		const priceInput = screen.getByPlaceholderText('Item price');
+		const descInput = screen.getByLabelText('Item description:');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
-		const errorMsg = screen.queryByText('You must enter a description');
-		userEvent.type(descInput, failingDesc);
+		userEvent.type(nameInput, passingText);
+		userEvent.type(priceInput, passingPrice);
+		userEvent.type(descInput, failingDescription);
 		await userEvent.click(submitBtn);
+		const errorMsg = screen.queryByText('Please enter a description');
 		expect(errorMsg).toBeInTheDocument();
 	});
 });
 
 describe('Tests for all fields', () => {
 	const passingText = 'Steak';
-	const passingPrice = '10.00';
-	const passingDesc = 'Tasty';
-	const failingText = '';
+	const passingPrice = '$10';
+	const passingDescription = 'Tasty';
+	const failingPrice = '';
 
 	test('Submitting clears fields on valid input', async () => {
 		render(<MenuForm />);
