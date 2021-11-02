@@ -15,22 +15,10 @@ const MenuItem = ({
 	deleteItem,
 }: IProps) => {
 	const { _id: id, name, price, description, imageUrl } = item;
-	// const [image, setImage] = useState('');
 	const [itemName, setItemName] = useState(name);
 	const [itemPrice, setItemPrice] = useState(price);
 	const [itemDescription, setItemDescription] = useState(description);
 	const [isUpdating, setIsUpdating] = useState(false);
-
-	// useEffect(() => {
-	// 	const getImage = async () => {
-	// 		// custom google image search. see here: https://stackoverflow.com/questions/34035422/google-image-search-says-api-no-longer-available
-	// 		const response = await axios.get(
-	// 			`https://www.googleapis.com/customsearch/v1?key=${process.env.REACT_APP_API_KEY}&cx=${process.env.REACT_APP_SEARCH_ENGINE_ID}&q=${name}&searchType=image`
-	// 		);
-	// 		setImage(response.data.items[0].image.thumbnailLink);
-	// 	};
-	// 	getImage();
-	// }, [name]);
 
 	const handleDelete = (id: string) => {
 		removeMenuItem(id);
