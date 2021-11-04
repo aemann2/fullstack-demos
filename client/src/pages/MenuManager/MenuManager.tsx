@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Menu from '../../components/MenuManager/Menu/Menu';
 import MenuForm from '../../components/MenuManager/MenuForm/MenuForm';
+import { SectionPage } from './style';
 import { Item } from '../../types/types';
 
 const MenuManager = () => {
@@ -43,7 +44,7 @@ const MenuManager = () => {
 	}, []);
 
 	return (
-		<div>
+		<SectionPage>
 			<h1>Menu manager...coming soon!</h1>
 			<MenuForm addItem={addItem} />
 			<Menu
@@ -51,7 +52,7 @@ const MenuManager = () => {
 				removeMenuItem={removeMenuItem}
 				getMenuItems={getMenuItems}
 			/>
-		</div>
+		</SectionPage>
 	);
 };
 
