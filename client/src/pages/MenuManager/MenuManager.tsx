@@ -3,6 +3,7 @@ import axios from 'axios';
 import Menu from '../../components/MenuManager/Menu/Menu';
 import MenuForm from '../../components/MenuManager/MenuForm/MenuForm';
 import { SectionPage } from './style';
+import PageTitle from '../../components/UI/PageTitle';
 import { Item } from '../../types/types';
 
 const MenuManager = () => {
@@ -45,7 +46,7 @@ const MenuManager = () => {
 
 	return (
 		<SectionPage>
-			<h1>Menu manager...coming soon!</h1>
+			<PageTitle>Menu manager</PageTitle>
 			<MenuForm addItem={addItem} />
 			<Menu
 				menu={menu}

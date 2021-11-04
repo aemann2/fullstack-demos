@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { InputWrapper, SubmitButton, FormTitle, Label } from './style';
 import { Item } from '../../../types/types';
 interface IProps {
 	addItem: (item: Item) => void;
@@ -48,30 +49,30 @@ const MenuForm = ({ addItem }: IProps) => {
 
 	return (
 		<div>
-			<h2>Enter a new menu item:</h2>
+			<FormTitle>Enter a new menu item:</FormTitle>
 			<form onSubmit={handleSubmit}>
-				<input
+				<InputWrapper
 					onChange={handleChange}
 					type='text'
 					name='name'
 					placeholder='Item name'
 					value={name}
 				/>
-				<input
+				<InputWrapper
 					onChange={handleChange}
 					type='text'
 					name='price'
 					placeholder='Item price'
 					value={price}
 				/>
-				<label htmlFor='description'>Item description:</label>
+				<Label htmlFor='description'>Item description</Label>
 				<textarea
 					onChange={handleChange}
 					id='description'
 					name='description'
 					value={description}
 				/>
-				<button type='submit'>Submit</button>
+				<SubmitButton type='submit'>Submit</SubmitButton>
 				{error && (
 					<label
 						style={{ color: 'red', display: 'block', textAlign: 'center' }}
