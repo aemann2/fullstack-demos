@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { MenuItemWrapper } from './style';
+import { MenuItemWrapper, ActionButton } from './style';
 import { Item } from '../../../types/types';
 interface IProps {
 	item: Item;
@@ -79,11 +79,21 @@ const MenuItem = ({
 			<div className='item__right'>
 				<div className='buttons'>
 					{isUpdating ? (
-						<button onClick={handleModifyEnd}>Done</button>
+						<ActionButton className='--space' primary onClick={handleModifyEnd}>
+							Done
+						</ActionButton>
 					) : (
-						<button onClick={handleModifyBegin}>Modify</button>
+						<ActionButton
+							className='--space'
+							primary
+							onClick={handleModifyBegin}
+						>
+							Modify
+						</ActionButton>
 					)}
-					<button onClick={() => handleDelete(id!)}>Delete</button>
+					<ActionButton className='--space' onClick={() => handleDelete(id!)}>
+						Delete
+					</ActionButton>
 				</div>
 				<img className='image' src={imageUrl} alt={itemName} />
 			</div>
