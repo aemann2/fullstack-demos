@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { InputWrapper, SubmitButton, FormTitle, Label } from './style';
+import {
+	InputWrapper,
+	SubmitButton,
+	FormTitle,
+	TextArea,
+	Label,
+} from './style';
 import { Item } from '../../../types/types';
 interface IProps {
 	addItem: (item: Item) => void;
@@ -66,10 +72,11 @@ const MenuForm = ({ addItem }: IProps) => {
 					value={price}
 				/>
 				<Label htmlFor='description'>Item description</Label>
-				<textarea
+				<TextArea
 					onChange={handleChange}
 					id='description'
 					name='description'
+					maxLength={75}
 					value={description}
 				/>
 				<SubmitButton type='submit'>Submit</SubmitButton>

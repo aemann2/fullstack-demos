@@ -1,5 +1,6 @@
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter as Router } from 'react-router-dom';
 import MenuManager from '../../../pages/MenuManager/MenuManager';
 
 describe('Tests for item name input', () => {
@@ -9,17 +10,25 @@ describe('Tests for item name input', () => {
 	const failingText = '';
 
 	test('Name input shows input', () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		userEvent.type(nameInput, passingText);
 		expect(nameInput).toHaveValue(passingText);
 	});
 
 	test('Name input accepts valid input', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
-		const descInput = screen.getByLabelText('Item description:');
+		const descInput = screen.getByLabelText('Item description');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
 		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, passingPrice);
@@ -30,10 +39,14 @@ describe('Tests for item name input', () => {
 	});
 
 	test('Name input rejects invalid input', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
-		const descInput = screen.getByLabelText('Item description:');
+		const descInput = screen.getByLabelText('Item description');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
 		userEvent.type(nameInput, failingText);
 		userEvent.type(priceInput, passingPrice);
@@ -51,17 +64,25 @@ describe('Tests for item price input', () => {
 	const failingPrice = '';
 
 	test('Price input shows input', () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const priceInput = screen.getByPlaceholderText('Item price');
 		userEvent.type(priceInput, passingPrice);
 		expect(priceInput).toHaveValue(passingPrice);
 	});
 
 	test('Price input accepts valid input', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
-		const descInput = screen.getByLabelText('Item description:');
+		const descInput = screen.getByLabelText('Item description');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
 		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, passingPrice);
@@ -72,10 +93,14 @@ describe('Tests for item price input', () => {
 	});
 
 	test('Price input rejects invalid input', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
-		const descInput = screen.getByLabelText('Item description:');
+		const descInput = screen.getByLabelText('Item description');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
 		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, failingPrice);
@@ -93,17 +118,25 @@ describe('Tests for item description input', () => {
 	const failingDescription = '';
 
 	test('Description input shows input', () => {
-		render(<MenuManager />);
-		const descInput = screen.getByLabelText('Item description:');
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
+		const descInput = screen.getByLabelText('Item description');
 		userEvent.type(descInput, passingDescription);
 		expect(descInput).toHaveValue(passingDescription);
 	});
 
 	test('Description input accepts valid input', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
-		const descInput = screen.getByLabelText('Item description:');
+		const descInput = screen.getByLabelText('Item description');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
 		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, passingPrice);
@@ -114,10 +147,14 @@ describe('Tests for item description input', () => {
 	});
 
 	test('Description input rejects invalid input', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
-		const descInput = screen.getByLabelText('Item description:');
+		const descInput = screen.getByLabelText('Item description');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
 		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, passingPrice);
@@ -135,10 +172,14 @@ describe('Tests for all fields', () => {
 	const failingDescription = '';
 
 	test('Submitting clears fields on valid input', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
-		const descInput = screen.getByLabelText('Item description:');
+		const descInput = screen.getByLabelText('Item description');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
 		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, passingPrice);
@@ -150,10 +191,14 @@ describe('Tests for all fields', () => {
 	});
 
 	test('Submitting does not clear fields on invalid input', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const nameInput = screen.getByPlaceholderText('Item name');
 		const priceInput = screen.getByPlaceholderText('Item price');
-		const descInput = screen.getByLabelText('Item description:');
+		const descInput = screen.getByLabelText('Item description');
 		const submitBtn = screen.getByRole('button', { name: 'Submit' });
 		userEvent.type(nameInput, passingText);
 		userEvent.type(priceInput, passingPrice);

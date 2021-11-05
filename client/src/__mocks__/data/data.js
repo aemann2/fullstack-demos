@@ -308,7 +308,7 @@ export const menuItemsGET = {
 		{
 			_id: '1',
 			name: 'Steak',
-			price: '$39.99',
+			price: '39.99',
 			description: 'A tasty steak',
 		},
 		{
@@ -336,7 +336,7 @@ export const menuItemsPUT = {
 		{
 			_id: '1',
 			name: 'Steak',
-			price: '$59.99',
+			price: '59.99',
 			description: 'A tasty steak',
 		},
 		{

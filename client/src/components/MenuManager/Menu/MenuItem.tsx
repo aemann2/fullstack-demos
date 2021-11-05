@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { MenuItemWrapper } from './style';
 import { Item } from '../../../types/types';
 interface IProps {
 	item: Item;
@@ -52,7 +53,7 @@ const MenuItem = ({
 	};
 
 	return (
-		<>
+		<MenuItemWrapper>
 			{isUpdating ? (
 				<div>
 					<input
@@ -69,21 +70,24 @@ const MenuItem = ({
 					></input>
 				</div>
 			) : (
-				<div>
-					<h2>{itemName}</h2>
-					<h2>{itemPrice}</h2>
-					<h2>{itemDescription}</h2>
+				<div className='item__left'>
+					<h2 className='itemText'>{itemName}</h2>
+					<h2 className='itemText'>${itemPrice}</h2>
+					<h2 className='itemText'>{itemDescription}</h2>
 				</div>
 			)}
-
-			{isUpdating ? (
-				<button onClick={handleModifyEnd}>Done</button>
-			) : (
-				<button onClick={handleModifyBegin}>Modify</button>
-			)}
-			<button onClick={() => handleDelete(id!)}>Delete</button>
-			<img src={imageUrl} alt={itemName} />
-		</>
+			<div className='item__right'>
+				<div className='buttons'>
+					{isUpdating ? (
+						<button onClick={handleModifyEnd}>Done</button>
+					) : (
+						<button onClick={handleModifyBegin}>Modify</button>
+					)}
+					<button onClick={() => handleDelete(id!)}>Delete</button>
+				</div>
+				<img className='image' src={imageUrl} alt={itemName} />
+			</div>
+		</MenuItemWrapper>
 	);
 };
 

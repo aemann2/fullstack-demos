@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ContactList from '../../../pages/ContactList/ContactList';
 
 describe('Your Contact component tests', () => {
@@ -7,7 +8,11 @@ describe('Your Contact component tests', () => {
 	const contact2 = '555-555-1245';
 	const src = '123';
 	test('Contact renders correct content', async () => {
-		render(<ContactList />);
+		render(
+			<Router>
+				<ContactList />
+			</Router>
+		);
 		const image = await screen.findByAltText('Bob');
 		const heading = screen.getByText(name);
 		const email = screen.getByText(contact1);

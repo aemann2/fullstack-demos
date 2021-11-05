@@ -34,6 +34,11 @@ export const FormTitle = styled.h2`
 	color: var(--color-text);
 `;
 
+export const TextArea = styled.textarea`
+	height: 100px;
+	width: 80%;
+`;
+
 export const Label = styled.label`
 	display: block;
 	color: var(--color-placeholder);

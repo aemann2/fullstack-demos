@@ -88,7 +88,7 @@ const ContactList = () => {
 
 	return (
 		<SectionPage>
-			<Back href='/'>Go Back</Back>
+			<Back>Go Back</Back>
 			<PageTitle>Contact List</PageTitle>
 			<PageContent>
 				<NewContactList newContacts={newContacts} addContact={addContact} />

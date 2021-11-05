@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuItem from './MenuItem';
 import axios from 'axios';
+import { MenuWrapper } from './style';
 import { Item } from '../../../types/types';
 
 interface IProps {
@@ -21,7 +22,7 @@ const Menu = ({ menu, removeMenuItem, getMenuItems }: IProps) => {
 		}
 	};
 	return (
-		<div>
+		<MenuWrapper>
 			{menu.map((item: Item) => {
 				return (
 					<MenuItem
@@ -33,7 +34,7 @@ const Menu = ({ menu, removeMenuItem, getMenuItems }: IProps) => {
 					/>
 				);
 			})}
-		</div>
+		</MenuWrapper>
 	);
 };
 
