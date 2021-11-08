@@ -20,8 +20,8 @@ describe('Tests for menu component', () => {
 			</Router>
 		);
 		const name = await screen.findByText('Steak');
-		const price = await screen.findByText('$39.99');
-		const description = await screen.findByText('A tasty steak');
+		const price = await screen.findByText('Price: $39.99');
+		const description = await screen.findByText('Description: A tasty steak');
 		expect(name).toBeInTheDocument();
 		expect(price).toBeInTheDocument();
 		expect(description).toBeInTheDocument();

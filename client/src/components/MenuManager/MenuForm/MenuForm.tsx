@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+	FormWrapper,
 	InputWrapper,
 	SubmitButton,
 	FormTitle,
@@ -20,7 +21,11 @@ const MenuForm = ({ addItem }: IProps) => {
 	const [error, setError] = useState('');
 	const { name, price, description } = item;
 
-	const handleChange = (e: any) => {
+	const handleChange = (
+		e:
+			| React.ChangeEvent<HTMLInputElement>
+			| React.ChangeEvent<HTMLTextAreaElement>
+	) => {
 		setItem({
 			...item,
 			[e.target.name]: e.target.value,
@@ -41,6 +46,7 @@ const MenuForm = ({ addItem }: IProps) => {
 			setError('Please enter a description');
 			return;
 		}
+		setError('');
 		addItem({
 			name,
 			price,
@@ -54,7 +60,7 @@ const MenuForm = ({ addItem }: IProps) => {
 	};
 
 	return (
-		<div>
+		<FormWrapper>
 			<FormTitle>Enter a new menu item:</FormTitle>
 			<form onSubmit={handleSubmit}>
 				<InputWrapper
@@ -62,11 +68,15 @@ const MenuForm = ({ addItem }: IProps) => {
 					type='text'
 					name='name'
 					placeholder='Item name'
+					maxLength={30}
 					value={name}
 				/>
 				<InputWrapper
 					onChange={handleChange}
-					type='text'
+					type='number'
+					min='0.00'
+					max='10000.00'
+					step='0.01'
 					name='price'
 					placeholder='Item price'
 					value={price}
@@ -89,7 +99,7 @@ const MenuForm = ({ addItem }: IProps) => {
 					</label>
 				)}
 			</form>
-		</div>
+		</FormWrapper>
 	);
 };
 

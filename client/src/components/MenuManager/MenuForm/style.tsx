@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import Button from '../../UI/Button';
 
+export const FormWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
 export const InputWrapper = styled.input`
 	display: block;
 	margin: 0 0 2rem 0;
@@ -36,7 +42,7 @@ export const FormTitle = styled.h2`
 
 export const TextArea = styled.textarea`
 	height: 100px;
-	width: 80%;
+	width: 100%;
 `;
 
 export const Label = styled.label`

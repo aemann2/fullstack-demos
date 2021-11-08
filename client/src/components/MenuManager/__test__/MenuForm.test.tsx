@@ -59,7 +59,7 @@ describe('Tests for item name input', () => {
 
 describe('Tests for item price input', () => {
 	const passingText = 'Steak';
-	const passingPrice = '$10';
+	const passingPrice = '10';
 	const passingDescription = 'Tasty';
 	const failingPrice = '';
 
@@ -71,7 +71,7 @@ describe('Tests for item price input', () => {
 		);
 		const priceInput = screen.getByPlaceholderText('Item price');
 		userEvent.type(priceInput, passingPrice);
-		expect(priceInput).toHaveValue(passingPrice);
+		expect(priceInput).toHaveValue(10);
 	});
 
 	test('Price input accepts valid input', async () => {
@@ -186,7 +186,7 @@ describe('Tests for all fields', () => {
 		userEvent.type(descInput, passingDescription);
 		await userEvent.click(submitBtn);
 		expect(nameInput).toHaveValue('');
-		expect(priceInput).toHaveValue('');
+		expect(priceInput).toHaveValue(null);
 		expect(descInput).toHaveValue('');
 	});
 
@@ -205,6 +205,6 @@ describe('Tests for all fields', () => {
 		userEvent.type(descInput, failingDescription);
 		await userEvent.click(submitBtn);
 		expect(nameInput).toHaveValue(passingText);
-		expect(priceInput).toHaveValue(passingPrice);
+		expect(priceInput).toHaveValue(10);
 	});
 });
