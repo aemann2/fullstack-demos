@@ -6,4 +6,24 @@ export const SectionPage = styled(Page)`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	@media (min-width: 1250px) {
+		display: block;
+		position: relative;
+	}
+`;
+
+export const ContentWrapper = styled.div`
+	@media (min-width: 1250px) {
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		.page__left {
+			margin-right: 2rem;
+		}
+	}
 `;

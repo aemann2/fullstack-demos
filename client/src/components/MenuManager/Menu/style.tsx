@@ -5,11 +5,22 @@ export const MenuWrapper = styled.div`
 	background-color: var(--color-text);
 	border-radius: 25px;
 	padding: 1rem;
+	max-width: 400px;
+	margin: auto;
+
+	@media (min-width: 600px) {
+		min-width: 500px;
+	}
+
+	@media (min-width: 1250px) {
+		height: 600px;
+		overflow: auto;
+	}
 `;
 
 export const MenuItemWrapper = styled.div`
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	&:not(:last-child) {
 		margin-bottom: 2rem;
 	}
@@ -18,6 +29,7 @@ export const MenuItemWrapper = styled.div`
 		order: 2;
 	}
 	.item__left {
+		margin: auto 0;
 		.itemText {
 			font-size: 1rem;
 			margin-bottom: 1rem;
@@ -28,6 +40,10 @@ export const MenuItemWrapper = styled.div`
 		flex-direction: column;
 	}
 	.itemText {
+		&:first-child {
+			font-weight: 700;
+		}
+		max-width: 200px;
 		font-size: 0.8rem;
 	}
 	.image {
@@ -39,6 +55,14 @@ export const MenuItemWrapper = styled.div`
 	.--space {
 		margin: 0 0.5rem;
 		width: 50%;
+	}
+
+	@media (min-width: 600px) {
+		.item__left {
+			.itemText {
+				font-size: 1.5rem;
+			}
+		}
 	}
 `;
 

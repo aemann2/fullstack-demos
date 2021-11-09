@@ -11,6 +11,9 @@ interface IProps {
 const BackButton = styled.a`
 	display: flex;
 	justify-content: flex-start;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
 const Back: React.FC<IProps> = ({ history, children, className }) => {

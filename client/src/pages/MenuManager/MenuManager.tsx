@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Menu from '../../components/MenuManager/Menu/Menu';
 import MenuForm from '../../components/MenuManager/MenuForm/MenuForm';
-import { SectionPage } from './style';
+import { SectionPage, ContentWrapper } from './style';
 import PageTitle from '../../components/UI/PageTitle';
 import Back from '../../components/UI/Back';
 import { Item } from '../../types/types';
@@ -48,13 +48,19 @@ const MenuManager = () => {
 	return (
 		<SectionPage>
 			<Back>Go Back</Back>
-			<PageTitle>Menu manager</PageTitle>
-			<MenuForm addItem={addItem} />
-			<Menu
-				menu={menu}
-				removeMenuItem={removeMenuItem}
-				getMenuItems={getMenuItems}
-			/>
+			<ContentWrapper>
+				<div className='page__left'>
+					<PageTitle>Menu manager</PageTitle>
+					<MenuForm addItem={addItem} />
+				</div>
+				<div className='page__right'>
+					<Menu
+						menu={menu}
+						removeMenuItem={removeMenuItem}
+						getMenuItems={getMenuItems}
+					/>
+				</div>
+			</ContentWrapper>
 		</SectionPage>
 	);
 };

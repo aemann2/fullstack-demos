@@ -40,7 +40,8 @@ const MenuItem = ({
 		});
 	};
 
-	const handleModifyEnd = async () => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		try {
 			await axios.put('https://fullstack-demos.herokuapp.com/items', {
 				id: id,
@@ -62,7 +63,7 @@ const MenuItem = ({
 	return (
 		<MenuItemWrapper>
 			{isUpdating ? (
-				<div>
+				<form onSubmit={handleSubmit}>
 					<Input
 						onChange={(e) => handleChange(e)}
 						maxLength={30}
@@ -85,7 +86,7 @@ const MenuItem = ({
 						value={newDescription}
 						maxLength={75}
 					></TextArea>
-				</div>
+				</form>
 			) : (
 				<div className='item__left'>
 					<h2 className='itemText'>{newName}</h2>
@@ -96,7 +97,7 @@ const MenuItem = ({
 			<div className='item__right'>
 				<div className='buttons'>
 					{isUpdating ? (
-						<ActionButton className='--space' primary onClick={handleModifyEnd}>
+						<ActionButton className='--space' primary onClick={handleSubmit}>
 							Done
 						</ActionButton>
 					) : (
