@@ -1,16 +1,25 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ContactList from '../../../pages/ContactList/ContactList';
 
 describe('Tests for Your Contact List component', () => {
 	test('Your Contacts displays correct number of contacts', async () => {
-		render(<ContactList />);
+		render(
+			<Router>
+				<ContactList />
+			</Router>
+		);
 		const cardsList = await screen.findAllByRole('button', { name: /modify/i });
 		expect(cardsList).toHaveLength(3);
 	});
 
 	test('Deleting a user works correctly', async () => {
-		render(<ContactList />);
+		render(
+			<Router>
+				<ContactList />
+			</Router>
+		);
 		const buttons = await screen.findAllByRole('button', { name: /delete/i });
 		// finding first user to delete
 		const userToDelete = buttons[0];
@@ -25,7 +34,11 @@ describe('Tests for Your Contact List component', () => {
 	});
 
 	test('Modifying user button changes when clicked', async () => {
-		render(<ContactList />);
+		render(
+			<Router>
+				<ContactList />
+			</Router>
+		);
 		const startingModifyButtons = await screen.findAllByRole('button', {
 			name: /modify/i,
 		});
@@ -37,7 +50,11 @@ describe('Tests for Your Contact List component', () => {
 
 	test('Modifying info for a user works correctly', async () => {
 		const newName = 'Eli Mcdonald';
-		render(<ContactList />);
+		render(
+			<Router>
+				<ContactList />
+			</Router>
+		);
 		const buttons = await screen.findAllByRole('button', { name: /modify/i });
 		userEvent.click(buttons[0]);
 		const inputs = screen.getAllByRole('textbox');
@@ -53,7 +70,11 @@ describe('Tests for Your Contact List component', () => {
 describe('Integration tests for New Contacts and Your Contacts List', () => {
 	test('Added contact from New Contacts appears in Your Contacts', async () => {
 		const contactName = 'Ron Doe';
-		render(<ContactList />);
+		render(
+			<Router>
+				<ContactList />
+			</Router>
+		);
 		// getting add contact buttons
 		const buttons = await screen.findAllByRole('button', {
 			name: /add contact/i,

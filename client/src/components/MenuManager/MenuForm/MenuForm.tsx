@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+import {
+	FormWrapper,
+	InputWrapper,
+	SubmitButton,
+	FormTitle,
+	TextArea,
+	Label,
+} from './style';
 import { Item } from '../../../types/types';
 interface IProps {
 	addItem: (item: Item) => void;
@@ -13,7 +21,11 @@ const MenuForm = ({ addItem }: IProps) => {
 	const [error, setError] = useState('');
 	const { name, price, description } = item;
 
-	const handleChange = (e: any) => {
+	const handleChange = (
+		e:
+			| React.ChangeEvent<HTMLInputElement>
+			| React.ChangeEvent<HTMLTextAreaElement>
+	) => {
 		setItem({
 			...item,
 			[e.target.name]: e.target.value,
@@ -34,6 +46,7 @@ const MenuForm = ({ addItem }: IProps) => {
 			setError('Please enter a description');
 			return;
 		}
+		setError('');
 		addItem({
 			name,
 			price,
@@ -47,31 +60,36 @@ const MenuForm = ({ addItem }: IProps) => {
 	};
 
 	return (
-		<div>
-			<h2>Enter a new menu item:</h2>
+		<FormWrapper>
+			<FormTitle>Enter a new menu item:</FormTitle>
 			<form onSubmit={handleSubmit}>
-				<input
+				<InputWrapper
 					onChange={handleChange}
 					type='text'
 					name='name'
 					placeholder='Item name'
+					maxLength={30}
 					value={name}
 				/>
-				<input
+				<InputWrapper
 					onChange={handleChange}
-					type='text'
+					type='number'
+					min='0.00'
+					max='10000.00'
+					step='0.01'
 					name='price'
 					placeholder='Item price'
 					value={price}
 				/>
-				<label htmlFor='description'>Item description:</label>
-				<textarea
+				<Label htmlFor='description'>Item description</Label>
+				<TextArea
 					onChange={handleChange}
 					id='description'
 					name='description'
+					maxLength={75}
 					value={description}
 				/>
-				<button type='submit'>Submit</button>
+				<SubmitButton type='submit'>Submit</SubmitButton>
 				{error && (
 					<label
 						style={{ color: 'red', display: 'block', textAlign: 'center' }}
@@ -81,7 +99,7 @@ const MenuForm = ({ addItem }: IProps) => {
 					</label>
 				)}
 			</form>
-		</div>
+		</FormWrapper>
 	);
 };
 

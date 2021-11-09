@@ -47,7 +47,7 @@ const UrlShortener = () => {
 					<button onClick={toggleModal}>Close</button>
 				</URLModal>
 			)}
-			<Back href='/'>Go Back</Back>
+			<Back>Go Back</Back>
 			<PageTitle>URL Shortener</PageTitle>
 			<UrlInput
 				getUrls={getUrls}

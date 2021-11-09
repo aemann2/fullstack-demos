@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Menu from '../../components/MenuManager/Menu/Menu';
 import MenuForm from '../../components/MenuManager/MenuForm/MenuForm';
+import { SectionPage, ContentWrapper } from './style';
+import PageTitle from '../../components/UI/PageTitle';
+import Back from '../../components/UI/Back';
 import { Item } from '../../types/types';
 
 const MenuManager = () => {
-	const [menu, setMenu] = useState<Item[] | []>([]);
+	const [menu, setMenu] = useState<Item[] | null>(null);
 
 	const getMenuItems = async () => {
 		try {
@@ -43,15 +46,22 @@ const MenuManager = () => {
 	}, []);
 
 	return (
-		<div>
-			<h1>Menu manager...coming soon!</h1>
-			<MenuForm addItem={addItem} />
-			<Menu
-				menu={menu}
-				removeMenuItem={removeMenuItem}
-				getMenuItems={getMenuItems}
-			/>
-		</div>
+		<SectionPage>
+			<Back>Go Back</Back>
+			<ContentWrapper>
+				<div className='page__left'>
+					<PageTitle>Menu manager</PageTitle>
+					<MenuForm addItem={addItem} />
+				</div>
+				<div className='page__right'>
+					<Menu
+						menu={menu}
+						removeMenuItem={removeMenuItem}
+						getMenuItems={getMenuItems}
+					/>
+				</div>
+			</ContentWrapper>
+		</SectionPage>
 	);
 };
 

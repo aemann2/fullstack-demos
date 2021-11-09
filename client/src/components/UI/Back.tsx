@@ -1,24 +1,29 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { History } from 'history';
 import styled from 'styled-components';
 
 interface IProps {
 	className?: string;
-	href: string;
+	history: History;
 }
 
 const BackButton = styled.a`
 	display: flex;
 	justify-content: flex-start;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 
-const Back: React.FC<IProps> = ({ children, className, href }) => {
+const Back: React.FC<IProps> = ({ history, children, className }) => {
 	return (
 		<>
-			<BackButton href={href} className={className}>
+			<BackButton onClick={() => history.goBack()} className={className}>
 				{children}
 			</BackButton>
 		</>
 	);
 };
 
-export default Back;
+export default withRouter(Back);

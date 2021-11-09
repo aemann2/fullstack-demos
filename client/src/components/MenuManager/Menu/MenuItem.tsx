@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Input, TextArea, MenuItemWrapper, ActionButton } from './style';
 import { Item } from '../../../types/types';
 interface IProps {
 	item: Item;
@@ -15,10 +16,13 @@ const MenuItem = ({
 	deleteItem,
 }: IProps) => {
 	const { _id: id, name, price, description, imageUrl } = item;
-	const [itemName, setItemName] = useState(name);
-	const [itemPrice, setItemPrice] = useState(price);
-	const [itemDescription, setItemDescription] = useState(description);
 	const [isUpdating, setIsUpdating] = useState(false);
+	const [newItem, setNewItem] = useState({
+		newName: name,
+		newPrice: price,
+		newDescription: description,
+	});
+	const { newName, newPrice, newDescription } = newItem;
 
 	const handleDelete = (id: string) => {
 		removeMenuItem(id);
@@ -26,19 +30,24 @@ const MenuItem = ({
 	};
 
 	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement>,
-		setter: React.Dispatch<React.SetStateAction<string>>
+		e:
+			| React.ChangeEvent<HTMLInputElement>
+			| React.ChangeEvent<HTMLTextAreaElement>
 	) => {
-		setter(e.target.value);
+		setNewItem({
+			...newItem,
+			[e.target.name]: e.target.value,
+		});
 	};
 
-	const handleModifyEnd = async () => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		try {
 			await axios.put('https://fullstack-demos.herokuapp.com/items', {
 				id: id,
-				name: itemName,
-				price: itemPrice,
-				description: itemDescription,
+				name: newName,
+				price: newPrice,
+				description: newDescription,
 			});
 			setIsUpdating((prevState) => !prevState);
 			await getMenuItems();
@@ -52,38 +61,61 @@ const MenuItem = ({
 	};
 
 	return (
-		<>
+		<MenuItemWrapper>
 			{isUpdating ? (
-				<div>
-					<input
-						onChange={(e) => handleChange(e, setItemName)}
-						value={itemName}
-					></input>
-					<input
-						onChange={(e) => handleChange(e, setItemPrice)}
-						value={itemPrice}
-					></input>
-					<input
-						onChange={(e) => handleChange(e, setItemDescription)}
-						value={itemDescription}
-					></input>
-				</div>
+				<form onSubmit={handleSubmit}>
+					<Input
+						onChange={(e) => handleChange(e)}
+						maxLength={30}
+						name='newName'
+						value={newName}
+					></Input>
+					<Input
+						type='number'
+						name='newPrice'
+						min='0.00'
+						max='10000.00'
+						step='0.01'
+						maxLength={4}
+						onChange={(e) => handleChange(e)}
+						value={newPrice}
+					></Input>
+					<TextArea
+						onChange={(e) => handleChange(e)}
+						name='newDescription'
+						value={newDescription}
+						maxLength={75}
+					></TextArea>
+				</form>
 			) : (
-				<div>
-					<h2>{itemName}</h2>
-					<h2>{itemPrice}</h2>
-					<h2>{itemDescription}</h2>
+				<div className='item__left'>
+					<h2 className='itemText'>{newName}</h2>
+					<h2 className='itemText'>Price: ${newPrice}</h2>
+					<h2 className='itemText'>Description: {newDescription}</h2>
 				</div>
 			)}
-
-			{isUpdating ? (
-				<button onClick={handleModifyEnd}>Done</button>
-			) : (
-				<button onClick={handleModifyBegin}>Modify</button>
-			)}
-			<button onClick={() => handleDelete(id!)}>Delete</button>
-			<img src={imageUrl} alt={itemName} />
-		</>
+			<div className='item__right'>
+				<div className='buttons'>
+					{isUpdating ? (
+						<ActionButton className='--space' primary onClick={handleSubmit}>
+							Done
+						</ActionButton>
+					) : (
+						<ActionButton
+							className='--space'
+							primary
+							onClick={handleModifyBegin}
+						>
+							Modify
+						</ActionButton>
+					)}
+					<ActionButton className='--space' onClick={() => handleDelete(id!)}>
+						Delete
+					</ActionButton>
+				</div>
+				<img className='image' src={imageUrl} alt={newName} />
+			</div>
+		</MenuItemWrapper>
 	);
 };
 

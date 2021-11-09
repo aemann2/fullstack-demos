@@ -1,10 +1,15 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ContactList from '../../../pages/ContactList/ContactList';
 
 describe('New Contact List component tests', () => {
 	test('Correct number of contacts are present in list', async () => {
-		render(<ContactList />);
+		render(
+			<Router>
+				<ContactList />
+			</Router>
+		);
 		const cardsList = await screen.findAllByRole('button', {
 			name: /add contact/i,
 		});
@@ -14,7 +19,11 @@ describe('New Contact List component tests', () => {
 	test('Add contact button removes that contact from the list and replaces with a new contact', async () => {
 		const contactName = 'Jane Doe';
 
-		render(<ContactList />);
+		render(
+			<Router>
+				<ContactList />
+			</Router>
+		);
 		const buttons = await screen.findAllByRole('button', {
 			name: /add contact/i,
 		});

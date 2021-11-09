@@ -2,10 +2,15 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 // using UrlShortener since the state has been lifted up for UrlList
 import UrlShortener from '../../../pages/UrlShortener/UrlShortener';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('tests for URL list', () => {
 	test('URL List displays correctly from list', async () => {
-		render(<UrlShortener />);
+		render(
+			<Router>
+				<UrlShortener />
+			</Router>
+		);
 		const listButton = screen.getByText('Link History');
 		userEvent.click(listButton);
 		const list = await screen.findAllByText(/visits/i);
@@ -17,7 +22,11 @@ describe('integration tests for URL list and URL bar', () => {
 	test('URL list does not display bad url', async () => {
 		const failingText = 'test';
 		const testText = 'test';
-		render(<UrlShortener />);
+		render(
+			<Router>
+				<UrlShortener />
+			</Router>
+		);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });
@@ -33,7 +42,11 @@ describe('integration tests for URL list and URL bar', () => {
 	test('URL list displays valid URL from input bar', async () => {
 		const passingText = 'http://www.google.com';
 		const testText = 'test4';
-		render(<UrlShortener />);
+		render(
+			<Router>
+				<UrlShortener />
+			</Router>
+		);
 		const urlInput = screen.getByPlaceholderText('Enter URL here...');
 		const nameInput = screen.getByPlaceholderText('Name your URL...');
 		const submitBtn = screen.getByRole('button', { name: 'Shorten!' });

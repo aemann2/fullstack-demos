@@ -1,29 +1,46 @@
 import { screen, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter as Router } from 'react-router-dom';
 import MenuManager from '../../../pages/MenuManager/MenuManager';
 
 describe('Tests for menu component', () => {
 	test('Should render menu', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const button = await screen.findAllByRole('button', { name: 'Delete' });
 		expect(button).toHaveLength(2);
 	});
 	test('Correct items are rendered in menu', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const name = await screen.findByText('Steak');
-		const price = await screen.findByText('$39.99');
-		const description = await screen.findByText('A tasty steak');
+		const price = await screen.findByText('Price: $39.99');
+		const description = await screen.findByText('Description: A tasty steak');
 		expect(name).toBeInTheDocument();
 		expect(price).toBeInTheDocument();
 		expect(description).toBeInTheDocument();
 	});
 	test('Menu renders images', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const image = await screen.findByAltText('Steak');
 		expect(image).toBeInTheDocument();
 	});
 	test('Clicking delete removes item from menu', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const deleteBtns = await screen.findAllByRole('button', { name: 'Delete' });
 		await userEvent.click(deleteBtns[0]);
 		const deleteBtnsNew = await screen.findAllByRole('button', {
@@ -33,7 +50,11 @@ describe('Tests for menu component', () => {
 	});
 
 	test('Modifying item button changes when clicked', async () => {
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const startingModifyButtons = await screen.findAllByRole('button', {
 			name: /modify/i,
 		});
@@ -45,7 +66,11 @@ describe('Tests for menu component', () => {
 
 	test('Modifying info for an item works correctly', async () => {
 		const newPrice = '$59.99';
-		render(<MenuManager />);
+		render(
+			<Router>
+				<MenuManager />
+			</Router>
+		);
 		const buttons = await screen.findAllByRole('button', { name: /modify/i });
 		userEvent.click(buttons[0]);
 		const inputs = screen.getAllByRole('textbox');
