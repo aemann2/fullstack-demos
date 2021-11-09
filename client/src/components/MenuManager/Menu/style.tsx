@@ -8,6 +8,12 @@ export const MenuWrapper = styled.div`
 	max-width: 400px;
 	margin: auto;
 
+	.loading {
+		color: black;
+		font-size: 1.5rem;
+		text-align: center;
+	}
+
 	@media (min-width: 600px) {
 		min-width: 500px;
 	}

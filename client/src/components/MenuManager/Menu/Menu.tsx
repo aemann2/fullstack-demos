@@ -5,7 +5,7 @@ import { MenuWrapper } from './style';
 import { Item } from '../../../types/types';
 
 interface IProps {
-	menu: Item[];
+	menu: Item[] | null;
 	removeMenuItem: (id: string) => void;
 	getMenuItems: () => void;
 }
@@ -23,17 +23,21 @@ const Menu = ({ menu, removeMenuItem, getMenuItems }: IProps) => {
 	};
 	return (
 		<MenuWrapper>
-			{menu.map((item: Item) => {
-				return (
-					<MenuItem
-						key={item._id}
-						item={item}
-						removeMenuItem={removeMenuItem}
-						getMenuItems={getMenuItems}
-						deleteItem={deleteItem}
-					/>
-				);
-			})}
+			{menu ? (
+				menu.map((item: Item) => {
+					return (
+						<MenuItem
+							key={item._id}
+							item={item}
+							removeMenuItem={removeMenuItem}
+							getMenuItems={getMenuItems}
+							deleteItem={deleteItem}
+						/>
+					);
+				})
+			) : (
+				<p className='loading'>Loading</p>
+			)}
 		</MenuWrapper>
 	);
 };

@@ -8,7 +8,7 @@ import Back from '../../components/UI/Back';
 import { Item } from '../../types/types';
 
 const MenuManager = () => {
-	const [menu, setMenu] = useState<Item[] | []>([]);
+	const [menu, setMenu] = useState<Item[] | null>(null);
 
 	const getMenuItems = async () => {
 		try {
