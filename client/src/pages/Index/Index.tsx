@@ -9,6 +9,9 @@ import {
 } from './style';
 import WindowCard from '../../components/Index/WindowCard/WindowCard';
 import test from './assets/testImg.png';
+import menuManager from './assets/menuManager.png';
+import contactList from './assets/contactList.png';
+import urlShortener from './assets/urlShortener.png';
 
 const Index = () => {
 	return (
@@ -16,22 +19,33 @@ const Index = () => {
 			<Title>Full Stack Demos</Title>
 			<Subtitle>Applications for the purpose of learning</Subtitle>
 			<CardWrapper>
-				<WindowCard image={test} alt={'test'} url={'/menuManager'}>
-					<CardHeader>Menu Manager (coming soon)</CardHeader>
-					<CardBody>
-						An interface to manage items on a restaurant menu.
-					</CardBody>
+				<WindowCard
+					image={menuManager}
+					alt={'Menu Manager'}
+					url={'/menuManager'}
+				>
+					<CardHeader>Menu Manager</CardHeader>
+					<CardBody>An interface to manage items on a fictional menu.</CardBody>
 				</WindowCard>
-				<WindowCard image={test} alt={'test'} url={'contactList'}>
+				<WindowCard
+					image={contactList}
+					alt={'Contact List'}
+					url={'contactList'}
+				>
 					<CardHeader>Contact List</CardHeader>
 					<CardBody>
 						See a list of contacts and add them to a persistent contact list.
 					</CardBody>
 				</WindowCard>
-				<WindowCard image={test} alt={'test'} url={'urlShortener'}>
+				<WindowCard
+					image={urlShortener}
+					alt={'URL Shortener'}
+					url={'urlShortener'}
+				>
 					<CardHeader>URL Shortener</CardHeader>
 					<CardBody>
-						Long URL? Make it short! With a list of all URLs you've shortened.
+						Long URL? Make it short! With a list of all URLs that have been
+						shortened.
 					</CardBody>
 				</WindowCard>
 			</CardWrapper>
