@@ -8,7 +8,6 @@ import {
 	CardBody,
 } from './style';
 import WindowCard from '../../components/Index/WindowCard/WindowCard';
-import test from './assets/testImg.png';
 import menuManager from './assets/menuManager.png';
 import contactList from './assets/contactList.png';
 import urlShortener from './assets/urlShortener.png';
