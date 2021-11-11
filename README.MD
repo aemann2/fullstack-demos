@@ -10,6 +10,8 @@ For the backend, I wanted to get experience working with a few different types o
 
 Something to note for this project is that I was not focused on styling. The styles are very rudimentary, but I'm fine with that for this project!
 
+One other thing: for the sake of simplicity, I have not implemented authentication here. Whatever you add to any of the projects can be seen by all users!
+
 ## Technology:
 
 React, Typescript, Styled Components, React Testing Library, Jest, Mock Service Worker, Node, Express
