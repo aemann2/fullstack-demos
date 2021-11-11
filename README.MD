@@ -1,12 +1,14 @@
 # [Fullstack Demos](https://fullstack-demos.netlify.app/)
 
-**FullStack Demos** is a collection of three mini fullstack applications. Each application stores/retrieves data from a MongoDB database, with the backend hosted on Heroku. Menu Manager (coming soon!) and Contact List use full CRUD functionality, while URL Shortener only creates and reads. (I was not focused on styling for this project, so the styles look rough around the edges. But I'm fine with that!)
+<a href="https://fullstack-demos.netlify.app/" target="_blank"><img src='https://user-images.githubusercontent.com/68879246/141218820-2a6c1833-0471-4db1-bd83-79b74b8e158a.png' alt='Fullstack Demos'></a>
+
+**Fullstack Demos** is a collection of three mini fullstack applications. Each application stores/retrieves data from a MongoDB database, with the backend hosted on Heroku. Menu Manager and Contact List use full CRUD functionality, while URL Shortener only creates and reads. When adding an item with Menu Manager, the backend performs a Google image search using a custom Google search and dynamically assigns a menu image based on the item title. 
 
 This is the first project where I incorporated testing and TDD. I began with the Figma sketch, wrote red tests, then wrote passing green tests for each component. I used React Testing Library, Jest, and Mock Service worker. Although I struggled in some places (mocking async calls), I finally began to get the hang of it at around the middle of the project.
 
-For the backend, I wanted to get experience working with a few different types of projects. I started simple with the URL shortener, and incorporated a lot of ideas I found through Google. Contact List was completely original code, and is the first thing I've written that has full CRUD functionality.
+For the backend, I wanted to get experience working with a few different types of projects. I started simple with the URL shortener, and incorporated a lot of ideas I found through Google. Contact List and Menu Manager are completely original code, and are the first things I've written that have full CRUD functionality.
 
-This is still a work in progress! Menu manager is coming soon, and I'd like to also add authentication (right now, all users will see the same data).
+Something to note for this project is that I was not focused on styling. The styles are very rudimentary, but I'm fine with that for this project!
 
 ## Technology:
 
@@ -19,6 +21,7 @@ React, Typescript, Styled Components, React Testing Library, Jest, Mock Service 
 - React Testing Library
 - Jest
 - Mock Service Worker
+- A custom Google search performed on the backend
 - Full CRUD functionality
 - PUT and DELETE requests
 
