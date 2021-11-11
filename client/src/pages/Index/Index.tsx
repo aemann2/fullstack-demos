@@ -16,7 +16,7 @@ const Index = () => {
 	return (
 		<IndexPage>
 			<Title>Full Stack Demos</Title>
-			<Subtitle>Applications for the purpose of learning</Subtitle>
+			<Subtitle>A collection of mini full stack projects</Subtitle>
 			<CardWrapper>
 				<WindowCard
 					image={menuManager}
