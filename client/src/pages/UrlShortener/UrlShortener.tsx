@@ -17,6 +17,11 @@ const UrlShortener = () => {
 		setOpenModal((prevState) => !prevState);
 	};
 
+	const copyLink = (url: string) => {
+		navigator.clipboard.writeText(url);
+		setModalText('Copied to clipboard!');
+	};
+
 	const getURLForModal = (url: string) => {
 		setModalText(url);
 	};
@@ -44,6 +49,7 @@ const UrlShortener = () => {
 					<p>
 						<a href={modalText}>{modalText}</a>
 					</p>
+					<button onClick={() => copyLink(modalText)}>Copy Link</button>
 					<button onClick={toggleModal}>Close</button>
 				</URLModal>
 			)}
