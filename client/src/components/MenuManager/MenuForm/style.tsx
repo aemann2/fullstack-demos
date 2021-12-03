@@ -13,7 +13,7 @@ export const InputWrapper = styled.input`
 	background: transparent;
 	border: none;
 	width: 200px;
-	padding: 0.5rem 0rem;
+	padding: 0.5rem;
 	color: #fff;
 	opacity: 0.8;
 	font-size: 0.8rem;
@@ -43,6 +43,7 @@ export const FormTitle = styled.h2`
 export const TextArea = styled.textarea`
 	height: 100px;
 	width: 100%;
+	padding: 0.3rem 0.3rem;
 `;
 
 export const Label = styled.label`

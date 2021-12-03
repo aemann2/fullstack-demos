@@ -91,16 +91,19 @@ const YourContact: React.FC<IProps> = ({
 							onChange={(e) => handleChange(e, setFullName)}
 							value={fullName}
 							maxLength={18}
+							style={{ padding: '0.1rem', marginTop: '0.5rem' }}
 						></input>
 						<input
 							onChange={(e) => handleChange(e, setContactEmail)}
 							value={contactEmail}
 							maxLength={25}
+							style={{ padding: '0.1rem', marginTop: '0.5rem' }}
 						></input>
 						<input
 							onChange={(e) => handleChange(e, setContactPhone)}
 							value={contactPhone}
 							maxLength={18}
+							style={{ padding: '0.1rem', marginTop: '0.5rem' }}
 						></input>
 					</div>
 				) : (

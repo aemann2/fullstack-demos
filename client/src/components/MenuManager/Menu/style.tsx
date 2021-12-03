@@ -76,6 +76,7 @@ export const Input = styled.input`
 	width: 100%;
 	height: 2rem;
 	border: none;
+	padding: 0.5rem;
 	margin-bottom: 1rem;
 `;
 
@@ -83,6 +84,7 @@ export const TextArea = styled.textarea`
 	width: 100%;
 	height: 2rem;
 	border: none;
+	padding: 0.3rem;
 `;
 
 export const ActionButton = styled(Button)`
