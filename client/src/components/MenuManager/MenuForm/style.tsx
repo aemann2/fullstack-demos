@@ -42,8 +42,9 @@ export const FormTitle = styled.h2`
 
 export const TextArea = styled.textarea`
 	height: 100px;
+	font-size: 1.2rem;
 	width: 100%;
-	padding: 0.3rem 0.3rem;
+	padding: 0.3rem;
 `;
 
 export const Label = styled.label`
