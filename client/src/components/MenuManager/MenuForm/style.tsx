@@ -35,7 +35,7 @@ export const InputWrapper = styled.input`
 `;
 
 export const FormTitle = styled.h2`
-	font-size: 1.2rem;
+	font-size: 1.8rem;
 	margin: 0 0 1rem 0;
 	color: var(--color-text);
 `;
@@ -45,6 +45,7 @@ export const TextArea = styled.textarea`
 	font-size: 1.2rem;
 	width: 100%;
 	padding: 0.3rem;
+	resize: none;
 `;
 
 export const Label = styled.label`

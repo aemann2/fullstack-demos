@@ -85,6 +85,7 @@ export const TextArea = styled.textarea`
 	height: 2rem;
 	border: none;
 	padding: 0.3rem;
+	resize: none;
 `;
 
 export const ActionButton = styled(Button)`
