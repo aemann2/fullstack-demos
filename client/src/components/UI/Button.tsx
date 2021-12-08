@@ -12,6 +12,10 @@ interface IProps {
 const MainButton = styled.button<IProps>`
 	border-radius: 10px;
 	border: none;
+
+	&:hover {
+		opacity: 0.9;
+	}
 `;
 
 const Button: React.FC<IProps> = ({

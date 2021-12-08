@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Input, TextArea, MenuItemWrapper, ActionButton } from './style';
 import { Item } from '../../../types/types';
+import { trimNum } from '../../../utils/utils';
 interface IProps {
 	item: Item;
 	removeMenuItem: (id: string) => void;
@@ -46,7 +47,7 @@ const MenuItem = ({
 			await axios.put('https://fullstack-demos.herokuapp.com/items', {
 				id: id,
 				name: newName,
-				price: newPrice,
+				price: trimNum(newPrice),
 				description: newDescription,
 			});
 			setIsUpdating((prevState) => !prevState);
@@ -76,7 +77,6 @@ const MenuItem = ({
 						min='0.00'
 						max='10000.00'
 						step='0.01'
-						maxLength={4}
 						onChange={(e) => handleChange(e)}
 						value={newPrice}
 					></Input>
@@ -90,7 +90,7 @@ const MenuItem = ({
 			) : (
 				<div className='item__left'>
 					<h2 className='itemText'>{newName}</h2>
-					<h2 className='itemText'>Price: ${newPrice}</h2>
+					<h2 className='itemText'>Price: ${trimNum(newPrice)}</h2>
 					<h2 className='itemText'>Description: {newDescription}</h2>
 				</div>
 			)}

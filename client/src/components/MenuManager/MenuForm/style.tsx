@@ -13,7 +13,7 @@ export const InputWrapper = styled.input`
 	background: transparent;
 	border: none;
 	width: 200px;
-	padding: 0.5rem 0rem;
+	padding: 0.5rem;
 	color: #fff;
 	opacity: 0.8;
 	font-size: 0.8rem;
@@ -35,14 +35,17 @@ export const InputWrapper = styled.input`
 `;
 
 export const FormTitle = styled.h2`
-	font-size: 1.2rem;
+	font-size: 1.8rem;
 	margin: 0 0 1rem 0;
 	color: var(--color-text);
 `;
 
 export const TextArea = styled.textarea`
 	height: 100px;
+	font-size: 1.2rem;
 	width: 100%;
+	padding: 0.3rem;
+	resize: none;
 `;
 
 export const Label = styled.label`

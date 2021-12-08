@@ -34,19 +34,17 @@ export const Cards = styled.div`
 `;
 
 export const Card = styled.div`
+	height: 200px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	margin: 1rem 0;
+	padding: 1rem;
 
 	.imageWrapper {
-		flex: 1;
 		img {
-			width: 100%;
+			width: 150px;
 			border-radius: 50%;
-			margin: 0rem 1rem;
+			margin: 0rem auto;
 		}
-		margin-right: 1rem;
 	}
 
 	.buttons {
