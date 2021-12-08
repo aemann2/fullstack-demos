@@ -20,6 +20,8 @@ const YourContact: React.FC<IProps> = ({
 	const [contactEmail, setContactEmail] = useState(email);
 	const [contactPhone, setContactPhone] = useState(phone);
 
+	console.log(contactEmail);
+
 	useEffect(() => {
 		setFullName(`${name.first} ${name.last}`);
 	}, [name.first, name.last]);
@@ -39,8 +41,8 @@ const YourContact: React.FC<IProps> = ({
 					first: firstName,
 					last: lastName,
 				},
-				phone: contactEmail,
-				email: contactPhone,
+				phone: contactPhone,
+				email: contactEmail,
 				picture: {
 					large: picture.large,
 					medium: picture.medium,
@@ -86,7 +88,14 @@ const YourContact: React.FC<IProps> = ({
 					</ActionButton>
 				</div>
 				{isUpdating ? (
-					<div>
+					<div
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							margin: '0 auto',
+							width: '250px',
+						}}
+					>
 						<input
 							onChange={(e) => handleChange(e, setFullName)}
 							value={fullName}
@@ -102,7 +111,7 @@ const YourContact: React.FC<IProps> = ({
 						<input
 							onChange={(e) => handleChange(e, setContactPhone)}
 							value={contactPhone}
-							maxLength={18}
+							maxLength={14}
 							style={{ padding: '0.1rem', marginTop: '0.5rem' }}
 						></input>
 					</div>
